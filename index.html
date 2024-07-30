@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="icon" type="image/png" href="assets/Favicon.png" />
+
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="">
+  <header class="fixed top-0 left-0 z-50 w-full bg-black h-14">
+    <div class="container relative flex items-center justify-between mx-auto max-w-7xl">
+      <div class="w-24 py-3"><a href="/">
+          <img src="assets/Textlogo.png" alt="Shadow Scripter Logog" title="Shadow Scripter Logo" /></a>
+      </div>
+
+      <div
+        class="absolute left-0 hidden w-full bg-black border-b-2 my-14 top-14 border-slate-600 md:static md:block md:border-none md:py-0 md:pr-10"
+        id="navbar">
+        <nav class="pt-2">
+          <ul class="flex flex-col gap-5 font-bold text-center md:flex-row md:justify-end md:gap-14" id="navLinks">
+            <li class="hover:text-purple-400">
+              <a class="nav_link" href="#home">Home</a>
+            </li>
+            <li class="hover:text-purple-400">
+              <a class="nav_link" href="#about">About</a>
+            </li>
+            <li class="hover:text-purple-400">
+              <a class="nav_link" href="#projects">Projects</a>
+            </li>
+            <li class="hover:text-purple-400">
+              <a class="nav_link" href="#experiance">Experiance</a>
+            </li>
+            <li class="hover:text-purple-400">
+              <a class="nav_link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="pr-5 md:hidden">
+        <button class="menu_button" aria-label="menu" id="menu">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0,0,256,256">
+            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+              stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+              font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <g transform="scale(5.12,5.12)">
+                <path
+                  d="M5,8c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,23c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,38c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175z">
+                </path>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <button class="absolute hidden cursor-pointer close_button right-6 top-2" aria-label="close" id="close">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0,0,256,256">
+            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+              stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+              font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <g transform="scale(8.53333,8.53333)">
+                <path
+                  d="M7,4c-0.25587,0 -0.51203,0.09747 -0.70703,0.29297l-2,2c-0.391,0.391 -0.391,1.02406 0,1.41406l7.29297,7.29297l-7.29297,7.29297c-0.391,0.391 -0.391,1.02406 0,1.41406l2,2c0.391,0.391 1.02406,0.391 1.41406,0l7.29297,-7.29297l7.29297,7.29297c0.39,0.391 1.02406,0.391 1.41406,0l2,-2c0.391,-0.391 0.391,-1.02406 0,-1.41406l-7.29297,-7.29297l7.29297,-7.29297c0.391,-0.39 0.391,-1.02406 0,-1.41406l-2,-2c-0.391,-0.391 -1.02406,-0.391 -1.41406,0l-7.29297,7.29297l-7.29297,-7.29297c-0.1955,-0.1955 -0.45116,-0.29297 -0.70703,-0.29297z">
+                </path>
+              </g>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="gap-5 mx-4 md:mx-0">
+
+    <!-- Main Section -->
+    <section class="flex flex-col items-center justify-center md:min-h-[100vh]" id="home">
+      <div class="grid h-full grid-cols-1 pt-20 mx-auto max-w-7xl md:grid-cols-2 md:p-10">
+        <div class="flex flex-col items-center gap-5 px-5 md:items-start">
+          <p class="text-[7vw] font-bold md:pt-16 md:text-3xl">Hello, I'm</p>
+          <h1 class="pb-2 text-[9vw] font-bold sm:text-6xl">
+            Waleed Ahmad
+          </h1>
+          <h2
+            class="mb-2 bg-gradient-to-br from-purple-600 via-blue-500 to-pink-600 bg-clip-text text-[7vw] font-medium text-transparent md:text-3xl">
+            I am a full-stack developer
+          </h2>
+        </div>
+        <div class="items-center md:flex">
+          <img class="object-cover w-full" src="./assets/Tech-man.webp" alt="" />
+        </div>
+      </div>
+      <a class="flex flex-col items-center justify-center mt-14 md:mt-0" href="#about">
+        <span class="mb-4 font-medium tracking-widest">Scroll Down</span>
+        <div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor" class="animate-bounce">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5">
+            </path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="mt-14 min-h-[100vh]" id="about">
+      <div class="flex flex-col items-center justify-center">
+        <h2
+          class="p-1 mt-5 mb-1 text-xl font-bold rounded-lg w-fit bg-gradient-to-br from-purple-600 via-blue-500 to-pink-600 md:mt-0 md:p-2 md:text-3xl">
+          About Me
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mx-auto mt-10 max-w-7xl md:grid-cols-2">
+          <div class="flex items-center justify-center mx-auto circle aspect-square max-w-96">
+            <img class="w-72" src="./assets/Textlogo.png" alt="" />
+          </div>
+          <div class="px-5 text-left">
+            <h2 class="mb-4 text-2xl md:mb-8">Hello Everyone,</h2>
+            <p class="mb-10 text-xl md:mb-20">
+              I'm <span class="font-bold">Waleed Ahmad</span>,I am a full-stack developer proficient in 
+              HTML, CSS, JavaScript, React, Next.js, TypeScript, 
+              MongoDB, PostgreSQL, MySQL, Python, Django, and Flask. 
+              Currently, I'm studying in O levels and have completed the 
+              Odin Project.
+            </p>
+            <div class="">
+              <h2 class="mb-5 text-2xl">Here is my Tech Stack :</h2>
+              <div class="flex flex-wrap gap-5 p-2 border-2 justify-evenly rounded-xl border-slate-500">
+                <div class="flex flex-col items-center html5 w-14">
+                  <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 108.35 122.88" style="enable-background: new 0 0 108.35 122.88" xml:space="preserve">
+                    <style type="text/css">
+                      .st0 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: #e44d26;
+                      }
+
+                      .st1 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: #f16529;
+                      }
+
+                      .st2 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: #ebebeb;
+                      }
+
+                      .st3 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: #ffffff;
+                      }
+                    </style>
+                    <g>
+                      <polygon class="st0" points="108.35,0 98.48,110.58 54.11,122.88 9.86,110.6 0,0 108.35,0" />
+                      <polygon class="st1" points="54.17,113.48 90.03,103.54 98.46,9.04 54.17,9.04 54.17,113.48" />
+                      <path class="st2"
+                        d="M34.99,36.17h19.19V22.61H20.16l0.32,3.64l3.33,37.38h30.35V50.06H36.23L34.99,36.17L34.99,36.17L34.99,36.17z M38.04,70.41H24.43l1.9,21.3l27.79,7.71l0.06-0.02V85.29l-0.06,0.02l-15.11-4.08L38.04,70.41L38.04,70.41L38.04,70.41z" />
+                      <path class="st3"
+                        d="M54.13,63.63h16.7l-1.57,17.59L54.13,85.3v14.11l27.81-7.71l0.2-2.29l3.19-35.71l0.33-3.64H54.13V63.63 L54.13,63.63z M54.13,36.14v0.03h32.76l0.27-3.05l0.62-6.88l0.32-3.64H54.13V36.14L54.13,36.14L54.13,36.14z" />
+                    </g>
+                  </svg>
+                  <h2 class="text-sm">HTML5</h2>
+                </div>
+                <div class="flex flex-col items-center css3 w-14">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296297 333333"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" shape-rendering="geometricPrecision"
+                    text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                    clip-rule="evenodd">
+                    <defs>
+                      <linearGradient id="id4" gradientUnits="userSpaceOnUse" x1="54128.7" y1="79355.5" x2="240318"
+                        y2="79355.5">
+                        <stop offset="0" stop-color="#e8e7e5" />
+                        <stop offset="1" stop-color="#fff" />
+                      </linearGradient>
+                      <linearGradient id="id5" gradientUnits="userSpaceOnUse" x1="62019.3" y1="202868" x2="233515"
+                        y2="202868">
+                        <stop offset="0" stop-color="#e8e7e5" />
+                        <stop offset="1" stop-color="#fff" />
+                      </linearGradient>
+                      <linearGradient id="id6" gradientUnits="userSpaceOnUse" x1="104963" y1="99616.9" x2="104963"
+                        y2="171021">
+                        <stop offset="0" stop-color="#d1d3d4" />
+                        <stop offset=".388" stop-color="#d1d3d4" />
+                        <stop offset="1" stop-color="#d1d3d4" />
+                      </linearGradient>
+                      <linearGradient id="id7" gradientUnits="userSpaceOnUse" xlink:href="#id6" x1="194179" y1="61185.8"
+                        x2="194179" y2="135407" />
+                      <mask id="id0">
+                        <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="104963" y1="99616.9" x2="104963"
+                          y2="171021">
+                          <stop offset="0" stop-opacity="0" stop-color="#fff" />
+                          <stop offset=".388" stop-color="#fff" />
+                          <stop offset="1" stop-opacity=".831" stop-color="#fff" />
+                        </linearGradient>
+                        <path fill="url(#id1)" d="M61737 99467h86453v71704H61737z" />
+                      </mask>
+                      <mask id="id2">
+                        <linearGradient id="id3" gradientUnits="userSpaceOnUse" x1="194179" y1="61185.8" x2="194179"
+                          y2="135407">
+                          <stop offset="0" stop-opacity="0" stop-color="#fff" />
+                          <stop offset=".388" stop-color="#fff" />
+                          <stop offset="1" stop-opacity=".831" stop-color="#fff" />
+                        </linearGradient>
+                        <path fill="url(#id3)" d="M147890 61036h92578v74521h-92578z" />
+                      </mask>
+                      <style>
+                        .fil6 {
+                          fill: #000;
+                          fill-opacity: 0.05098;
+                        }
+                      </style>
+                    </defs>
+                    <g id="Layer_x0020_1">
+                      <g id="_513085304">
+                        <path fill="#2062af" d="M268517 300922l-120369 32411-120371-32411L0 0h296297z" />
+                        <path fill="#3c9cd7" d="M148146 24374v283109l273 74 97409-26229 22485-256954z" />
+                        <path fill="#fff"
+                          d="M148040 99617l-86153 35880 2857 35524 83296-35614 88604-37883 3674-36339-92278 38432z" />
+                        <path mask="url(#id0)" fill="url(#id6)" d="M61887 135497l2857 35524 83295-35614V99617z" />
+                        <path mask="url(#id2)" fill="url(#id7)" d="M240318 61186l-92278 38431v35790l88604-37883z" />
+                        <path fill="url(#id5)"
+                          d="M62019 135497l2858 35524 127806 407-2859 47365-42055 11840-40428-10208-2450-29399H67327l4900 56756 75950 22457 75538-22050 9800-112692z" />
+                        <path class="fil6"
+                          d="M148040 135497H61888l2857 35524 83295 266v-35790zm0 95022l-408 114-40422-10208-2450-29399H67197l4899 56756 75944 22457v-39720z" />
+                        <path fill="url(#id4)" d="M54129 61186h186189l-3674 36339H58620l-4491-36339z" />
+                        <path class="fil6" d="M148040 61186H54129l4491 36339h89420z" />
+                      </g>
+                    </g>
+                  </svg>
+                  <h2 class="text-sm">CSS3</h2>
+                </div>
+                <div class="flex flex-col items-center pt-2 js w-14">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88"
+                    style="enable-background: new 0 0 122.88 122.88" xml:space="preserve">
+                    <style type="text/css">
+                      .yello1 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: #f7df1e;
+                      }
+
+                      .black1 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                      }
+                    </style>
+                    <g>
+                      <polygon class="yello1" points="0,0 122.88,0 122.88,122.88 0,122.88 0,0" />
+                      <path class="black1"
+                        d="M32.31,102.69l9.4-5.69c1.81,3.22,3.46,5.94,7.42,5.94c3.79,0,6.19-1.48,6.19-7.26V56.41h11.55v39.43 c0,11.96-7.01,17.4-17.24,17.4C40.39,113.24,35.03,108.46,32.31,102.69L32.31,102.69L32.31,102.69z M73.14,101.45l9.4-5.44 c2.48,4.04,5.69,7.01,11.38,7.01c4.78,0,7.84-2.39,7.84-5.69c0-3.96-3.13-5.36-8.41-7.67l-2.89-1.24c-8.33-3.55-13.86-8-13.86-17.4 c0-8.66,6.6-15.26,16.91-15.26c7.34,0,12.62,2.56,16.41,9.24l-8.99,5.77c-1.98-3.55-4.12-4.95-7.42-4.95 c-3.38,0-5.53,2.14-5.53,4.95c0,3.46,2.14,4.87,7.09,7.01l2.89,1.24c9.82,4.21,15.34,8.5,15.34,18.15 c0,10.39-8.17,16.08-19.14,16.08C83.45,113.25,76.52,108.13,73.14,101.45L73.14,101.45L73.14,101.45z M73.14,101.45L73.14,101.45 L73.14,101.45L73.14,101.45z" />
+                    </g>
+                  </svg>
+                  <h2 class="text-sm">JavaScript</h2>
+                </div>
+                <div class="flex flex-col items-center pt-2 typescript w-14">
+                  <img src="assets/TypeScript Logo.png" alt="TypeScript Logo" class="typescript">
+                  <h2 class="text-sm">TypeScript</h2>
+                </div>
+                <div class="flex flex-col items-center pt-2 nextjs w-14">
+                  <img src="assets/Next Js Logo.png" alt="Next.js Logo" width="56" height="56">
+                  <h2 class="text-sm">Next.js</h2>
+              </div>
+              <div class="flex flex-col items-center pt-5 react w-14">
+                <img src="assets/React logo.png" alt="React Logo" class="react">
+                <h2 class="text-sm">React</h2>
+              </div>
+              <div class="flex flex-col items-center pt-2 python w-14">
+                <img src="assets/Python logo.png" alt="Python Logo" class="Python">
+                <h2 class="text-sm">Python</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="h-auto mt-14 md:mt-5" id="projects">
+      <div class="flex flex-col items-center justify-center">
+        <h2
+          class="p-1 text-xl font-bold rounded-lg w-fit bg-gradient-to-br from-purple-600 via-blue-500 to-pink-600 md:mb-10 md:p-2 md:text-3xl">
+          My Projects
+        </h2>
+        <div class="grid w-full grid-cols-1 gap-5 pt-10 mx-auto max-w-7xl sm:grid-cols-2 sm:px-10 md:grid-cols-3">
+
+          <!-- Stop Watch -->
+          <div class="w-full">
+            <div class="relative flex aspect-[16/9] overflow-hidden rounded-lg bg-slate-400">
+              <img class="overflow-hidden" src="./assets/StopWatch.png"
+                alt="StopWatch" />
+            </div>
+            <div class="flex flex-col justify-between p-3 text-sm rounded-lg min-h-40 bg-slate-700 sm:text-base">
+              <div class="text-xl font-bold text-">Stop Watch React</div>
+              <div class="py-2 line-clamp-2">
+                Stop-watch-react is a user-friendly stopwatch application built with React. 
+                This project demonstrates the use of React state management and component lifecycle methods.
+              </div>
+              <div class="flex gap-3">
+                <button class="w-24 px-1 py-1 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://github.com/Shadow-Scripter/stop-watch-react"
+                    class="block px-4 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">GitHub</a>
+                </button>
+                <button class="w-24 px-1 py-1 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://stop-watch-react-eight.vercel.app/"
+                    class="block px-1 transition-all bg-black rounded-lg duration-0 hover:duration-150 hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">Live</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Apple Page Clone -->
+          <div class="w-full">
+            <div class="relative flex aspect-[16/9] overflow-hidden rounded-lg bg-slate-400">
+              <img class="overflow-hidden" src="./assets/Apple.png" alt="Apple Image" />
+            </div>
+            <div class="flex flex-col justify-between p-3 text-sm rounded-lg min-h-40 bg-slate-700 sm:text-base">
+              <div class="text-xl font-bold text-">Apple-clone</div>
+              <div class="py-2 line-clamp-2">
+                Apple-clone is a detailed replica of the Apple Vision Pro page from the Apple website. 
+                This project highlights my ability to create high-fidelity clones with precise layout and design.
+              </div>
+              <div class="flex gap-3">
+                <button class="w-24 px-1 py-1 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://github.com/Shadow-Scripter/Apple-clone"
+                    class="block px-4 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">GitHub</a>
+                </button>
+                <button class="w-24 px-1 py-1 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://shadow-scripter.github.io/Apple-clone/"
+                    class="block px-1 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">Live</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Clock -->
+          <div class="w-full">
+            <div class="relative flex aspect-[16/9] overflow-hidden rounded-lg bg-slate-400">
+              <img class="overflow-hidden" src="./assets/Digital Clock.png" alt="SneakerImg" />
+            </div>
+            <div class="flex flex-col justify-between p-3 text-sm rounded-lg min-h-40 bg-slate-700 sm:text-base">
+              <div class="text-xl font-bold text-">
+                Digital Clock
+              </div>
+              <div class="py-2 line-clamp-2">
+                In This Digital Clock I shown my Responsive UI
+                Skills Using React and also used some of
+                React hooks. This Project demonstrates some Amazing Things I can do with React.
+              </div>
+              <div class="flex gap-3">
+                <button class="w-24 px-1 py-1 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://github.com/Shadow-Scripter/digital-clock-react"
+                    class="block px-4 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">GitHub</a>
+                </button>
+                <button class="w-24 px-1 py-1 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://digital-clock-react-ochre.vercel.app/"
+                    class="block px-1 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">Live</a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- To do List React -->
+          <div class="w-full">
+            <div class="relative flex aspect-[16/9] overflow-hidden rounded-lg bg-slate-400">
+              <img class="overflow-hidden" src="./assets/TodoListReact.png" alt="SneakerImg" />
+            </div>
+            <div class="flex flex-col justify-between p-3 text-sm rounded-lg min-h-40 bg-slate-700 sm:text-base">
+              <div class="text-xl font-bold text-">
+                To Do List React
+              </div>
+              <div class="py-2 line-clamp-2">
+                A to-do list application to manage tasks, built using React.
+              </div>
+              <div class="flex gap-3">
+                <button class="w-24 px-1 py-1 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://github.com/Shadow-Scripter/to-do-list-react"
+                    class="block px-4 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">GitHub</a>
+                </button>
+                <button class="w-24 px-1 py-1 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                  <a target="_blank" href="https://to-do-list-react-sandy.vercel.app/"
+                    class="block px-1 transition-all bg-black rounded-lg hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500">Live</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="h-auto mt-14 md:mt-5" id="experiance">
+      <div class="flex flex-col items-center justify-center">
+        <h2
+          class="p-1 mt-5 mb-1 text-xl font-bold rounded-lg w-fit bg-gradient-to-br from-purple-600 via-blue-500 to-pink-600 md:mt-0 md:p-2 md:text-3xl">
+          Timeline
+        </h2>
+        <div class="timeline">
+          <ul>
+            <li>
+              <div class="content">
+                <h3>Certification</h3>
+                <p>I Completed The Odin Project</p>
+              </div>
+              <div class="time">
+                <h4>March 2024</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="mt-14 md:mt-5 md:min-h-[80vh]" id="contact">
+      <div class="flex flex-col items-center justify-center w-full h-full mx-auto max-w-7xl">
+        <h2
+          class="p-1 mb-10 text-xl font-bold rounded-lg w-fit bg-gradient-to-br from-purple-600 via-blue-500 to-pink-600 md:p-2 md:text-3xl">
+          Contact Me
+        </h2>
+        <div class="grid justify-center w-full h-full grid-cols-1 mx-auto max-w-7xl md:grid-cols-2 md:p-10">
+          <div class="hidden max-w-[30rem] md:block">
+            <img class="contact-image" src="./assets/thumbnail-Images/contact-us.webp" alt="" />
+          </div>
+          <div class="form-container">
+            <form class="form" id="form">
+              <div class="form-group">
+                <label for="fname">Name</label>
+                <input type="text" id="fname" name="fname" required>
+              </div>
+              <div class="form-group">
+                <label for="tel">Mobile no.</label>
+                <input type="tel" id="tel" name="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="textarea">How Can I Help You?</label>
+                <textarea name="textarea" id="textarea" rows="10" cols="50" required></textarea>
+
+              </div>
+              <!-- <button class="form-submit-btn" type="submit">Submit</button> -->
+              <button
+                class="w-40 px-1 py-1 text-center rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 md:mt-7">
+                <span
+                  class="block px-1 py-2 transition-all bg-black rounded-3xl hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500"
+                  id="btn">Submit</span>
+              </button>
+            </form>
+          </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer Section -->
+  <footer class="flex flex-col items-center w-full mt-5">
+    <div class="flex flex-col gap-5">
+      <h2 class="p-2 text-2xl font-bold text-center">Follow Me on</h2>
+      <div class="flex items-center justify-center gap-3 pb-5">
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
+          <a target="_blank" aria-label="github"
+            class="cursor-pointer rounded-lg bg-[#fff] p-1 shadow-sm duration-300 hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 hover:text-black"
+            href="https://github.com/Shadow-Scripter/">
+            <svg height="28" width="28" stroke="currentColor" fill="currentColor" stroke-width="0"
+              viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z">
+              </path>
+            </svg></a>
+          <a target="_blank" aria-label="linkedin"
+            class="cursor-pointer rounded-lg bg-[#fff] p-1 shadow-sm duration-300 hover:bg-gradient-to-br hover:from-blue-500 hover:via-purple-500 hover:to-pink-500  hover:text-black"
+            href="https://www.linkedin.com/in/waleed-ahmed2009?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+            <svg height="28" width="28" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+              </path>
+        </div>
+      </div>
+    </div>
+    <h2 class="p-2 text-sm"><span class="text-sm font-bold">&copy; Waleed Ahmad</span> | All rights reserved</h2>
+  </footer>
+  <script defer src="./index.js"></script>
+</body>
+
+</html>
