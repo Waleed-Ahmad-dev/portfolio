@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${Geist_Mono} font-sans bg-background antialiased`}>
+      <body className={`font-sans bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
