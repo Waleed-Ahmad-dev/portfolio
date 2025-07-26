@@ -1,4 +1,3 @@
-// components/Contact.tsx
 'use client';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
