@@ -24,10 +24,9 @@ export async function POST(request: Request) {
           if (!name || !email || !message) {
                return new NextResponse('All fields are required', { status: 400 });
           }
-          if (request.headers.get('origin') !== process.env.NEXT_PUBLIC_BASE_URL) {
-               return new NextResponse('Forbidden', { status: 403 });
-          }
-
+          // if (request.headers.get('origin') !== process.env.NEXT_PUBLIC_BASE_URL) {
+          //      return new NextResponse('Forbidden', { status: 403 });
+          // }
           if (!validator.isEmail(email)) {
                return new NextResponse('Invalid email address', { status: 400 });
           }

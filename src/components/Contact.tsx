@@ -32,13 +32,33 @@ const Contact = () => {
           defaultValues: { name: "", email: "", phone: "", message: "" },
      });
 
-     function onSubmit(values: z.infer<typeof formSchema>) {
-          console.log(values);
-          toast.success('Message sent successfully!', {
-               description: "Thank you for reaching out. I'll get back to you soon.",
-               duration: 5000,
-          });
-          form.reset();
+     async function onSubmit(values: z.infer<typeof formSchema>) {
+          try {
+               const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                         'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(values),
+               });
+
+               if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to send message');
+               }
+
+               toast.success('Message sent successfully!', {
+                    description: "Thank you for reaching out. I'll get back to you soon.",
+                    duration: 5000,
+               });
+               form.reset();
+          } catch (error: any) {
+               console.error('Submission error:', error);
+               toast.error('Failed to send message', {
+                    description: error.message || 'Please try again later.',
+                    duration: 5000,
+               });
+          }
      }
 
      const contactItems = [
