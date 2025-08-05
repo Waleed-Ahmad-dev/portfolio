@@ -220,7 +220,7 @@ const About = () => {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.6 }}
                                    >
-                                        <span className="font-bold text-white">Waleed Ahmad</span> is a dedicated full-stack developer specializing in modern web architecture. With a passion for creating seamless digital experiences, I architect performant solutions that bridge user experience with technical excellence.
+                                        I'm <span className="font-bold text-white">Waleed Ahmad</span> a passionate backend-focused full-stack developer dedicated to building performant, scalable digital systems. I specialize in architecting robust server-side solutions and seamless frontend integrations that deliver excellent user experiences.
                                    </motion.p>
                                    <motion.p 
                                         className="text-lg leading-relaxed"
@@ -228,7 +228,7 @@ const About = () => {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.7 }}
                                    >
-                                        My expertise spans <span className="text-[#61DAFB] font-medium">React ecosystems</span> to <span className="text-[#8CC84B] font-medium">server-side implementations</span>, with a focus on creating scalable applications that deliver exceptional user experiences through intuitive interfaces and robust backend systems.
+                                        With hands-on experience deploying full-stack applications to production and a strong command over modern web technologies like <span className="text-[#61DAFB] font-medium">Node.js, Express, Next.js,</span> and <span className="text-[#8CC84B] font-medium">Django</span>, I bring a functional-first approach to clean, maintainable code. My journey includes impactful contributions during my internship, and I'm continually expanding my skillset by learning <span className="text-[#8CC84B] font-medium">GoLang, Machine Learning,</span> and <span className="text-[#8CC84B] font-medium">AI integrations</span>.
                                    </motion.p>
                                    <motion.p 
                                         className="text-lg leading-relaxed"
@@ -236,8 +236,7 @@ const About = () => {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.8 }}
                                    >
-                                        Continuously advancing my skills through cutting-edge projects and ongoing education, I've completed <span className="font-bold text-white">The Odin Project</span> and maintain a commitment to professional development standards in an ever-evolving technological landscape.
-                                   </motion.p>
+                                        Whether it's optimizing APIs, scaling databases, or exploring the future of generative AI, I bring curiosity, precision, and a problem-solving mindset to every project.                                   </motion.p>
                               </motion.div>
 
                               <motion.div
@@ -258,8 +257,6 @@ const About = () => {
                                              </motion.div>
                                              Technical Expertise
                                         </motion.h4>
-                                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#08D9D6] to-transparent mx-4"></div>
-                                        <span className="text-sm text-[#A0AEC0]">Hover to reveal</span>
                                    </div>
 
                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
