@@ -142,7 +142,7 @@ const About = () => {
                                              <div className="relative w-full h-72">
                                                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0E17]/80 z-10" />
                                                   <Image
-                                                       src="/profile.jpg"
+                                                       src="/profile.svg"
                                                        alt="Waleed Ahmad"
                                                        fill
                                                        className="object-cover"
