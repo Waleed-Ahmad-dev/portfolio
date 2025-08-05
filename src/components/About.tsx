@@ -3,17 +3,28 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Cpu, Sparkles, Code, Server, Layout, Database } from 'lucide-react';
 import Image from 'next/image';
-import { SiCss3, SiHtml5, SiJavascript, SiNextdotjs, SiNodedotjs, SiPython, SiReact, SiTypescript } from 'react-icons/si';
+import { SiCss3, SiDjango, SiFlask, SiGit, SiGithub, SiGo, SiHtml5, SiJavascript, SiMongodb, SiMysql, SiNextdotjs, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiRemix, SiTailwindcss, SiTypescript } from 'react-icons/si';
+
 
 const techStack = [
-     { name: 'HTML5', color: 'from-[#E44D26] to-[#F16529]', icon: <SiHtml5 className="text-white text-xl" /> },
-     { name: 'CSS3', color: 'from-[#33A9DC] to-[#1572B6]', icon: <SiCss3 className="text-white text-xl" /> },
-     { name: 'JavaScript', color: 'from-[#F0DB4F] to-[#F7DF1E]', icon: <SiJavascript className="text-[#323330] text-xl" /> },
-     { name: 'TypeScript', color: 'from-[#3178C6] to-[#007ACC]', icon: <SiTypescript className="text-white text-xl" /> },
-     { name: 'React', color: 'from-[#61DAFB] to-[#00D8FF]', icon: <SiReact className="text-[#61DAFB] text-xl" /> },
-     { name: 'Next.js', color: 'from-[#000000] to-[#8A2BE2]', icon: <SiNextdotjs className="text-white text-xl" /> },
-     { name: 'Node.js', color: 'from-[#8CC84B] to-[#68A063]', icon: <SiNodedotjs className="text-[#8CC84B] text-xl" /> },
-     { name: 'Python', color: 'from-[#3776AB] to-[#FFD43B]', icon: <SiPython className="text-[#FFD43B] text-xl" /> },
+     { name: 'HTML5', color: 'from-[#4A1A0A] to-[#6B2610]', icon: <SiHtml5 className="text-white text-xl" /> },
+     { name: 'CSS3', color: 'from-[#1A3A5A] to-[#2A5A8A]', icon: <SiCss3 className="text-white text-xl" /> },
+     { name: 'JavaScript', color: 'from-[#3A3A00] to-[#5A5A00]', icon: <SiJavascript className="text-[#F7DF1E] text-xl" /> },
+     { name: 'TypeScript', color: 'from-[#1A3A5A] to-[#2A5A8A]', icon: <SiTypescript className="text-white text-xl" /> },
+     { name: 'React', color: 'from-[#113355] to-[#224466]', icon: <SiReact className="text-[#61DAFB] text-xl" /> },
+     { name: 'Next.js', color: 'from-[#111111] to-[#222222]', icon: <SiNextdotjs className="text-white text-xl" /> },
+     { name: 'Remix.js', color: 'from-[#113355] to-[#224466]', icon: <SiRemix className="text-white text-xl" /> },
+     { name: 'Node.js', color: 'from-[#2A4A2A] to-[#3A5A3A]', icon: <SiNodedotjs className="text-[#8CC84B] text-xl" /> },
+     { name: 'Python', color: 'from-[#1A3A5A] to-[#2A5A8A]', icon: <SiPython className="text-[#FFD43B] text-xl" /> },
+     { name: 'Django', color: 'from-[#092E20] to-[#0A3A2A]', icon: <SiDjango className="text-white text-xl" /> },
+     { name: 'Flask', color: 'from-[#111111] to-[#222222]', icon: <SiFlask className="text-white text-xl" /> },
+     { name: 'Tailwind CSS', color: 'from-[#113355] to-[#224466]', icon: <SiTailwindcss className="text-white text-xl" /> },
+     { name: 'MySQL', color: 'from-[#003A5A] to-[#114A6A]', icon: <SiMysql className="text-white text-xl" /> },
+     { name: 'PostgreSQL', color: 'from-[#113355] to-[#224466]', icon: <SiPostgresql className="text-white text-xl" /> },
+     { name: 'MongoDB', color: 'from-[#2A4A2A] to-[#3A5A3A]', icon: <SiMongodb className="text-white text-xl" /> },
+     { name: 'GoLang', color: 'from-[#113355] to-[#224466]', icon: <SiGo className="text-white text-xl" /> },
+     { name: 'Git', color: 'from-[#4A1A0A] to-[#6B2610]', icon: <SiGit className="text-white text-xl" /> },
+     { name: 'GitHub', color: 'from-[#111111] to-[#3A2A5A]', icon: <SiGithub className="text-white text-xl" /> }
 ];
 
 const specialties = [
