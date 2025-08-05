@@ -1,4 +1,3 @@
-// components/ui/glowing-gradient-border.tsx
 import React from 'react';
 
 export const GlowingGradientBorder = ({ 
