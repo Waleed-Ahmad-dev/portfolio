@@ -125,7 +125,11 @@ const Hero = () => {
 
                                                   {/* Profile image placeholder */}
                                                   <div className="bg-gradient-to-br from-muted to-muted/70 w-80 h-80 md:w-96 md:h-96 rounded-xl flex items-center justify-center overflow-hidden">
-                                                       <div className="bg-muted border-2 border-dashed border-muted-foreground/20 rounded-xl w-72 h-72 md:w-88 md:h-88" />
+                                                       <img 
+                                                            src="/hero.webp" 
+                                                            alt="Hero Image"
+                                                            className="rounded-xl w-72 h-72 md:w-88 md:h-88 object-cover"
+                                                       />
                                                   </div>
 
                                                   {/* Animated dots decoration */}
