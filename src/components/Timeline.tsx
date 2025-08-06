@@ -1,39 +1,45 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Award } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Rocket } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 const timelineItems = [
      {
-          date: "March 2024",
-          title: "Certification",
-          description: "Completed The Odin Project",
+          date: "Jan 2025 – June 2025",
+          title: "Backend Development Intern",
+          description: "Worked at Firefly Tech Solutions, building scalable REST APIs with Node.js, Django, and Python. Improved backend efficiency and deployed responsive full-stack apps using Next.js and React.",
+          icon: <Briefcase className="w-5 h-5" />,
+     },
+     {
+          date: "2025",
+          title: "Google Generative AI Badge",
+          description: "Earned badge by demonstrating skills in using Google's Generative AI tools and technologies.",
           icon: <Award className="w-5 h-5" />,
      },
      {
-          date: "January 2024",
-          title: "Started Learning",
-          description: "Began learning web development with HTML, CSS, and JavaScript",
+          date: "December 2024",
+          title: "O Levels",
+          description: "Began O Levels at The City School. Currently pursuing with a focus on technical and analytical subjects.",
           icon: <GraduationCap className="w-5 h-5" />,
+     },
+     {
+          date: "2023 – 2024",
+          title: "The Odin Project Certification",
+          description: "Completed The Odin Project curriculum covering HTML, CSS, JavaScript, Git, Node.js, and React.",
+          icon: <Award className="w-5 h-5" />,
      },
      {
           date: "June 2023",
           title: "First Project",
-          description: "Created my first portfolio website using HTML and CSS",
+          description: "Built my first personal portfolio website using HTML and CSS — a stepping stone into real-world web development.",
           icon: <Briefcase className="w-5 h-5" />,
-     },
-     {
-          date: "September 2022",
-          title: "O Levels",
-          description: "Started O Levels at The City School",
-          icon: <GraduationCap className="w-5 h-5" />,
      },
      {
           date: "Future Goal",
-          title: "Full-Stack Developer",
-          description: "Aspiring to become a professional full-stack developer",
-          icon: <Briefcase className="w-5 h-5" />,
+          title: "Professional Full-Stack Developer",
+          description: "Working towards mastering scalable full-stack development with AI/ML integrations and cloud-native apps.",
+          icon: <Rocket className="w-5 h-5" />,
      },
 ];
 
