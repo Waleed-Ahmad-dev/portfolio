@@ -31,8 +31,8 @@ export const ContactForm = () => {
                                         <FormControl>
                                              <IconInput 
                                                   icon={field.icon} 
-                                                  // placeholder={field.placeholder}
-                                                  // className="border border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-0"
+                                                  placeholder={field.placeholder}
+                                                  className="border border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-0"
                                                   {...formField} 
                                              />
                                         </FormControl>

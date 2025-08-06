@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { ReactNode } from "react";
 
-interface IconInputProps {
+interface IconInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
      icon: ReactNode;
 }
 
