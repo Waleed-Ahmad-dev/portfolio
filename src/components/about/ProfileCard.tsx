@@ -1,10 +1,10 @@
-// components/about/ProfileCard.tsx
 "use client";
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Cpu } from 'lucide-react';
 import Image from 'next/image';
 import { SpecialtyCard } from './SpecialtyCard';
+import { specialties } from './data';
 
 export const ProfileCard = () => {
      return (
@@ -55,7 +55,7 @@ export const ProfileCard = () => {
                                    </motion.div>
                               </div>
 
-                              {/* <div className="mt-6 grid grid-cols-2 gap-4">
+                              <div className="mt-6 grid grid-cols-2 gap-4">
                                    {specialties.map((item, index) => (
                                         <SpecialtyCard
                                              key={index}
@@ -65,7 +65,7 @@ export const ProfileCard = () => {
                                              description={item.description}
                                         />
                                    ))}
-                              </div> */}
+                              </div>
                          </CardContent>
                     </Card>
                </div>
