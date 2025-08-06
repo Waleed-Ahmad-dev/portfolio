@@ -5,9 +5,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
-import { IconInput } from "@/components/ui/IconInput";
 import { User, Mail, Phone } from "lucide-react";
 import { useContactForm } from "./useContactForm";
+import { Input } from "../ui/input";
 
 export const ContactForm = () => {
      const { form, onSubmit } = useContactForm();
@@ -29,8 +29,7 @@ export const ContactForm = () => {
                               render={({ field: formField }) => (
                                    <FormItem>
                                         <FormControl>
-                                             <IconInput 
-                                                  icon={field.icon} 
+                                             <Input 
                                                   placeholder={field.placeholder}
                                                   className="border border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-0"
                                                   {...formField} 
