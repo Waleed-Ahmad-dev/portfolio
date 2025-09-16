@@ -1,7 +1,13 @@
 "use client";
 import { motion } from 'framer-motion';
+import { memo } from 'react';
 
-export const SpecialtyCard = ({ 
+// Static animation configurations outside component to prevent recreation on each render
+const initial = { opacity: 0, y: 20 };
+const animate = { opacity: 1, y: 0 };
+const whileHover = { y: -5, borderColor: '#08D9D6' };
+
+export const SpecialtyCard = memo(function SpecialtyCard({ 
      icon, 
      title, 
      description,
@@ -11,17 +17,17 @@ export const SpecialtyCard = ({
      title: string; 
      description: string;
      index: number;
-}) => {
+}) {
+     // Precompute transition delay
+     const transition = { delay: 0.5 + index * 0.1 };
+
      return (
           <motion.div 
                className="bg-[#0C1120] border border-[#1E2A40] rounded-xl p-3"
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.5 + index * 0.1 }}
-               whileHover={{ 
-               y: -5,
-               borderColor: '#08D9D6'
-               }}
+               initial={initial}
+               animate={animate}
+               transition={transition}
+               whileHover={whileHover}
           >
                <div className="flex items-start gap-3">
                     <div className="mt-0.5">{icon}</div>
@@ -32,4 +38,4 @@ export const SpecialtyCard = ({
                </div>
           </motion.div>
      );
-};
+});
