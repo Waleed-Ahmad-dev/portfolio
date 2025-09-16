@@ -6,7 +6,7 @@ import { ProjectCard } from "./projects/ProjectCard";
 import { SectionHeader } from "./projects/SectionHeader";
 
 
-export const ProjectsSection = () => (
+const Projects = () => (
      <section id="projects" className="relative py-24 overflow-hidden">
           <BackgroundDecorations />
 
@@ -25,3 +25,5 @@ export const ProjectsSection = () => (
           </div>
      </section>
 );
+
+export default Projects
