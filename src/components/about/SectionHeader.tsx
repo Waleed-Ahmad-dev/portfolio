@@ -11,42 +11,30 @@ export const SectionHeader = () => {
                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                className="text-center mb-16"
           >
-               <motion.div 
-                    className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-[#0C1120] border border-[#1E2A40]"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-               >
+               {/* Reduced motion complexity for badge element */}
+               <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-[#0C1120] border border-[#1E2A40]">
                     <Sparkles className="w-4 h-4 text-[#08D9D6]" />
                     <span className="text-sm font-medium text-[#EAEAEA]">About Me</span>
-               </motion.div>
+               </div>
 
+               {/* Optimized motion with simpler properties */}
                <motion.h2 
                     className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FF2E63] to-[#08D9D6]"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ 
-                         delay: 0.3,
-                         type: "spring", 
-                         stiffness: 400, 
-                         damping: 10 
-                    }}
-                    whileHover={{ 
-                         scale: 1.03,
-                         textShadow: "0 0 15px rgba(255, 46, 99, 0.5)"
+                         delay: 0.1,
+                         duration: 0.5
                     }}
                >
                     Crafting Digital Excellence
                </motion.h2>
 
-               <motion.p 
-                    className="text-lg text-[#A0AEC0] max-w-2xl mx-auto"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-               >
+               {/* Removed motion from paragraph for performance */}
+               <p className="text-lg text-[#A0AEC0] max-w-2xl mx-auto">
                     Building immersive digital experiences through innovative design and robust engineering
-               </motion.p>
+               </p>
           </motion.div>
      );
 };
