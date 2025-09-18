@@ -4,28 +4,27 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
-import { User, Mail, Phone } from "lucide-react";
+import { Send, User, Mail, Phone } from "lucide-react";
 import { useContactForm } from "./useContactForm";
 import { Input } from "../ui/input";
 
+const INPUT_FIELDS = [
+     { name: "name", icon: <User className="w-4 h-4" />, placeholder: "Your full name" },
+     { name: "email", icon: <Mail className="w-4 h-4" />, placeholder: "your.email@example.com" },
+     { name: "phone", icon: <Phone className="w-4 h-4" />, placeholder: "+92 123 456 7890" }
+] as const;
+
 export const ContactForm = () => {
      const { form, onSubmit } = useContactForm();
-     
-     const inputFields = [
-          { name: "name", icon: <User className="w-4 h-4" />, placeholder: "Your full name" },
-          { name: "email", icon: <Mail className="w-4 h-4" />, placeholder: "your.email@example.com" },
-          { name: "phone", icon: <Phone className="w-4 h-4" />, placeholder: "+92 123 456 7890" }
-     ];
 
      return (
           <Form {...form}>
                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
-                    {inputFields.map((field) => (
+                    {INPUT_FIELDS.map((field) => (
                          <FormField
                               key={field.name}
                               control={form.control}
-                              name={field.name as keyof typeof form.formState.defaultValues}
+                              name={field.name}
                               render={({ field: formField }) => (
                                    <FormItem>
                                         <FormControl>
@@ -58,10 +57,7 @@ export const ContactForm = () => {
                          )}
                     />
 
-                    <motion.div
-                         whileHover={{ scale: 1.02 }}
-                         whileTap={{ scale: 0.98 }}
-                    >
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                          <Button 
                               type="submit" 
                               className="w-full py-6 rounded-xl font-bold text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
