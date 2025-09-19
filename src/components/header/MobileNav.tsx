@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
@@ -9,11 +9,20 @@ import { ThemeToggleButton } from './ThemeToggleButton';
 import { NavItem } from './NavItem';
 import { navLinks } from './navigation';
 
-export const MobileNav = () => {
+// Precompute static values outside component
+const currentYear = new Date().getFullYear();
+const motionConfig = {
+     initial: { opacity: 0, x: 20 },
+     animate: { opacity: 1, x: 0 },
+     transition: { duration: 0.3 }
+};
+
+export const MobileNav = memo(function MobileNav() {
      const [isOpen, setIsOpen] = useState(false);
      const pathname = usePathname();
 
-     const closeMenu = () => setIsOpen(false);
+     // Memoize callback to prevent unnecessary re-renders
+     const closeMenu = useCallback(() => setIsOpen(false), []);
 
      return (
           <div className="md:hidden flex items-center gap-2">
@@ -34,9 +43,7 @@ export const MobileNav = () => {
                          className="w-[300px] sm:w-[350px] bg-background/95 backdrop-blur-lg border-l border-border/30"
                     >
                          <motion.div
-                              initial={{ opacity: 0, x: 20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.3 }}
+                              {...motionConfig}
                               className="h-full flex flex-col pt-16"
                          >
                               <ul className="flex flex-col gap-1">
@@ -59,7 +66,7 @@ export const MobileNav = () => {
                                    transition={{ delay: 0.2 }}
                               >
                                    <div className="text-xs text-muted-foreground">
-                                        © {new Date().getFullYear()} Waleed Ahmad
+                                        © {currentYear} Waleed Ahmad
                                    </div>
                               </motion.div>
                          </motion.div>
@@ -67,4 +74,4 @@ export const MobileNav = () => {
                </Sheet>
           </div>
      );
-};
+});
