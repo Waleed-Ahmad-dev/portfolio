@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 
 type FloatingTechBadgeProps = {
@@ -7,20 +8,26 @@ type FloatingTechBadgeProps = {
      delay: number;
 };
 
-const FloatingTechBadge = ({ 
-     positionClasses, 
-     gradient, 
-     text, 
-     delay 
+// Pre-defined motion configuration to avoid object recreation on each render
+const motionConfig = {
+     initial: { scale: 0 },
+     animate: { scale: 1 },
+     transition: { type: "spring" as const }
+};
+
+const FloatingTechBadge = ({
+     positionClasses,
+     gradient,
+     text,
+     delay
 }: FloatingTechBadgeProps) => (
-     <motion.div 
+     <motion.div
           className={`absolute ${positionClasses} bg-gradient-to-r ${gradient} text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg`}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay, type: "spring" }}
+          {...motionConfig}
+          transition={{ ...motionConfig.transition, delay }} // Combine with dynamic delay
      >
           {text}
      </motion.div>
 );
 
-export default FloatingTechBadge;
+export default memo(FloatingTechBadge);
