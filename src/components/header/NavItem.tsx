@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { memo } from 'react';
 
 type NavItemProps = {
      href: string;
@@ -13,26 +14,27 @@ type NavItemProps = {
      onClick?: () => void;
 };
 
-export const NavItem = ({ 
-     href, 
-     name, 
-     isActive, 
+// Memoize component to prevent unnecessary re-renders
+const NavItemComponent = ({
+     href,
+     name,
+     isActive,
      index = 0,
      mobile = false,
-     onClick 
+     onClick
 }: NavItemProps) => (
      <motion.li
-          initial={{ 
-               y: mobile ? 0 : -20, 
+          initial={{
+               y: mobile ? 0 : -20,
                opacity: 0,
                x: mobile ? 20 : 0
           }}
-          animate={{ 
-               y: 0, 
+          animate={{
+               y: 0,
                opacity: 1,
                x: 0
           }}
-          transition={{ 
+          transition={{
                delay: mobile ? index * 0.1 : 0.1 + index * 0.05,
                duration: mobile ? 0.2 : undefined
           }}
@@ -41,15 +43,21 @@ export const NavItem = ({
                asChild
                variant="ghost"
                className={cn(
-               mobile 
-                    ? 'w-full justify-start px-6 py-5 rounded-lg text-lg transition-colors hover:bg-accent/50 hover:text-primary' 
-                    : 'font-medium px-4 py-2 rounded-lg transition-all hover:bg-accent/50 hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-               isActive 
-                    ? 'text-primary bg-accent/20' 
-                    : 'text-foreground/80'
+                    // Pre-computed classes for mobile/desktop states
+                    mobile
+                         ? 'w-full justify-start px-6 py-5 rounded-lg text-lg transition-colors hover:bg-accent/50 hover:text-primary'
+                         : 'font-medium px-4 py-2 rounded-lg transition-all hover:bg-accent/50 hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                    isActive
+                         ? 'text-primary bg-accent/20'
+                         : 'text-foreground/80'
                )}
           >
-               <Link href={href} onClick={onClick}>
+               <Link 
+                    href={href} 
+                    onClick={onClick}
+                    // Prefetch links for better performance
+                    prefetch={!mobile}
+               >
                     {name}
                     {!mobile && isActive && (
                          <motion.div
@@ -63,3 +71,5 @@ export const NavItem = ({
           </Button>
      </motion.li>
 );
+
+export const NavItem = memo(NavItemComponent);
