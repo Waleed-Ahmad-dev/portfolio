@@ -7,24 +7,35 @@ import { Project } from './types';
 import { ProjectHeaderLinks } from './ProjectHeaderLinks';
 import { ProjectFooterLinks } from './ProjectFooterLinks';
 
-
 interface ProjectCardProps {
      project: Project;
      index: number;
 }
 
+// Precompute static values and animations
+const CARD_ANIMATION_CONFIG = {
+     initial: { opacity: 0, y: 50 },
+     whileInView: { opacity: 1, y: 0 },
+     viewport: { once: true, margin: "-100px" },
+     transition: { duration: 0.6 }
+};
+
+const TAG_ANIMATION_CONFIG = {
+     initial: { opacity: 0, scale: 0.8 },
+     animate: { opacity: 1, scale: 1 },
+};
+
 export const ProjectCard = ({ project, index }: ProjectCardProps) => (
      <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: index * 0.15 }}
+          {...CARD_ANIMATION_CONFIG}
+          transition={{ ...CARD_ANIMATION_CONFIG.transition, delay: index * 0.15 }}
           whileHover={{ y: -10 }}
           className="group"
      >
           <Card className="h-full flex flex-col border border-muted-foreground/20 bg-background/70 backdrop-blur-sm group-hover:border-muted-foreground/40 transition-all duration-300 overflow-hidden">
+               {/* Image/Thumbnail Area */}
                <div className="relative aspect-video overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/10 backdrop-blur-sm"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/10 backdrop-blur-sm" />
                     <div className="absolute inset-0 flex items-center justify-center">
                          <div className="bg-gradient-to-r from-blue-500 to-purple-500 w-16 h-16 rounded-xl flex items-center justify-center">
                               <div className="text-white font-bold text-xl">
@@ -33,21 +44,17 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => (
                          </div>
                     </div>
 
+                    {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                         <motion.div 
-                              initial={{ opacity: 0, y: 10 }}
-                              whileHover={{ opacity: 1, y: 0 }}
-                              className="text-white"
-                         >
-                              <Button variant="secondary" size="sm" className="mr-2 backdrop-blur-sm">
-                                   View Details
-                              </Button>
-                         </motion.div>
+                         <Button variant="secondary" size="sm" className="mr-2 backdrop-blur-sm">
+                              View Details
+                         </Button>
                     </div>
 
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-blue-600 to-purple-600 rounded-bl-full"></div>
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-blue-600 to-purple-600 rounded-bl-full" />
                </div>
 
+               {/* Card Content */}
                <CardHeader className="pb-3">
                     <div className="flex justify-between items-start">
                          <CardTitle className="text-xl font-semibold tracking-tight group-hover:text-blue-500 transition-colors">
@@ -62,12 +69,12 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => (
                          {project.description}
                     </CardDescription>
 
+                    {/* Tags */}
                     <div className="flex flex-wrap gap-2">
                          {project.tags.map((tag, tagIndex) => (
                               <motion.div
-                                   key={tagIndex}
-                                   initial={{ opacity: 0, scale: 0.8 }}
-                                   animate={{ opacity: 1, scale: 1 }}
+                                   key={tag}
+                                   {...TAG_ANIMATION_CONFIG}
                                    transition={{ delay: 0.5 + (tagIndex * 0.1) }}
                               >
                                    <Badge 
