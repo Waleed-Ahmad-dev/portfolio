@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Project } from './types';
-import { ProjectHeaderLinks } from './rojectHeaderLinks';
+import { ProjectHeaderLinks } from './ProjectHeaderLinks';
 import { ProjectFooterLinks } from './ProjectFooterLinks';
 
 
