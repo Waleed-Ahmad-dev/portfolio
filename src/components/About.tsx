@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const AboutSection = () => {
+const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -109,3 +109,5 @@ export const AboutSection = () => {
     </section>
   );
 };
+
+export default About;
