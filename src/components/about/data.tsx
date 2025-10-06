@@ -19,7 +19,6 @@ export const  techStack = [
   { name: 'Next.js', color: 'from-[#111111] to-[#222222]', icon: <SiNextdotjs className="text-white text-xl" /> },
   { name: 'GoLang', color: 'from-[#113355] to-[#224466]', icon: <SiGo className="text-white text-xl" /> },
   { name: 'Node.js', color: 'from-[#2A4A2A] to-[#3A5A3A]', icon: <SiNodedotjs className="text-[#8CC84B] text-xl" /> },
-  { name: 'Remix.js', color: 'from-[#113355] to-[#224466]', icon: <SiRemix className="text-white text-xl" /> },
   { name: 'MySQL', color: 'from-[#003A5A] to-[#114A6A]', icon: <SiMysql className="text-white text-xl" /> },
   { name: 'PostgreSQL', color: 'from-[#113355] to-[#224466]', icon: <SiPostgresql className="text-white text-xl" /> },
   { name: 'MongoDB', color: 'from-[#2A4A2A] to-[#3A5A3A]', icon: <SiMongodb className="text-white text-xl" /> },
@@ -32,6 +31,7 @@ export const  techStack = [
   { name: 'Django', color: 'from-[#092E20] to-[#0A3A2A]', icon: <SiDjango className="text-white text-xl" /> },
   { name: 'Flask', color: 'from-[#111111] to-[#222222]', icon: <SiFlask className="text-white text-xl" /> },
   { name: 'Tailwind CSS', color: 'from-[#113355] to-[#224466]', icon: <SiTailwindcss className="text-white text-xl" /> },
+  { name: 'Remix.js', color: 'from-[#113355] to-[#224466]', icon: <SiRemix className="text-white text-xl" /> },
 ];
 
 export const specialties = [
