@@ -18,15 +18,15 @@ const About = memo(function About() {
       
       {/* Container with optimized rendering */}
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <SectionHeader />
+        {/* <SectionHeader /> */}
 
         {/* Grid layout with minimal nesting */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-          <ProfileCard />
+          {/* <ProfileCard /> */}
           <ContentSection />
         </div>
 
-        <TechStackSection />
+        {/* <TechStackSection /> */}
       </div>
     </section>
   );
