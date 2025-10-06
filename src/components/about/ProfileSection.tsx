@@ -26,7 +26,7 @@ export const ProfileSection = () => {
                                    transition={{ type: "spring", stiffness: 300 }}
                               >
                                    <Avatar className="w-24 h-24 border-4 border-cyan-500/20 shadow-2xl">
-                                        <AvatarImage src="/profile.svg" alt="Waleed Ahmad" />
+                                        <AvatarImage src="" alt="Waleed Ahmad" />
                                         <AvatarFallback className="bg-gradient-to-br from-cyan-500 to-purple-600 text-white text-2xl">
                                              WA
                                         </AvatarFallback>
