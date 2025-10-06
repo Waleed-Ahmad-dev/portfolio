@@ -8,7 +8,7 @@ import { ContentSection } from "./about/ContentSection";
 // import { TechStackSection } from "./about/TechStackSection";
 
 // // Memoize entire component to prevent unnecessary re-renders
-// const About = memo(function About() {
+const About = function About() {
 //   return (
 //     <section 
 //       id="about" 
@@ -30,7 +30,7 @@ import { ContentSection } from "./about/ContentSection";
 //       </div>
 //     </section>
 //   );
-// });
+};
 
-// About.displayName = "About"; // Add display name for debugging
-// export default About;
+About.displayName = "About"; // Add display name for debugging
+export default About;
