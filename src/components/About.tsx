@@ -74,7 +74,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Tech Sphere Showcase */}
+        {/* Tech Sphere Showcase
         <div className="content-item mb-32">
           <div className="text-center mb-16">
             <motion.h2 
@@ -95,7 +95,7 @@ const About = () => {
             </motion.p>
           </div>
           <AnimatedTechSphere />
-        </div>
+        </div> */}
 
         {/* Tech Stack Section */}
         <div className="content-item">
