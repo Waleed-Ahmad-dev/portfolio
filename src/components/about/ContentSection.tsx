@@ -76,14 +76,18 @@ export const ContentSection = () => {
                     className="flex flex-wrap gap-4"
                     variants={itemVariants}
                >
-                    <Button className="bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-700 hover:to-purple-700 border-0 shadow-lg transition-all duration-300">
-                         <Download className="w-4 h-4 mr-2" />
-                         Download Resume
-                    </Button>
+                    <a href="/My_Resume.pdf" download="Sufyan_Ghaffar_Resume.pdf">
+                         <Button className="bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-700 hover:to-purple-700 border-0 shadow-lg transition-all duration-300">
+                              <Download className="w-4 h-4 mr-2" />
+                              Download Resume
+                         </Button>
+                    </a>
 
                     <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800/50 hover:border-cyan-500/50 transition-all duration-300">
                          <Mail className="w-4 h-4 mr-2" />
-                         Contact Me
+                         <a href='#contact'>
+                              Contact Me
+                         </a>
                     </Button>
 
                     <div className="flex gap-2 ml-auto">
