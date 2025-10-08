@@ -1,26 +1,30 @@
-import { User, Mail, Phone } from "lucide-react";
+// contactInfo.tsx
+import { User, Mail, Phone, MapPin } from "lucide-react";
 
-// Memoize static data to prevent re-renders and object recreation
 export const contactItems = Object.freeze([
      { 
-          icon: Object.freeze(<User className="w-5 h-5" />), 
-          title: "Name", 
+          icon: Object.freeze(<User className="w-6 h-6" />), 
+          title: "Full Name", 
           content: "Waleed Ahmad" 
      },
      { 
-          icon: Object.freeze(<Mail className="w-5 h-5" />), 
-          title: "Email", 
+          icon: Object.freeze(<Mail className="w-6 h-6" />), 
+          title: "Email Address", 
           content: "itswaleedqurshi@gmail.com" 
      },
      { 
-          icon: Object.freeze(<Phone className="w-5 h-5" />), 
-          title: "Phone", 
+          icon: Object.freeze(<Phone className="w-6 h-6" />), 
+          title: "Phone Number", 
           content: "+92 303 092 5333" 
+     },
+     { 
+          icon: Object.freeze(<MapPin className="w-6 h-6" />), 
+          title: "Location", 
+          content: "Available Worldwide • Remote First" 
      }
 ]);
 
-// Freeze nested object to prevent mutations and signal React's reconciliation to skip
 export const contactTip = Object.freeze({
-     title: "Quick Tip",
-     content: "Please include details about your project timeline and budget for faster response. I typically reply within 24 hours."
+     title: "Pro Tip",
+     content: "Include your project timeline, budget range, and specific requirements for a more accurate and faster response. I'm currently accepting new projects for Q1 2024."
 });
