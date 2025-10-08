@@ -1,3 +1,4 @@
+// Contact.tsx
 'use client';
 
 import React, { memo } from 'react';
@@ -5,75 +6,86 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { ContactHeader } from './contact/ContactHeader';
 import { ContactInfoCard } from './contact/ContactInfoCard';
 import { ContactFormCard } from './contact/ContactFormCard';
+import { ThreeBackground } from './contact/ThreeBackground';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
-/**
-      * PERF: Use LazyMotion with domAnimation (lighter than domMax)
-      * so only minimal features are loaded and only when needed.
-      * Hoist all objects (variants/transition/viewport) to preserve
-      * referential equality and keep renders under ~1ms.
-*/
 const VIEWPORT_ONCE = { once: true } as const;
 
-const LEFT_VARIANTS = {
-     hidden: { opacity: 0, x: -30 },
-     show:   { opacity: 1, x: 0  }
+const CONTAINER_VARIANTS = {
+     hidden: { opacity: 0 },
+     show: {
+          opacity: 1,
+          transition: {
+               staggerChildren: 0.2
+          }
+     }
 } as const;
 
-const RIGHT_VARIANTS = {
-     hidden: { opacity: 0, x: 30 },
-     show:   { opacity: 1, x: 0 }
+const ITEM_VARIANTS = {
+     hidden: { opacity: 0, y: 30 },
+     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.165, 0.84, 0.44, 1] } }
 } as const;
 
-const TRANSITION_LEFT  = { duration: 0.7, delay: 0.1 } as const;
-const TRANSITION_RIGHT = { duration: 0.7, delay: 0.2 } as const;
+const MemoContactHeader = memo(ContactHeader);
+const MemoContactInfoCard = memo(ContactInfoCard);
+const MemoContactFormCard = memo(ContactFormCard);
 
-/**
-      * PERF: Memoize leaf components so they don't re-render
-      * when parents update unrelated state/props.
-      * (Internal state like form inputs will still update normally.)
-*/
-const MemoContactHeader    = memo(ContactHeader);
-const MemoContactInfoCard  = memo(ContactInfoCard);
-const MemoContactFormCard  = memo(ContactFormCard);
+const Contact = () => {
+     useGSAP(() => {
+          // Global page entrance animation
+          gsap.fromTo(".contact-section",
+               { opacity: 0 },
+               { opacity: 1, duration: 1.5, ease: "power2.inOut" }
+          );
+     });
 
-const Contact = () => (
-     <section
-          id="contact"
-          className="py-24 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950"
-     >
-          <div className="container mx-auto px-4 max-w-7xl">
-               <MemoContactHeader />
+     return (
+          <section
+               id="contact"
+               className="contact-section py-32 relative overflow-hidden min-h-screen"
+          >
+               <ThreeBackground />
 
-               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-                    {/* PERF: One LazyMotion provider for both animated blocks */}
+               <div className="container mx-auto px-4 max-w-7xl relative z-10">
+                    <MemoContactHeader />
+
                     <LazyMotion features={domAnimation}>
                          <m.div
+                              variants={CONTAINER_VARIANTS}
                               initial="hidden"
                               whileInView="show"
-                              variants={LEFT_VARIANTS}
                               viewport={VIEWPORT_ONCE}
-                              transition={TRANSITION_LEFT}
+                              className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto"
                          >
-                              <MemoContactInfoCard />
-                         </m.div>
+                              <m.div variants={ITEM_VARIANTS}>
+                                   <MemoContactInfoCard />
+                              </m.div>
 
-                         <m.div
-                              initial="hidden"
-                              whileInView="show"
-                              variants={RIGHT_VARIANTS}
-                              viewport={VIEWPORT_ONCE}
-                              transition={TRANSITION_RIGHT}
-                         >
-                              <MemoContactFormCard />
+                              <m.div variants={ITEM_VARIANTS}>
+                                   <MemoContactFormCard />
+                              </m.div>
                          </m.div>
                     </LazyMotion>
-               </div>
-          </div>
-     </section>
-);
 
-/**
-     * PERF: Memoize the exported component (no props) to avoid
-     * re-renders from parent tree changes.
-*/
+                    {/* Floating elements */}
+                    <div className="absolute top-1/4 left-10 w-4 h-4 bg-blue-400 rounded-full opacity-20 animate-float" />
+                    <div className="absolute top-1/3 right-20 w-6 h-6 bg-purple-400 rounded-full opacity-30 animate-float" />
+                    <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-indigo-400 rounded-full opacity-40 animate-float" />
+               </div>
+
+               <style jsx>{`
+                    .animate-float {
+                         animation: float 6s ease-in-out infinite;
+                    }
+                    
+                    @keyframes float {
+                         0%, 100% { transform: translateY(0px) rotate(0deg); }
+                         50% { transform: translateY(-20px) rotate(180deg); }
+                    }
+               `}</style>
+          </section>
+     );
+};
+
 export default memo(Contact);
