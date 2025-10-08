@@ -1,4 +1,3 @@
-// ContactHeader.tsx
 'use client';
 
 import { useGSAP } from '@gsap/react';
