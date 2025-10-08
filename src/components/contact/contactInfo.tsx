@@ -1,4 +1,3 @@
-// contactInfo.tsx
 import { User, Mail, Phone, MapPin } from "lucide-react";
 
 export const contactItems = Object.freeze([
