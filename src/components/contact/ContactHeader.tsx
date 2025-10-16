@@ -40,9 +40,7 @@ export const ContactHeader = () => {
 
                <h2 
                     ref={textRef}
-                    className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent 
-                              bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 
-                              bg-size-200 bg-pos-0 animate-gradient mb-6 relative z-10"
+                    className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-size-200 bg-pos-0 animate-gradient mb-6 relative z-10"
                >
                     Let's Create Magic
                </h2>
