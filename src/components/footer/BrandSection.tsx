@@ -1,53 +1,88 @@
+// BrandSection.tsx
 import { motion } from 'framer-motion';
-import { itemVariants, containerVariants } from './variants';
-import SocialButton from './SocialButton';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import MagneticButton from './MagneticButton';
 
 const BrandSection = () => (
-     <motion.div 
-          className="md:col-span-2 xl:col-span-1"
-          variants={itemVariants}
+     <motion.div
+          className="flex flex-col"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
      >
-          <div className="flex items-start gap-4 mb-6">
-               {/* Simplified logo animation with reduced spring stiffness */}
-               <motion.div 
-                    className="bg-gradient-to-br from-blue-500 to-purple-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg"
-                    whileHover={{ rotate: 5, scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 200 }} // Reduced stiffness for better perf
+          {/* Enhanced Logo */}
+          <div className="flex items-start gap-4 mb-8">
+               <motion.div
+                    className="relative group"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                >
-                    <span className="font-bold text-white text-lg">W</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                    <div className="relative bg-gradient-to-br from-blue-500 to-purple-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-sm border border-white/10">
+                         <span className="font-bold text-white text-xl">W</span>
+                    </div>
                </motion.div>
-               <div>
-                    {/* Removed motion from heading - micro-interaction not worth performance cost */}
-                    <h2 className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+
+               <div className="flex-1">
+                    <motion.h2 
+                         className="font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600 mb-2"
+                         initial={{ opacity: 0, x: -20 }}
+                         whileInView={{ opacity: 1, x: 0 }}
+                         transition={{ delay: 0.2 }}
+                    >
                          Waleed Ahmad
-                    </h2>
-                    <p className="text-muted-foreground mt-2 max-w-md">
-                         Crafting elegant digital experiences with modern web technologies.
-                    </p>
+                    </motion.h2>
+                    <motion.p 
+                         className="text-muted-foreground text-lg leading-relaxed max-w-md"
+                         initial={{ opacity: 0 }}
+                         whileInView={{ opacity: 1 }}
+                         transition={{ delay: 0.3 }}
+                    >
+                         Crafting exceptional digital experiences with cutting-edge technologies and innovative design.
+                    </motion.p>
                </div>
           </div>
 
-          {/* Social buttons container - kept for staggered animation */}
+          {/* Enhanced Social Links */}
           <motion.div 
-               className="flex gap-3 mt-8"
-               variants={containerVariants}
+               className="flex gap-3"
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.4, staggerChildren: 0.1 }}
           >
-               <SocialButton 
-                    href="https://github.com/Waleed-Ahmad-dev" 
-                    icon={<Github className="w-4 h-4" />}
-                    label="GitHub"
-               />
-               <SocialButton 
-                    href="https://www.linkedin.com/in/waleed-ahmed2009" 
-                    icon={<Linkedin className="w-4 h-4" />}
-                    label="LinkedIn"
-               />
-               <SocialButton 
-                    href="mailto:itswaleedqurshi@gmail.com" 
-                    icon={<Mail className="w-4 h-4" />}
-                    label="Email"
-               />
+               <MagneticButton>
+                    <a
+                         href="https://github.com/Waleed-Ahmad-dev"
+                         className="flex items-center gap-2 px-4 py-3 bg-background/60 backdrop-blur-sm border border-border/40 rounded-xl hover:border-blue-500/50 transition-all duration-300 group"
+                    >
+                         <Github className="w-4 h-4" />
+                         <span className="text-sm">GitHub</span>
+                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+               </MagneticButton>
+
+               <MagneticButton>
+                    <a
+                         href="https://www.linkedin.com/in/waleed-ahmed2009"
+                         className="flex items-center gap-2 px-4 py-3 bg-background/60 backdrop-blur-sm border border-border/40 rounded-xl hover:border-blue-500/50 transition-all duration-300 group"
+                    >
+                         <Linkedin className="w-4 h-4" />
+                         <span className="text-sm">LinkedIn</span>
+                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+               </MagneticButton>
+
+               <MagneticButton>
+                    <a
+                         href="mailto:itswaleedqurshi@gmail.com"
+                         className="flex items-center gap-2 px-4 py-3 bg-background/60 backdrop-blur-sm border border-border/40 rounded-xl hover:border-blue-500/50 transition-all duration-300 group"
+                    >
+                         <Mail className="w-4 h-4" />
+                         <span className="text-sm">Email</span>
+                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+               </MagneticButton>
           </motion.div>
      </motion.div>
 );
