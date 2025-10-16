@@ -1,4 +1,3 @@
-// BrandSection.tsx
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import MagneticButton from './MagneticButton';
