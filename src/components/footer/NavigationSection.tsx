@@ -1,34 +1,45 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { memo } from 'react';
-import { itemVariants } from './variants';
 
-// Pre-compute navigation items with lowercase hrefs
-const NAV_ITEMS = ['Home', 'About', 'Projects', 'Timeline', 'Contact'].map(item => ({
-     name: item,
-     href: `#${item.toLowerCase()}`
-}));
+const NAV_ITEMS = [
+     { name: 'Home', href: '#home' },
+     { name: 'About', href: '#about' },
+     { name: 'Projects', href: '#projects' },
+     { name: 'Timeline', href: '#timeline' },
+     { name: 'Contact', href: '#contact' }
+];
 
 const NavigationSection = () => (
-     <motion.div variants={itemVariants}>
-          <h3 className="text-lg font-semibold mb-6 flex items-center">
+     <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+     >
+          <h3 className="text-lg font-semibold mb-8 flex items-center">
+               <span className="bg-gradient-to-r from-blue-500 to-purple-600 w-2 h-2 rounded-full mr-3" />
                Navigation
-               <span className="h-px flex-1 bg-border/40 ml-3" />
+               <span className="h-px flex-1 bg-gradient-to-r from-border/40 to-transparent ml-4" />
           </h3>
+
           <ul className="space-y-3">
-               {NAV_ITEMS.map(({ name, href }) => (
-                    <motion.li 
+               {NAV_ITEMS.map(({ name, href }, index) => (
+                    <motion.li
                          key={name}
-                         whileHover={{ x: 5 }}
-                         transition={{ type: "spring", stiffness: 400 }}
+                         initial={{ opacity: 0, x: -20 }}
+                         whileInView={{ opacity: 1, x: 0 }}
+                         transition={{ delay: 0.1 * index }}
+                         viewport={{ once: true }}
                     >
                          <Link 
                               href={href}
-                              className="text-muted-foreground hover:text-foreground flex items-center transition-colors duration-300 group"
+                              className="group flex items-center justify-between py-3 px-4 rounded-xl hover:bg-background/60 hover:backdrop-blur-sm border border-transparent hover:border-border/20 transition-all duration-300"
                          >
-                              <ArrowUpRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-1 group-hover:translate-x-0" />
-                              {name}
+                              <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                                   {name}
+                              </span>
+                              <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-blue-500 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                          </Link>
                     </motion.li>
                ))}
@@ -36,4 +47,4 @@ const NavigationSection = () => (
      </motion.div>
 );
 
-export default memo(NavigationSection);  // Prevent unnecessary re-renders
+export default NavigationSection;
