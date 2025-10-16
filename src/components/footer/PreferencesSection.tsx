@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { itemVariants } from './variants';
 import ThemeToggleCard from './ThemeToggleCard';
-import ContactCard from './ContactCard';
+import ContactCard from './ContactSection';
 import React from 'react';
 
 // Memoize component to prevent unnecessary re-renders
