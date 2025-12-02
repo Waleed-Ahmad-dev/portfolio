@@ -1,3 +1,65 @@
+// We define the structure here
+export const skillGroups = [
+  {
+    id: "frontend",
+    title: "Frontend",
+    icon: "Layout", // References Lucide Icon
+    color: "cyan", // Used for dynamic styling logic
+    skills: [
+      "Next.js 14",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Framer Motion",
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend",
+    icon: "Database",
+    color: "blue",
+    skills: [
+      "Node.js",
+      "Express",
+      "Prisma ORM",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+    ],
+  },
+  {
+    id: "devops",
+    title: "DevOps & Tools",
+    icon: "Cpu",
+    color: "purple",
+    skills: [
+      "Docker",
+      "Linux (Arch/Ubuntu)",
+      "Git / GitHub",
+      "AWS",
+      "Nginx",
+      "Vim/Neovim",
+    ],
+  },
+  {
+    id: "languages",
+    title: "Core Languages",
+    icon: "Code",
+    color: "yellow",
+    skills: [
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Python",
+      "Go (Learning)",
+      "SQL",
+      "Bash",
+    ],
+  },
+];
+
+
+
 export const personalInfo = {
   name: "Waleed Ahmad",
   alias: "Shadow Scripter",
@@ -143,48 +205,6 @@ export const playground = [
     desc: "A collection of browser games including Whack-a-Mole, Tic-Tac-Toe, and RPS."
   },
 ];
-
-export const skills = {
-  languages: [
-    "TypeScript",
-    "JavaScript (ES6+)",
-    "Python",
-    "Go (Learning)",
-    "SQL",
-    "Bash/Shell"
-  ],
-  frontend: [
-    "Next.js 14",
-    "React",
-    "Tailwind CSS",
-    "Three.js",
-    "Framer Motion",
-    "Redux Toolkit"
-  ],
-  backend: [
-    "Node.js",
-    "Express",
-    "Prisma ORM",
-    "PostgreSQL",
-    "MongoDB",
-    "Redis"
-  ],
-  devops: [
-    "Docker",
-    "Linux (Arch/Ubuntu)",
-    "Git / GitHub Actions",
-    "AWS",
-    "Vercel",
-    "Nginx"
-  ],
-  tools: [
-    "Postman",
-    "Figma",
-    "Canva",
-    "Vim/Neovim",
-    "Obsidian"
-  ]
-};
 
 const totalProjects = featuredProjects.length + playground.length;
 
