@@ -7,7 +7,7 @@ import { Github, ExternalLink } from "lucide-react";
 interface ProjectCardProps {
   project: {
     title: string;
-    cat: string;
+    category: string;
     tech: string[];
     desc: string;
     link: string | null;
@@ -29,7 +29,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
     <div className="p-6 relative z-10 flex flex-col h-full">
       <div className="flex justify-between items-start mb-4">
         <div className="bg-cyan-950/30 text-cyan-400 px-3 py-1 rounded-full text-xs font-mono border border-cyan-900">
-          {project.cat}
+          {project.category}
         </div>
         <div className="flex gap-3">
           {project.github && (
