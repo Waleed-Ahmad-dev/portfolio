@@ -5,7 +5,7 @@ export const skillGroups = [
   {
     id: "frontend",
     title: "Frontend & Mobile",
-    icon: <Layout />,
+    icon: Layout,
     color: "cyan",
     skills: [
       "Next.js / React",
@@ -20,7 +20,7 @@ export const skillGroups = [
   {
     id: "backend",
     title: "Backend & Architecture",
-    icon: <Database />, // Changed to Server icon contextually if needed, but Database fits
+    icon: Database, // Changed to Server icon contextually if needed, but Database fits
     color: "blue",
     skills: [
       "Node.js / Express",
@@ -35,7 +35,7 @@ export const skillGroups = [
   {
     id: "devops",
     title: "DevOps & Cloud",
-    icon: <Cpu />,
+    icon: Cpu,
     color: "purple",
     skills: [
       "Docker",
@@ -49,7 +49,7 @@ export const skillGroups = [
   {
     id: "languages",
     title: "Languages & Core",
-    icon: <Code />,
+    icon: Code,
     color: "yellow",
     skills: [
       "JavaScript (ES6+)",
