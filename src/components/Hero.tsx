@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Terminal, Github, ChevronDown } from "lucide-react";
+// Import the data
+import { personalInfo, heroData } from "@/data/portfolio";
 
 const Hero = () => {
   return (
@@ -16,47 +18,51 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Dynamic Status Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-sm font-mono mb-6">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
           </span>
-          System Online: Waleed Ahmad
+          {heroData.status}: {personalInfo.name}
         </div>
 
+        {/* Dynamic Headline */}
         <h1 className="text-5xl md:text-7xl font-bold text-slate-100 tracking-tight mb-6 font-mono">
-          Code in the{" "}
+          {heroData.heading.start}{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-600">
-            Shadows.
+            {heroData.heading.highlight}
           </span>
           <br />
-          Brilliance on the Screen.
+          {heroData.heading.end}
         </h1>
 
+        {/* Dynamic Subheading with Dynamic Age/Role */}
         <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-8">
           I&apos;m a{" "}
           <span className="text-slate-200 font-semibold">
-            16-year-old Full-Stack Architect
+            {personalInfo.age}-year-old {personalInfo.role}
           </span>{" "}
-          building enterprise-grade systems while others are still learning the
-          basics. O-Levels Student by day, Lead Developer by night.
+          {heroData.subHeading.text}
         </p>
 
+        {/* Dynamic Buttons */}
         <div className="flex flex-wrap gap-4">
           <a
             href="#work"
             className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-md transition-colors flex items-center gap-2"
           >
             <Terminal size={18} />
-            View Projects
+            {heroData.buttons.primary}
           </a>
           <a
-            href="https://github.com/Waleed-Ahmad-dev"
+            href={personalInfo.socials.github}
             target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 rounded-md transition-colors flex items-center gap-2"
           >
             <Github size={18} />
-            GitHub
+            {heroData.buttons.secondary}
           </a>
         </div>
       </motion.div>
