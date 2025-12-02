@@ -1,77 +1,81 @@
-// We define the structure here
+import { Layout, Database, Cpu, Code } from "lucide-react"; // Assuming you are using Lucide icons
+
 export const skillGroups = [
   {
     id: "frontend",
-    title: "Frontend",
-    icon: "Layout", // References Lucide Icon
-    color: "cyan", // Used for dynamic styling logic
+    title: "Frontend & Mobile",
+    icon: <Layout />,
+    color: "cyan",
     skills: [
-      "Next.js 14",
+      "Next.js",
       "React",
+      "React Native (Expo)",
       "TypeScript",
       "Tailwind CSS",
       "Three.js",
       "Framer Motion",
+      "Redux / React Query",
     ],
   },
   {
     id: "backend",
-    title: "Backend",
-    icon: "Database",
+    title: "Backend & Architecture",
+    icon: <Database />,
     color: "blue",
     skills: [
       "Node.js",
-      "Express",
+      "Express / NestJS",
       "Prisma ORM",
       "PostgreSQL",
       "MongoDB",
       "Redis",
+      "FastAPI / Flask",
+      "Socket.io",
     ],
   },
   {
     id: "devops",
-    title: "DevOps & Tools",
-    icon: "Cpu",
+    title: "DevOps & Cloud",
+    icon: <Cpu />,
     color: "purple",
     skills: [
       "Docker",
       "Linux (Arch/Ubuntu)",
-      "Git / GitHub",
-      "AWS",
+      "AWS / Google Cloud",
+      "CI/CD (GitHub Actions)",
       "Nginx",
       "Vim/Neovim",
     ],
   },
   {
     id: "languages",
-    title: "Core Languages",
-    icon: "Code",
+    title: "Languages & AI",
+    icon: <Code />,
     color: "yellow",
     skills: [
       "JavaScript (ES6+)",
       "TypeScript",
-      "Python",
+      "Python (Data/ML)",
       "Go (Learning)",
       "SQL",
-      "Bash",
+      "Bash / PowerShell",
     ],
   },
 ];
 
-
-
 export const personalInfo = {
   name: "Waleed Ahmad",
   alias: "Shadow Scripter",
-  role: "Full-Stack Architect", // Updated from Developer to Architect to match Hero vibe
+  role: "Full-Stack Architect",
   age: 16,
   location: "Pakistan",
   tagline: "Architecting scalable digital realms from the shadows.",
-  bio: "I'm a 16-year-old software artisan...",
-  email: "contact@waleedahmad.dev",
+  bio: "I'm a 16-year-old software artisan balancing O-Levels with enterprise-grade development. From distinct backend architectures to fluid frontend experiences, I build systems that solve real-world problems.",
+  email: "itswaleedqureshi@gmail.com", // Updated from Readme
   socials: {
     github: "https://github.com/Waleed-Ahmad-dev",
-    linkedin: "#",
+    linkedin: "https://linkedin.com/in/waleed-ahmed2009", // Updated from Readme
+    instagram: "https://instagram.com/shadow.scripter", // Added from Readme
   }
 };
 
@@ -83,7 +87,7 @@ export const heroData = {
     end: "Brilliance on the Screen."
   },
   subHeading: {
-    text: "building enterprise-grade systems while others are still learning the basics. O-Levels Student by day, Lead Developer by night."
+    text: "Building enterprise-grade systems while others are still learning the basics. O-Levels Student by day, Lead Developer by night."
   },
   buttons: {
     primary: "View Projects",
@@ -133,6 +137,15 @@ export const featuredProjects = [
     desc: "A monolithic content management system engineered for real estate asset management. Handles complex inventory logic, sales data, and automated workflows.",
     link: "https://cms.premierchoiceint.online",
     github: null, // Private Repo
+  },
+  {
+    title: "PCI Sign App",
+    category: "Internal Tool / Microservice",
+    status: "Live",
+    tech: ["JavaScript", "HTML", "DOM Manipulation"],
+    desc: "An internal tool developed for Premier Choice International to automate the generation of standardized corporate email signatures.",
+    link: "https://sign.pcirealestate.site/",
+    github: "https://github.com/Waleed-Ahmad-dev/Sign-app",
   },
   {
     title: "Quranic Transformation",
@@ -189,20 +202,76 @@ export const playground = [
     desc: "Full shopping cart state management with add/remove/update logic."
   },
   {
-    name: "PCI Sign App",
-    type: "Internal Tool",
-    tech: "JavaScript / HTML",
-    link: "https://sign.pcirealestate.site/",
-    github: "https://github.com/Waleed-Ahmad-dev/Sign-app",
-    desc: "Automated email signature generator for corporate identity consistency."
+    name: "Memory Game",
+    type: "Game Logic",
+    tech: "React / State",
+    link: "https://memory-game-react-fawn.vercel.app/",
+    github: "https://github.com/Waleed-Ahmad-dev/MemoryGame_React",
+    desc: "A card flipping memory game utilizing React hooks for game state."
   },
   {
-    name: "The Arcade",
-    type: "Game Collection",
-    tech: "Vanilla JS / DOM",
+    name: "React To-Do",
+    type: "Productivity",
+    tech: "React / LocalStorage",
+    link: "https://to-do-list-react-sandy.vercel.app",
+    github: "https://github.com/Waleed-Ahmad-dev/to-do-list-react",
+    desc: "Task management app with CRUD operations and persistence."
+  },
+  {
+    name: "The Library",
+    type: "Data Structure",
+    tech: "Vanilla JS / Objects",
+    link: "https://waleed-ahmad-dev.github.io/Library/",
+    github: "https://github.com/Waleed-Ahmad-dev/Library",
+    desc: "Book management system demonstrating JavaScript object constructors."
+  },
+  {
+    name: "Drawing App",
+    type: "Canvas API",
+    tech: "HTML5 Canvas / JS",
+    link: "https://waleed-ahmad-dev.github.io/drawing-app/",
+    github: "https://github.com/Waleed-Ahmad-dev/drawing-app",
+    desc: "A digital sketchpad allowing custom colors and brush sizes."
+  },
+  {
+    name: "Whack-a-Mole",
+    type: "Browser Game",
+    tech: "DOM Manipulation",
     link: "https://waleed-ahmad-dev.github.io/Whack-a-Mole/",
     github: "https://github.com/Waleed-Ahmad-dev/Whack-a-Mole",
-    desc: "A collection of browser games including Whack-a-Mole, Tic-Tac-Toe, and RPS."
+    desc: "Classic arcade game focusing on timing events and DOM updates."
+  },
+  {
+    name: "Tic-Tac-Toe",
+    type: "Game Logic",
+    tech: "Minimax Algorithm",
+    link: "https://waleed-ahmad-dev.github.io/Tic-Tac-Toe/",
+    github: "https://github.com/Waleed-Ahmad-dev/Tic-Tac-Toe",
+    desc: "Unbeatable Tic-Tac-Toe implementing game logic and AI."
+  },
+  {
+    name: "Weather App",
+    type: "API Integration",
+    tech: "Fetch API / Async",
+    link: "https://waleed-ahmad-dev.github.io/Weather-App/",
+    github: "https://github.com/Waleed-Ahmad-dev/Weather-App",
+    desc: "Real-time weather fetching app with dynamic background updates."
+  },
+  {
+    name: "JS Calculator",
+    type: "Utility",
+    tech: "JavaScript Logic",
+    link: "https://waleed-ahmad-dev.github.io/Calculator/",
+    github: "https://github.com/Waleed-Ahmad-dev/Calculator",
+    desc: "A functional calculator handling mathematical operations and edge cases."
+  },
+  {
+    name: "RPS Game",
+    type: "Game",
+    tech: "JavaScript",
+    link: "https://waleed-ahmad-dev.github.io/Rock-Papper-Scissors-Game/",
+    github: "https://github.com/Waleed-Ahmad-dev/Rock-Papper-Scissors-Game",
+    desc: "Rock Paper Scissors implementation with score tracking."
   },
 ];
 
@@ -210,13 +279,12 @@ const totalProjects = featuredProjects.length + playground.length;
 
 export const aboutStats = {
   experienceYears: "2+",
-  projectsCompleted: `${totalProjects}+`, // Dynamic Calculation
+  projectsCompleted: `${totalProjects}+`,
   stackStatus: "Full Stack Capable",
   stackSub: "From DB Design to UI Animations",
 };
 
 export const aboutText = {
-  // We split these into an array so we can map them or use them individually
   p1: {
     main: "I started coding seriously at",
     age: "14",
@@ -228,7 +296,6 @@ export const aboutText = {
 };
 
 export const navbarData = {
-  // We use snake_case here to match your 'Shadow_Scripter' aesthetic
   logoText: "Shadow_Scripter", 
   links: [
     { id: "about", label: "_about", link: "#about" },
