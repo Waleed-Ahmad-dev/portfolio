@@ -172,3 +172,24 @@ export const skills = {
     "Obsidian"
   ]
 };
+
+const totalProjects = featuredProjects.length + playground.length;
+
+export const aboutStats = {
+  experienceYears: "2+",
+  projectsCompleted: `${totalProjects}+`, // Dynamic Calculation
+  stackStatus: "Full Stack Capable",
+  stackSub: "From DB Design to UI Animations",
+};
+
+export const aboutText = {
+  // We split these into an array so we can map them or use them individually
+  p1: {
+    main: "I started coding seriously at",
+    age: "14",
+    highlight: "The Odin Project",
+    end: "while balancing school. Now, at 16, I’m not just writing code; I’m shipping products."
+  },
+  p2: "Currently, I’m an O-Levels student and a Lead Developer intern. My sweet spot is the Backend—designing scalable APIs and managing databases—but I’m equally dangerous on the Frontend.",
+  p3: "Whether it’s building a custom CMS for a real estate giant or developing an LMS, I build software that solves real problems."
+};
