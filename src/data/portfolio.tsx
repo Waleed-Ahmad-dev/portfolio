@@ -1,5 +1,6 @@
-import { Layout, Database, Cpu, Code } from "lucide-react"; // Assuming you are using Lucide icons
+import { Layout, Database, Cpu, Code } from "lucide-react";
 
+// Updated Skill Groups based on your README
 export const skillGroups = [
   {
     id: "frontend",
@@ -7,29 +8,27 @@ export const skillGroups = [
     icon: <Layout />,
     color: "cyan",
     skills: [
-      "Next.js",
-      "React",
+      "Next.js / React",
       "React Native (Expo)",
       "TypeScript",
       "Tailwind CSS",
-      "Three.js",
-      "Framer Motion",
+      "Three.js / Framer",
       "Redux / React Query",
+      "Vite",
     ],
   },
   {
     id: "backend",
     title: "Backend & Architecture",
-    icon: <Database />,
+    icon: <Database />, // Changed to Server icon contextually if needed, but Database fits
     color: "blue",
     skills: [
-      "Node.js",
-      "Express / NestJS",
-      "Prisma ORM",
-      "PostgreSQL",
+      "Node.js / Express",
+      "NestJS",
+      "PostgreSQL / Prisma",
       "MongoDB",
       "Redis",
-      "FastAPI / Flask",
+      "Python (Flask/FastAPI)",
       "Socket.io",
     ],
   },
@@ -42,27 +41,28 @@ export const skillGroups = [
       "Docker",
       "Linux (Arch/Ubuntu)",
       "AWS / Google Cloud",
-      "CI/CD (GitHub Actions)",
+      "GitHub Actions (CI/CD)",
       "Nginx",
-      "Vim/Neovim",
+      "Vercel / Netlify",
     ],
   },
   {
     id: "languages",
-    title: "Languages & AI",
+    title: "Languages & Core",
     icon: <Code />,
     color: "yellow",
     skills: [
       "JavaScript (ES6+)",
       "TypeScript",
-      "Python (Data/ML)",
-      "Go (Learning)",
+      "Python",
+      "Go (Golang) [Learning]",
       "SQL",
       "Bash / PowerShell",
     ],
   },
 ];
 
+// Updated Personal Info with new Email and Socials
 export const personalInfo = {
   name: "Waleed Ahmad",
   alias: "Shadow Scripter",
@@ -71,12 +71,12 @@ export const personalInfo = {
   location: "Pakistan",
   tagline: "Architecting scalable digital realms from the shadows.",
   bio: "I'm a 16-year-old software artisan balancing O-Levels with enterprise-grade development. From distinct backend architectures to fluid frontend experiences, I build systems that solve real-world problems.",
-  email: "itswaleedqureshi@gmail.com", // Updated from Readme
+  email: "itswaleedqureshi@gmail.com",
   socials: {
     github: "https://github.com/Waleed-Ahmad-dev",
-    linkedin: "https://linkedin.com/in/waleed-ahmed2009", // Updated from Readme
-    instagram: "https://instagram.com/shadow.scripter", // Added from Readme
-  }
+    linkedin: "https://linkedin.com/in/waleed-ahmed2009",
+    instagram: "https://instagram.com/shadow.scripter",
+  },
 };
 
 export const heroData = {
@@ -84,15 +84,15 @@ export const heroData = {
   heading: {
     start: "Code in the",
     highlight: "Shadows.",
-    end: "Brilliance on the Screen."
+    end: "Brilliance on the Screen.",
   },
   subHeading: {
-    text: "Building enterprise-grade systems while others are still learning the basics. O-Levels Student by day, Lead Developer by night."
+    text: "Building enterprise-grade systems while others are still learning the basics. O-Levels Student by day, Lead Developer by night.",
   },
   buttons: {
     primary: "View Projects",
-    secondary: "GitHub"
-  }
+    secondary: "GitHub",
+  },
 };
 
 export const experience = [
@@ -128,6 +128,7 @@ export const experience = [
   },
 ];
 
+// Merged Client Work and High-Level Personal Projects
 export const featuredProjects = [
   {
     title: "Premier Choice CMS",
@@ -176,6 +177,7 @@ export const featuredProjects = [
   },
 ];
 
+// Added all GitHub IO games and React mini-projects
 export const playground = [
   {
     name: "Xora",
@@ -183,7 +185,7 @@ export const playground = [
     tech: "React / Tailwind",
     link: "https://xora-shadow-scripter.netlify.app/",
     github: "https://github.com/Waleed-Ahmad-dev/Xora",
-    desc: "Modern SaaS UI implementation with complex gradients and responsive layouts."
+    desc: "Modern SaaS UI implementation with complex gradients.",
   },
   {
     name: "Yoom",
@@ -191,23 +193,23 @@ export const playground = [
     tech: "Next.js / Stream API",
     link: "https://yoom-eight-eta.vercel.app",
     github: "https://github.com/Waleed-Ahmad-dev/Yoom",
-    desc: "A Zoom clone handling real-time video and audio streams."
+    desc: "A Zoom clone handling real-time video streams.",
   },
   {
     name: "Shadow Cart",
-    type: "E-Commerce Logic",
+    type: "E-Commerce",
     tech: "Redux / React",
     link: "https://shadow-store-ten.vercel.app",
     github: "https://github.com/Waleed-Ahmad-dev/Shadow_Cart",
-    desc: "Full shopping cart state management with add/remove/update logic."
+    desc: "Full shopping cart state management logic.",
   },
   {
     name: "Memory Game",
     type: "Game Logic",
-    tech: "React / State",
+    tech: "React / Hooks",
     link: "https://memory-game-react-fawn.vercel.app/",
     github: "https://github.com/Waleed-Ahmad-dev/MemoryGame_React",
-    desc: "A card flipping memory game utilizing React hooks for game state."
+    desc: "Card flipping memory game using React state.",
   },
   {
     name: "React To-Do",
@@ -215,23 +217,23 @@ export const playground = [
     tech: "React / LocalStorage",
     link: "https://to-do-list-react-sandy.vercel.app",
     github: "https://github.com/Waleed-Ahmad-dev/to-do-list-react",
-    desc: "Task management app with CRUD operations and persistence."
+    desc: "Task management with persistence.",
   },
   {
     name: "The Library",
-    type: "Data Structure",
+    type: "Data Structures",
     tech: "Vanilla JS / Objects",
     link: "https://waleed-ahmad-dev.github.io/Library/",
     github: "https://github.com/Waleed-Ahmad-dev/Library",
-    desc: "Book management system demonstrating JavaScript object constructors."
+    desc: "Book management utilizing JS Object Constructors.",
   },
   {
     name: "Drawing App",
     type: "Canvas API",
-    tech: "HTML5 Canvas / JS",
+    tech: "HTML5 Canvas",
     link: "https://waleed-ahmad-dev.github.io/drawing-app/",
     github: "https://github.com/Waleed-Ahmad-dev/drawing-app",
-    desc: "A digital sketchpad allowing custom colors and brush sizes."
+    desc: "Digital sketchpad with custom brush controls.",
   },
   {
     name: "Whack-a-Mole",
@@ -239,15 +241,15 @@ export const playground = [
     tech: "DOM Manipulation",
     link: "https://waleed-ahmad-dev.github.io/Whack-a-Mole/",
     github: "https://github.com/Waleed-Ahmad-dev/Whack-a-Mole",
-    desc: "Classic arcade game focusing on timing events and DOM updates."
+    desc: "Arcade game logic using timing events.",
   },
   {
     name: "Tic-Tac-Toe",
-    type: "Game Logic",
+    type: "Game AI",
     tech: "Minimax Algorithm",
     link: "https://waleed-ahmad-dev.github.io/Tic-Tac-Toe/",
     github: "https://github.com/Waleed-Ahmad-dev/Tic-Tac-Toe",
-    desc: "Unbeatable Tic-Tac-Toe implementing game logic and AI."
+    desc: "Unbeatable game logic implementation.",
   },
   {
     name: "Weather App",
@@ -255,7 +257,7 @@ export const playground = [
     tech: "Fetch API / Async",
     link: "https://waleed-ahmad-dev.github.io/Weather-App/",
     github: "https://github.com/Waleed-Ahmad-dev/Weather-App",
-    desc: "Real-time weather fetching app with dynamic background updates."
+    desc: "Real-time weather data fetching.",
   },
   {
     name: "JS Calculator",
@@ -263,7 +265,7 @@ export const playground = [
     tech: "JavaScript Logic",
     link: "https://waleed-ahmad-dev.github.io/Calculator/",
     github: "https://github.com/Waleed-Ahmad-dev/Calculator",
-    desc: "A functional calculator handling mathematical operations and edge cases."
+    desc: "Complex math operations and edge case handling.",
   },
   {
     name: "RPS Game",
@@ -271,7 +273,7 @@ export const playground = [
     tech: "JavaScript",
     link: "https://waleed-ahmad-dev.github.io/Rock-Papper-Scissors-Game/",
     github: "https://github.com/Waleed-Ahmad-dev/Rock-Papper-Scissors-Game",
-    desc: "Rock Paper Scissors implementation with score tracking."
+    desc: "Rock Paper Scissors with score tracking.",
   },
 ];
 
@@ -279,7 +281,7 @@ const totalProjects = featuredProjects.length + playground.length;
 
 export const aboutStats = {
   experienceYears: "2+",
-  projectsCompleted: `${totalProjects}+`,
+  projectsCompleted: `${totalProjects}+`, // Dynamically counts all 17 projects
   stackStatus: "Full Stack Capable",
   stackSub: "From DB Design to UI Animations",
 };
@@ -289,14 +291,14 @@ export const aboutText = {
     main: "I started coding seriously at",
     age: "14",
     highlight: "The Odin Project",
-    end: "while balancing school. Now, at 16, I’m not just writing code; I’m shipping products."
+    end: "while balancing school. Now, at 16, I’m not just writing code; I’m shipping products.",
   },
   p2: "Currently, I’m an O-Levels student and a Lead Developer intern. My sweet spot is the Backend—designing scalable APIs and managing databases—but I’m equally dangerous on the Frontend.",
-  p3: "Whether it’s building a custom CMS for a real estate giant or developing an LMS, I build software that solves real problems."
+  p3: "Whether it’s building a custom CMS for a real estate giant or developing an LMS, I build software that solves real problems.",
 };
 
 export const navbarData = {
-  logoText: "Shadow_Scripter", 
+  logoText: "Shadow_Scripter",
   links: [
     { id: "about", label: "_about", link: "#about" },
     { id: "work", label: "_work", link: "#work" },
