@@ -206,3 +206,14 @@ export const aboutText = {
   p2: "Currently, I’m an O-Levels student and a Lead Developer intern. My sweet spot is the Backend—designing scalable APIs and managing databases—but I’m equally dangerous on the Frontend.",
   p3: "Whether it’s building a custom CMS for a real estate giant or developing an LMS, I build software that solves real problems."
 };
+
+export const navbarData = {
+  // We use snake_case here to match your 'Shadow_Scripter' aesthetic
+  logoText: "Shadow_Scripter", 
+  links: [
+    { id: "about", label: "_about", link: "#about" },
+    { id: "work", label: "_work", link: "#work" },
+    { id: "skills", label: "_stack", link: "#skills" },
+    { id: "contact", label: "_contact", link: "#contact" },
+  ],
+};
