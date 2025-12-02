@@ -1,18 +1,31 @@
 export const personalInfo = {
   name: "Waleed Ahmad",
   alias: "Shadow Scripter",
-  role: "Full-Stack Developer",
+  role: "Full-Stack Architect", // Updated from Developer to Architect to match Hero vibe
   age: 16,
   location: "Pakistan",
-  // Hook Options:
-  // 1. "Compiling ideas into reality—from the shadows to the browser."
-  // 2. "Level 16 Architect building enterprise systems while crushing O-Levels."
   tagline: "Architecting scalable digital realms from the shadows.",
-  bio: "I'm a 16-year-old software artisan and O-Level student who speaks fluent JavaScript and Python. When I'm not studying for exams, I'm leading backend development for enterprise CMS platforms or crafting distraction-free tools for writers. I bridge the gap between 'it works on my machine' and production-grade software.",
-  email: "contact@waleedahmad.dev", // Placeholder
+  bio: "I'm a 16-year-old software artisan...",
+  email: "contact@waleedahmad.dev",
   socials: {
     github: "https://github.com/Waleed-Ahmad-dev",
-    linkedin: "#", // Add if you have one
+    linkedin: "#",
+  }
+};
+
+export const heroData = {
+  status: "System Online",
+  heading: {
+    start: "Code in the",
+    highlight: "Shadows.",
+    end: "Brilliance on the Screen."
+  },
+  subHeading: {
+    text: "building enterprise-grade systems while others are still learning the basics. O-Levels Student by day, Lead Developer by night."
+  },
+  buttons: {
+    primary: "View Projects",
+    secondary: "GitHub"
   }
 };
 
