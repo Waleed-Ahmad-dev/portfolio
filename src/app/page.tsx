@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -10,15 +11,46 @@ import Projects from "../components/Projects";
 import Footer from "../components/Footer";
 
 export default function Portfolio() {
+  // Hook to track vertical scroll progress (0 to 1)
+  const { scrollYProgress } = useScroll();
+
+  // Smooth out the scroll animation using a spring physics simulation
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300 font-inter selection:bg-cyan-900 selection:text-white overflow-x-hidden">
+    <div className="relative w-full">
+      {/* === HIGH-ENERGY SCROLL BAR === 
+        A visual indicator of progress that embodies the 'Electric' theme.
+        It transitions from Primary (Blue) to Secondary (Red).
+      */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1.5 z-50 origin-left bg-linear-to-r from-primary via-purple-500 to-secondary shadow-[0_0_15px_rgba(var(--primary),0.8)]"
+        style={{ scaleX }}
+      />
+
       <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Footer />
+
+      {/* Main Page Flow 
+        Added consistent gap rhythm between sections for better UX 
+      */}
+      <div className="flex flex-col gap-24 md:gap-32 lg:gap-40 pb-20">
+        <Hero />
+
+        {/* Wrapper to constrain width on large screens if needed, 
+            though individual components usually handle their own constraints. */}
+        <div className="w-full flex flex-col gap-24 md:gap-32 lg:gap-40">
+          <About />
+          <Experience />
+          <Skills />
+          <Projects />
+        </div>
+
+        <Footer />
+      </div>
     </div>
   );
 }
