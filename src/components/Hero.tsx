@@ -1,9 +1,34 @@
 "use client";
 
-import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Terminal, Github, ArrowRight, Command } from "lucide-react";
-import { personalInfo, heroData } from "@/data/portfolio";
+import { Github, ArrowRight, Command, Sparkles } from "lucide-react";
+import {
+  personalInfo as importedInfo,
+  heroData as importedHero,
+} from "@/data/portfolio";
+
+// --- Fallback Data ---
+const defaultInfo = {
+  alias: "Shadow Scripter",
+  age: "16",
+  role: "Full Stack Architect",
+  socials: { github: "#" },
+};
+const defaultHero = {
+  status: "Available for Hire",
+  heading: {
+    start: "Building",
+    highlight: "Digital Reality",
+    end: "for the web.",
+  },
+  subHeading: {
+    text: "focusing on performance, scalability, and electric user experiences.",
+  },
+  buttons: { primary: "View Projects", secondary: "Github" },
+};
+
+const personalInfo = importedInfo || defaultInfo;
+const heroData = importedHero || defaultHero;
 
 // --- Animation Variants ---
 const containerVariants: Variants = {
@@ -11,76 +36,100 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 30, opacity: 0, filter: "blur(10px)" },
   visible: {
     y: 0,
     opacity: 1,
-    transition: { type: "spring", stiffness: 50, damping: 20 },
+    filter: "blur(0px)",
+    transition: { type: "spring", stiffness: 60, damping: 15 },
+  },
+};
+
+const floatVariants: Variants = {
+  float: {
+    y: [0, -20, 0],
+    rotate: [0, 1, -1, 0],
+    transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
   },
 };
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 min-h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 md:px-8 min-h-screen flex flex-col justify-center overflow-hidden">
       {/* --- Background Architecture --- */}
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* Note: The global grid is in Layout, but we add local 'spotlights' here */}
+      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -z-10 mix-blend-screen opacity-40 animate-pulse-glow" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] -z-10 mix-blend-screen opacity-30" />
 
-      {/* Ambient Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] -z-10 mix-blend-screen opacity-50" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -z-10 mix-blend-screen opacity-50" />
-
-      <div className="max-w-6xl mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        {/* --- Left Column: Content --- */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl"
+          className="max-w-3xl"
         >
           {/* --- Terminal Status Badge --- */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-800 backdrop-blur-md shadow-xl shadow-cyan-900/10 hover:border-cyan-500/30 transition-colors group">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+          <motion.div
+            variants={itemVariants}
+            className="mb-8 flex justify-start"
+          >
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_-10px_var(--color-primary)] hover:border-primary/30 transition-all group cursor-default">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_10px_var(--color-primary)]"></span>
               </span>
-              <span className="text-slate-500 font-mono text-sm group-hover:text-cyan-400 transition-colors">
-                <span className="text-cyan-600 mr-2">$</span>
+              <span className="text-muted-foreground font-mono text-sm group-hover:text-primary transition-colors">
+                <span className="text-primary mr-2 font-bold">$</span>
                 {heroData.status}
               </span>
-              <span className="w-px h-4 bg-slate-800 mx-1" />
-              <span className="text-slate-300 font-mono text-sm font-medium">
+              <span className="w-px h-4 bg-white/10 mx-1" />
+              <span className="text-foreground font-mono text-xs font-bold uppercase tracking-wider opacity-80">
                 {personalInfo.alias}
               </span>
             </div>
           </motion.div>
 
           {/* --- Main Heading --- */}
-          <motion.div variants={itemVariants} className="mb-6">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-100 tracking-tighter leading-[1.1]">
-              {heroData.heading.start}{" "}
-              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">
+          <motion.div variants={itemVariants} className="mb-8 relative">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tighter leading-[0.95]">
+              {heroData.heading.start}
+              <br />
+              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-secondary animate-gradient-x pb-2">
                 {heroData.heading.highlight}
-                {/* Glitch/Underline Effect */}
-                <div className="absolute -bottom-2 left-0 w-full h-2 bg-linear-to-r from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 blur-sm" />
+                {/* Electric Underline */}
+                <svg
+                  className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-60"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+                </svg>
               </span>
               <br />
-              <span className="text-slate-300">{heroData.heading.end}</span>
+              <span className="text-muted-foreground/50">
+                {heroData.heading.end}
+              </span>
             </h1>
           </motion.div>
 
           {/* --- Subheading --- */}
           <motion.div variants={itemVariants} className="mb-10">
-            <p className="text-lg md:text-2xl text-slate-400 max-w-2xl leading-relaxed font-light">
+            <p className="text-lg md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
               I&apos;m a{" "}
-              <span className="text-cyan-100 font-medium border-b border-cyan-500/30 pb-0.5">
+              <span className="text-foreground font-semibold border-b-2 border-primary/30 hover:border-primary transition-colors">
                 {personalInfo.age}-year-old {personalInfo.role}
               </span>{" "}
               {heroData.subHeading.text}
@@ -88,17 +137,16 @@ const Hero = () => {
           </motion.div>
 
           {/* --- Action Buttons --- */}
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
-            {/* Primary "Shimmer" Button */}
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            {/* Primary Button */}
             <a
               href="#work"
-              className="group relative inline-flex h-12 overflow-hidden rounded-md p-px focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="group relative inline-flex h-12 overflow-hidden rounded-xl p-px focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
             >
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#0f172a_50%,#06b6d4_100%)]" />
-              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-slate-950 px-8 py-1 text-sm font-medium text-slate-50 backdrop-blur-3xl transition-all group-hover:bg-slate-900 group-hover:text-cyan-400">
-                <Terminal className="mr-2 h-4 w-4" />
+              <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,var(--color-secondary)_0%,var(--color-background)_50%,var(--color-primary)_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-background/90 px-8 py-1 text-sm font-bold text-foreground backdrop-blur-3xl transition-all group-hover:bg-background/70 group-hover:text-primary gap-2">
                 {heroData.buttons.primary}
-                <ArrowRight className="ml-2 h-4 w-4 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </span>
             </a>
 
@@ -107,34 +155,100 @@ const Hero = () => {
               href={personalInfo.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-12 items-center justify-center rounded-md border border-slate-800 bg-slate-900/50 px-8 text-sm font-medium text-slate-300 shadow-sm hover:bg-slate-800 hover:text-white transition-colors gap-2 backdrop-blur-sm"
+              className="inline-flex h-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-8 text-sm font-medium text-muted-foreground shadow-sm hover:bg-white/10 hover:text-foreground hover:border-white/20 transition-all gap-2 backdrop-blur-md group"
             >
-              <Github size={18} />
+              <Github
+                size={18}
+                className="group-hover:rotate-12 transition-transform"
+              />
               {heroData.buttons.secondary}
-              <div className="ml-2 flex items-center gap-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-500">
+              <div className="ml-2 flex items-center gap-1 rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground group-hover:text-foreground">
                 <Command size={10} />
-                <span>G</span>
+                <span>J</span>
               </div>
             </a>
           </motion.div>
+        </motion.div>
 
-          {/* --- Decor: Floating Code Block (Optional Visual) --- */}
-          {/* This adds to the "Architect" vibe without cluttering text */}
+        {/* --- Right Column: Holographic Code Visual --- */}
+        <motion.div
+          variants={itemVariants}
+          className="hidden lg:block relative"
+        >
           <motion.div
-            variants={itemVariants}
-            className="absolute right-0 top-1/2 -translate-y-1/2 -z-10 opacity-20 hidden lg:block"
+            variants={floatVariants}
+            animate="float"
+            className="relative z-10"
           >
-            <div className="font-mono text-xs text-cyan-500/50 p-6 border border-cyan-500/10 rounded-xl bg-slate-950/50 backdrop-blur-sm">
-              <p>class Architect extends Developer &#123;</p>
-              <p className="pl-4">constructor() &#123;</p>
-              <p className="pl-8">
-                this.stack = [&apos;Next.js&apos;, &apos;Node&apos;];
-              </p>
-              <p className="pl-8">this.passion = &apos;Scalability&apos;;</p>
-              <p className="pl-4">&#125;</p>
-              <p>&#125;</p>
+            {/* Glass Panel Container */}
+            <div className="glass-panel p-1 rounded-2xl border-white/10 bg-black/40 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
+              {/* Terminal Top Bar */}
+              <div className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-t-xl border-b border-white/5">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                </div>
+                <div className="text-xs text-muted-foreground font-mono ml-2">
+                  architect.ts
+                </div>
+              </div>
+
+              {/* Code Content */}
+              <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden rounded-b-xl relative bg-black/50">
+                <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-secondary/5 pointer-events-none" />
+
+                {/* Line Numbers & Code */}
+                <div className="grid grid-cols-[20px_1fr] gap-4">
+                  <div className="text-muted-foreground/30 text-right select-none space-y-1">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <div key={i}>{i + 1}</div>
+                    ))}
+                  </div>
+                  <div className="text-muted-foreground space-y-1">
+                    <div>
+                      <span className="text-purple-400">class</span>{" "}
+                      <span className="text-yellow-300">Architect</span>{" "}
+                      <span className="text-purple-400">extends</span>{" "}
+                      <span className="text-yellow-300">Developer</span> {"{"}
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-purple-400">constructor</span>(){" "}
+                      {"{"}
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-red-400">this</span>.name ={" "}
+                      <span className="text-green-400">
+                        &apos;{personalInfo.alias}&apos;
+                      </span>
+                      ;
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-red-400">this</span>.stack = [
+                      <span className="text-green-400">&apos;Next.js&apos;</span>,{" "}
+                      <span className="text-green-400">&apos;Tailwind&apos;</span>];
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-red-400">this</span>.vibe ={" "}
+                      <span className="text-green-400">&apos;Electric&apos;</span>;
+                    </div>
+                    <div className="pl-4">{"}"}</div>
+                    <div className="pl-4">
+                      <span className="text-blue-400">shipCode</span>() {"{"}
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-purple-400">return</span>{" "}
+                      <span className="text-primary font-bold">Infinity</span>;
+                    </div>
+                    <div>{"}"}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
+
+          {/* Decorative Glow Behind Code */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-linear-to-r from-primary/20 to-secondary/20 blur-[80px] -z-10 rounded-full" />
         </motion.div>
       </div>
 
@@ -142,17 +256,20 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
-          System Ready
-        </span>
-        <div className="w-5 h-8 border-2 border-slate-800 rounded-full flex justify-center p-1">
+        <div className="flex flex-col items-center gap-1">
+          <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em] animate-pulse">
+            Scroll to Initialize
+          </span>
+          <Sparkles size={12} className="text-primary mb-1" />
+        </div>
+        <div className="w-[2px] h-16 bg-linear-to-b from-transparent via-primary to-transparent rounded-full overflow-hidden">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1 h-1 bg-cyan-500 rounded-full"
+            animate={{ y: [-20, 20] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            className="w-full h-1/2 bg-white blur-[2px]"
           />
         </div>
       </motion.div>
