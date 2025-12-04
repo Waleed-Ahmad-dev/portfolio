@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState } from "react";
@@ -11,18 +12,34 @@ import {
   Check,
   Terminal,
   Globe,
+  ArrowUpRight,
 } from "lucide-react";
 // Import your data object
-import { personalInfo } from "@/data/portfolio";
+import { personalInfo as importedInfo } from "@/data/portfolio";
+
+// --- Fallback Data for Safety ---
+const defaultInfo = {
+  name: "Waleed Ahmad",
+  role: "Full Stack Architect",
+  tagline: "Building digital experiences that matter.",
+  email: "waleed@example.com",
+  location: "Islamabad, Pakistan",
+  socials: {
+    github: "https://github.com",
+    linkedin: "https://linkedin.com",
+  },
+};
+
+const personalInfo = importedInfo || defaultInfo;
 
 const Footer = () => {
   const [copied, setCopied] = useState(false);
 
-  // 1. Destructure data for cleaner usage
+  // 1. Destructure data
   const { email, socials, name, location, role, tagline } = personalInfo;
 
-  // 2. Map string keys from data to actual Icon components
-  const iconMap = {
+  // 2. Map keys to Icons
+  const iconMap: any = {
     github: Github,
     linkedin: Linkedin,
     instagram: Instagram,
@@ -35,138 +52,163 @@ const Footer = () => {
   };
 
   return (
-    <footer
-      id="contact"
-      className="relative bg-slate-950 pt-24 pb-12 overflow-hidden"
-    >
-      {/* --- Background Effects --- */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+    <footer id="contact" className="relative pt-32 pb-12 overflow-hidden">
+      {/* --- Ambient Background Effects --- */}
+      <div className="absolute inset-0 bg-background/50 backdrop-blur-[2px] z-0" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      {/* Bottom Glows */}
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[32px_32px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* --- Header Section --- */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-6">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold mb-8 uppercase tracking-wider shadow-[0_0_10px_rgba(var(--primary),0.2)]">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            OPEN FOR COLLABORATION
+            Open for Collaboration
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-100 tracking-tight mb-4">
-            Initialize <span className="text-cyan-400">Connection</span>
+          {/* Main Title with Gradient */}
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6 text-foreground">
+            Initialize{" "}
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-purple-500 to-secondary animate-pulse-glow">
+              Connection
+            </span>
           </h2>
 
-          {/* Dynamic Tagline */}
-          <p className="text-slate-400 max-w-xl mx-auto text-lg leading-relaxed">
-            Need a <span className="text-slate-200 font-medium">{role}</span>?{" "}
+          <p className="text-muted-foreground max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
+            Need a{" "}
+            <span className="text-foreground font-semibold border-b border-primary/30">
+              {role}
+            </span>
+            ? <br className="hidden md:block" />
             {tagline}
           </p>
         </motion.div>
 
-        {/* --- Main Action Card --- */}
+        {/* --- Action Card (Glassmorphism) --- */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-2xl p-2 max-w-lg mx-auto mb-16 shadow-2xl shadow-cyan-900/10"
+          transition={{ type: "spring", bounce: 0.4 }}
+          className="relative max-w-xl mx-auto mb-24 group"
         >
-          <div className="flex flex-col sm:flex-row items-center gap-2">
-            {/* Dynamic Email Input */}
-            <div className="flex-1 w-full flex items-center gap-3 px-4 py-3 bg-slate-950/50 rounded-xl border border-slate-800/50">
-              <Mail className="text-slate-400" size={20} />
-              <input
-                type="text"
-                readOnly
-                value={email}
-                className="bg-transparent text-slate-200 w-full outline-none font-mono text-sm"
-              />
-            </div>
+          {/* Animated Gradient Border Layer */}
+          <div className="absolute -inset-0.5 bg-linear-to-r from-primary via-purple-500 to-secondary rounded-2xl opacity-30 group-hover:opacity-70 blur transition duration-500" />
 
-            {/* Actions */}
-            <div className="flex gap-2 w-full sm:w-auto">
-              <button
-                onClick={handleCopy}
-                className="flex-1 sm:flex-none px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl transition-all border border-slate-700 hover:border-slate-600 flex items-center justify-center gap-2 group"
-                aria-label="Copy Email"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {copied ? (
-                    <motion.div
-                      key="check"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                    >
-                      <Check size={18} className="text-green-400" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="copy"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                    >
-                      <Copy
-                        size={18}
-                        className="group-hover:text-cyan-400 transition-colors"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
+          <div className="relative glass-panel p-2 rounded-2xl bg-background/80">
+            <div className="flex flex-col sm:flex-row items-center gap-2">
+              {/* Email Input */}
+              <div className="flex-1 w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-white/5 bg-black/20 focus-within:border-primary/50 transition-colors">
+                <Mail className="text-muted-foreground shrink-0" size={20} />
+                <input
+                  type="text"
+                  readOnly
+                  value={email}
+                  className="bg-transparent text-foreground w-full outline-none font-mono text-sm placeholder:text-muted-foreground/50 truncate"
+                />
+              </div>
 
-              <a
-                href={`mailto:${email}`}
-                className="flex-1 sm:flex-none px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-xl transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center justify-center gap-2"
-              >
-                Send
-                <Terminal size={18} />
-              </a>
+              {/* Buttons */}
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleCopy}
+                  className="flex-1 sm:flex-none px-4 py-3 bg-white/5 hover:bg-white/10 text-foreground rounded-xl transition-all border border-white/5 hover:border-white/10 flex items-center justify-center gap-2 group/btn relative overflow-hidden"
+                  aria-label="Copy Email"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {copied ? (
+                      <motion.div
+                        key="check"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                      >
+                        <Check size={18} className="text-green-400" />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="copy"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                      >
+                        <Copy
+                          size={18}
+                          className="group-hover/btn:text-primary transition-colors"
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </button>
+
+                <a
+                  href={`mailto:${email}`}
+                  className="flex-1 sm:flex-none px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  Send
+                  <ArrowUpRight size={18} />
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
 
         {/* --- Footer Bottom --- */}
-        <div className="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Dynamic Social Links */}
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-8">
+          {/* Social Links */}
           <div className="flex items-center gap-4">
             {Object.entries(socials).map(([platform, url]) => {
-              // Get the icon based on the object key (github, linkedin, etc)
-              const IconComponent =
-                iconMap[platform as keyof typeof iconMap] || Globe; // Fallback to Globe
-
+              const IconComponent = iconMap[platform] || Globe;
               return (
                 <a
                   key={platform}
-                  href={url}
+                  href={url as string}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all capitalize"
+                  className="p-3 bg-white/5 rounded-xl border border-white/5 text-muted-foreground hover:text-foreground hover:bg-white/10 hover:border-primary/30 hover:shadow-[0_0_15px_-5px_var(--color-primary)] hover:scale-110 transition-all duration-300 group"
                   aria-label={platform}
                 >
-                  <IconComponent size={20} />
+                  <IconComponent
+                    size={20}
+                    className="group-hover:stroke-primary transition-colors"
+                  />
                 </a>
               );
             })}
           </div>
 
-          {/* Dynamic Copyright & Location */}
-          <div className="text-slate-500 text-sm font-mono flex flex-col items-center md:items-end gap-1">
-            <p>
-              &copy; {new Date().getFullYear()} {name}. All systems nominal.
+          {/* Copyright & Location */}
+          <div className="text-muted-foreground text-sm font-mono flex flex-col items-center md:items-end gap-2">
+            <p className="flex items-center gap-2">
+              <Terminal size={14} className="text-secondary" />
+              <span>
+                &copy; {new Date().getFullYear()} {name}
+              </span>
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-600">
+            <div className="flex items-center gap-3 text-xs opacity-60">
               <span>{location}</span>
-              <span className="text-slate-700">|</span>
-              <span>UTC+5</span>
+              <span className="w-1 h-1 bg-white/20 rounded-full" />
+              <div className="flex items-center gap-1.5 text-green-400">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+                </span>
+                Systems Normal
+              </div>
             </div>
           </div>
         </div>
