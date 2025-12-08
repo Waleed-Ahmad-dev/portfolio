@@ -3,7 +3,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Calendar,Activity } from "lucide-react";
+import { Calendar, Briefcase, Zap } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import { experience as importedExperience } from "@/data/portfolio";
 
@@ -42,7 +42,7 @@ const Experience = () => {
     offset: ["start center", "end center"],
   });
 
-  // Smooth out the progress for the "Circuit Line" fill
+  // Smooth out the progress for the "Power Rail" fill
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -55,12 +55,15 @@ const Experience = () => {
       className="py-24 px-4 md:px-8 relative overflow-hidden"
       ref={containerRef}
     >
-      {/* Background Decor - Circuit Board Vibe */}
+      {/* Background Decor - Circuit Board Vibe (Blue/Yellow Theme) */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[10%] top-0 w-px h-full bg-linear-to-b from-transparent via-primary/10 to-transparent dashed-line" />
-        <div className="absolute right-[10%] top-0 w-px h-full bg-linear-to-b from-transparent via-secondary/10 to-transparent dashed-line" />
-        {/* Glowing Orb */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
+        {/* Left Circuit Line */}
+        <div className="absolute left-[8%] top-0 w-px h-full bg-linear-to-b from-transparent via-primary/10 to-transparent" />
+        {/* Right Circuit Line */}
+        <div className="absolute right-[8%] top-0 w-px h-full bg-linear-to-b from-transparent via-secondary/5 to-transparent" />
+
+        {/* Glowing Orb - Deep Blue */}
+        <div className="absolute top-1/3 left-0 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -69,14 +72,15 @@ const Experience = () => {
           subtitle="System upgrades and deployed experience."
         />
 
-        <div className="relative mt-20 space-y-16">
-          {/* === THE CIRCUIT LINE === */}
-          {/* 1. The Base Track (Dimmed) */}
+        <div className="relative mt-24 space-y-16">
+          {/* === THE POWER RAIL (Timeline) === */}
+
+          {/* 1. The Base Track (Dimmed Blue) */}
           <div className="absolute left-4 md:left-9 top-0 bottom-0 w-0.5 bg-white/5 rounded-full" />
 
-          {/* 2. The Active Energy Beam (Animated) */}
+          {/* 2. The Active Energy Beam (Blue -> Yellow Gradient) */}
           <motion.div
-            className="absolute left-4 md:left-9 top-0 w-0.5 bg-linear-to-b from-primary via-purple-500 to-secondary rounded-full origin-top shadow-[0_0_15px_var(--color-primary)]"
+            className="absolute left-4 md:left-9 top-0 w-0.5 bg-linear-to-b from-primary via-blue-400 to-secondary rounded-full origin-top shadow-[0_0_20px_var(--color-primary)]"
             style={{ scaleY, height: "100%" }}
           />
 
@@ -90,7 +94,7 @@ const Experience = () => {
   );
 };
 
-// --- Sub-Component for Individual Cards to manage own animations ---
+// --- Sub-Component for Individual Cards ---
 const ExperienceCard = ({ exp, index }: { exp: any; index: number }) => {
   return (
     <motion.div
@@ -98,42 +102,45 @@ const ExperienceCard = ({ exp, index }: { exp: any; index: number }) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.15, duration: 0.6, type: "spring" }}
-      className="relative pl-16 md:pl-24 group"
+      className="relative pl-16 md:pl-28 group"
     >
-      {/* === POWER CORE NODE (Timeline Dot) === */}
+      {/* === JUNCTION POINT (Timeline Dot) === */}
       <div className="absolute left-0 md:left-5 top-0 w-8 h-8 md:w-9 md:h-9 flex items-center justify-center z-20">
-        {/* Outer Ring */}
-        <div className="absolute inset-0 bg-background rounded-full border-2 border-white/10 group-hover:border-primary/50 transition-colors duration-500" />
+        {/* Outer Ring - Turns Yellow on Hover */}
+        <div className="absolute inset-0 bg-[#0B1121] rounded-full border-2 border-white/10 group-hover:border-secondary/80 transition-colors duration-500" />
 
-        {/* Inner Core (Pulses on hover) */}
-        <div className="relative w-3 h-3 bg-muted-foreground rounded-full group-hover:bg-primary group-hover:shadow-[0_0_10px_var(--color-primary)] transition-all duration-300 group-hover:scale-125">
-          <div className="absolute inset-0 bg-primary/50 rounded-full animate-ping opacity-0 group-hover:opacity-100" />
+        {/* Inner Core - Pulses Yellow on hover */}
+        <div className="relative w-2.5 h-2.5 bg-blue-400/50 rounded-full group-hover:bg-secondary group-hover:shadow-[0_0_15px_var(--color-secondary)] transition-all duration-300 group-hover:scale-150">
+          <div className="absolute inset-0 bg-secondary rounded-full animate-ping opacity-0 group-hover:opacity-100" />
         </div>
       </div>
 
       {/* === HOLOGRAPHIC CARD === */}
-      <div className="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden transition-all duration-500 hover:scale-[1.01] hover:border-primary/30 group-hover:shadow-[0_0_30px_-10px_rgba(var(--primary),0.2)]">
-        {/* Decorative Corner Accent */}
-        <div className="absolute top-0 right-0 w-16 h-16 bg-linear-to-br from-white/5 to-transparent -mr-8 -mt-8 rounded-bl-3xl transition-colors group-hover:from-primary/20" />
+      <div className="glass-panel p-6 md:p-8 rounded-3xl relative overflow-hidden transition-all duration-500 hover:scale-[1.01] border-white/5 hover:border-secondary/40 group-hover:shadow-[0_0_30px_-10px_rgba(var(--secondary),0.15)] bg-[#0B1121]/60">
+        {/* Decorative Corner Gradient (Blue -> Yellow) */}
+        <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-white/5 to-transparent -mr-10 -mt-10 rounded-bl-[40px] transition-colors group-hover:from-secondary/10" />
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 relative z-10">
           <div>
-            <h3 className="text-2xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors flex items-center gap-2">
+            <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-secondary transition-colors flex items-center gap-3">
               {exp.role}
-              <Activity
-                size={16}
-                className="text-secondary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+              <Zap
+                size={18}
+                className="text-secondary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 fill-secondary"
               />
             </h3>
-            <p className="text-lg text-primary font-medium mt-1 font-mono tracking-tight">
-              @{exp.company}
-            </p>
+            <div className="flex items-center gap-2 mt-2">
+              <Briefcase size={14} className="text-primary" />
+              <p className="text-lg text-blue-200 font-mono tracking-tight">
+                {exp.company}
+              </p>
+            </div>
           </div>
 
           {/* Date Badge */}
-          <div className="self-start md:self-center flex items-center gap-2 text-xs font-mono font-bold text-muted-foreground bg-white/5 px-4 py-2 rounded-full border border-white/5 group-hover:border-primary/20 group-hover:text-foreground transition-colors">
-            <Calendar size={12} className="text-secondary" />
+          <div className="self-start md:self-center flex items-center gap-2 text-xs font-mono font-bold text-blue-200/70 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20 group-hover:border-secondary/30 group-hover:text-secondary transition-colors shadow-inner shadow-primary/5">
+            <Calendar size={12} />
             {exp.period}
           </div>
         </div>
@@ -144,16 +151,17 @@ const ExperienceCard = ({ exp, index }: { exp: any; index: number }) => {
             exp.desc.map((item: string, i: number) => (
               <li
                 key={i}
-                className="flex items-start gap-3 text-muted-foreground text-sm md:text-base leading-relaxed group/item hover:text-foreground transition-colors"
+                className="flex items-start gap-4 text-blue-100/70 text-sm md:text-base leading-relaxed group/item hover:text-white transition-colors"
               >
-                <div className="mt-1.5 shrink-0">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover/item:bg-secondary group-hover/item:shadow-[0_0_8px_var(--color-secondary)] transition-all duration-300" />
+                {/* Custom Bullet Point */}
+                <div className="mt-2 shrink-0">
+                  <div className="w-1.5 h-1.5 rounded-sm bg-primary/40 group-hover/item:bg-secondary group-hover/item:shadow-[0_0_8px_var(--color-secondary)] transition-all duration-300 rotate-45" />
                 </div>
                 <span>{item}</span>
               </li>
             ))
           ) : (
-            <p className="text-muted-foreground text-sm">{exp.desc}</p>
+            <p className="text-blue-100/70 text-sm">{exp.desc}</p>
           )}
         </ul>
       </div>
