@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 // Optimize fonts with 'swap' for better performance
 const inter = Inter({
@@ -65,6 +66,7 @@ export default function RootLayout({
         {/* === MAIN CONTENT === */}
         <main className="relative flex min-h-screen flex-col font-sans">
           {children}
+          <Analytics />
         </main>
       </body>
     </html>
