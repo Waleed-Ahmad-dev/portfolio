@@ -1,11 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
-import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 
 export default function ContactForm() {
+  if (!process.env.NEXT_PUBLIC_FORM) {
+    return <div>Form ID not found</div>;
+  }
+  const formCode: string = process.env.NEXT_PUBLIC_FORM;
   // Replace "xjknerrq" with your actual Form ID if it changes
-  const [state, handleSubmit] = useForm("xjknerrq");
+  const [state, handleSubmit] = useForm(formCode);
 
   if (state.succeeded) {
     return (
@@ -14,7 +18,7 @@ export default function ContactForm() {
           Thanks for your message!
         </p>
         <p className="text-green-600 text-sm mt-1">
-          I'll get back to you shortly.
+          I&apos;ll get back to you shortly.
         </p>
       </div>
     );
