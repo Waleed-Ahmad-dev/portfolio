@@ -1,6 +1,6 @@
 import { Layout, Database, Cpu, Code, LucideIcon } from "lucide-react";
 
-// --- TYPES (Architectural Improvement for Type Safety) ---
+// --- TYPES ---
 export interface Socials {
   github: string;
   linkedin: string;
@@ -39,7 +39,7 @@ export interface SkillGroup {
   id: string;
   title: string;
   icon: LucideIcon;
-  color: "yellow" | "blue"; // STRICT: Blue/Yellow Theme Only
+  color: "yellow" | "blue";
   skills: string[];
 }
 
@@ -58,8 +58,8 @@ export interface ProjectItem {
   desc: string;
   link: string;
   github: string | null;
-  name?: string; // For playground items
-  type?: string; // For playground items
+  name?: string;
+  type?: string; // STRICT: Required for existing getPlaygroundIcon logic
 }
 
 export interface NavLink {
@@ -103,13 +103,12 @@ export const heroData: HeroData = {
 };
 
 // --- SKILL GROUPS ---
-// UPDATED: Remapped strict color palette (Blue & Yellow)
 export const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     title: "Frontend & Mobile",
     icon: Layout,
-    color: "yellow", // Highlight/Vibrant
+    color: "yellow",
     skills: [
       "Next.js 16",
       "React",
@@ -124,7 +123,7 @@ export const skillGroups: SkillGroup[] = [
     id: "backend",
     title: "Backend Architecture",
     icon: Database,
-    color: "blue", // Deep/Structure
+    color: "blue",
     skills: [
       "Node.js / Express",
       "NestJS",
@@ -139,7 +138,7 @@ export const skillGroups: SkillGroup[] = [
     id: "devops",
     title: "DevOps & Cloud",
     icon: Cpu,
-    color: "blue", // Deep/Structure
+    color: "blue",
     skills: [
       "Docker",
       "Linux (Arch/Ubuntu)",
@@ -153,7 +152,7 @@ export const skillGroups: SkillGroup[] = [
     id: "languages",
     title: "Core Languages",
     icon: Code,
-    color: "yellow", // Accent/Core
+    color: "yellow",
     skills: [
       "JavaScript (ES6+)",
       "TypeScript",
@@ -259,11 +258,13 @@ export const featuredProjects: ProjectItem[] = [
 ];
 
 // --- PLAYGROUND / EXPERIMENTS ---
+// FIX: Restored 'type' property to ensure backward compatibility with getPlaygroundIcon
 export const playground: ProjectItem[] = [
   {
-    title: "Xora", // Normalized key to 'title' for consistency, or keep 'name' if UI splits logic
+    title: "Xora",
     name: "Xora",
     category: "SaaS Landing",
+    type: "SaaS Landing",
     status: "Demo",
     tech: "React / Tailwind",
     link: "https://xora-shadow-scripter.netlify.app/",
@@ -274,6 +275,7 @@ export const playground: ProjectItem[] = [
     title: "Yoom",
     name: "Yoom",
     category: "Video App",
+    type: "Video App",
     status: "Demo",
     tech: "Next.js / Stream",
     link: "https://yoom-eight-eta.vercel.app",
@@ -284,6 +286,7 @@ export const playground: ProjectItem[] = [
     title: "Shadow Cart",
     name: "Shadow Cart",
     category: "E-Commerce",
+    type: "E-Commerce",
     status: "Demo",
     tech: "Redux / React",
     link: "https://shadow-store-ten.vercel.app",
@@ -294,6 +297,7 @@ export const playground: ProjectItem[] = [
     title: "Memory Game",
     name: "Memory Game",
     category: "Game Logic",
+    type: "Game Logic",
     status: "Demo",
     tech: "React Hooks",
     link: "https://memory-game-react-fawn.vercel.app/",
@@ -304,6 +308,7 @@ export const playground: ProjectItem[] = [
     title: "React To-Do",
     name: "React To-Do",
     category: "Productivity",
+    type: "Productivity",
     status: "Demo",
     tech: "React",
     link: "https://to-do-list-react-sandy.vercel.app",
@@ -314,6 +319,7 @@ export const playground: ProjectItem[] = [
     title: "The Library",
     name: "The Library",
     category: "Data Structures",
+    type: "Data Structures",
     status: "Demo",
     tech: "Vanilla JS",
     link: "https://waleed-ahmad-dev.github.io/Library/",
@@ -324,6 +330,7 @@ export const playground: ProjectItem[] = [
     title: "Drawing App",
     name: "Drawing App",
     category: "Canvas API",
+    type: "Canvas API",
     status: "Demo",
     tech: "HTML5 Canvas",
     link: "https://waleed-ahmad-dev.github.io/drawing-app/",
@@ -334,6 +341,7 @@ export const playground: ProjectItem[] = [
     title: "Whack-a-Mole",
     name: "Whack-a-Mole",
     category: "Browser Game",
+    type: "Browser Game",
     status: "Demo",
     tech: "DOM Ops",
     link: "https://waleed-ahmad-dev.github.io/Whack-a-Mole/",
@@ -344,6 +352,7 @@ export const playground: ProjectItem[] = [
     title: "Tic-Tac-Toe",
     name: "Tic-Tac-Toe",
     category: "Game AI",
+    type: "Game AI",
     status: "Demo",
     tech: "Minimax Algo",
     link: "https://waleed-ahmad-dev.github.io/Tic-Tac-Toe/",
@@ -354,6 +363,7 @@ export const playground: ProjectItem[] = [
     title: "Weather App",
     name: "Weather App",
     category: "API Integration",
+    type: "API Integration",
     status: "Demo",
     tech: "Fetch API",
     link: "https://waleed-ahmad-dev.github.io/Weather-App/",
@@ -391,6 +401,6 @@ export const navbarData: { logoText: string; links: NavLink[] } = {
     { id: "work", label: "_work", link: "#work" },
     { id: "skills", label: "_stack", link: "#skills" },
     { id: "projects", label: "_deployments", link: "#projects" },
-    { id: "contact", label: "_contact", link: "#contact" }, // ADDED: New Contact Field
+    { id: "contact", label: "_contact", link: "#contact" },
   ],
 };
