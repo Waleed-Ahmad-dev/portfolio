@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* THEME SYSTEM: ELECTRIC PLAYFULNESS 
-  Primary: Electric Blue | Secondary: Vibrant Red
-  Tech: Tailwind v4 + OKLCH Colors for High Gamut Vibrancy
+/* THEME SYSTEM: ROYAL VELOCITY 
+   Primary: Deep Royal Blue | Secondary: Electric Yellow
+   Tech: Tailwind v4 + OKLCH Colors for High Gamut Vibrancy
 */
 
 @plugin "tailwindcss-animate";
@@ -11,75 +11,75 @@
 
 :root {
   /* Base - Light Mode (Clean, High Contrast) */
-  --background: oklch(0.985 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.99 0 0); /* Pure White */
+  --foreground: oklch(0.12 0.05 265); /* Deep Blue-Black text */
   
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.12 0.05 265);
   
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.12 0.05 265);
   
-  /* Brand Colors - Electric Blue & Red */
-  --primary: oklch(0.55 0.25 250); /* Electric Blue */
+  /* Brand Colors - Royal Blue & Electric Yellow */
+  --primary: oklch(0.45 0.22 265); /* Deep Royal Blue */
   --primary-foreground: oklch(0.985 0 0);
   
-  --secondary: oklch(0.60 0.25 25); /* Vibrant Red */
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.85 0.18 95); /* Vibrant Electric Yellow */
+  --secondary-foreground: oklch(0.15 0.05 265); /* Dark text on Yellow for contrast */
   
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted: oklch(0.96 0.01 265);
+  --muted-foreground: oklch(0.45 0.05 265);
   
-  --accent: oklch(0.95 0.05 250); /* Soft Blue Tint */
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.94 0.03 265); /* Very soft Blue tint */
+  --accent-foreground: oklch(0.25 0.10 265);
   
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.577 0.245 27.325); /* Kept for strictly error states */
   --destructive-foreground: oklch(0.985 0 0);
 
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.55 0.25 250); /* Matches Primary */
+  --border: oklch(0.90 0.02 265);
+  --input: oklch(0.90 0.02 265);
+  --ring: oklch(0.45 0.22 265); /* Matches Primary */
   
-  --radius: 0.75rem; /* Slightly more rounded for playful feel */
+  --radius: 0.75rem; 
 
-  /* Charts - Adjusted for Playfulness */
-  --chart-1: oklch(0.55 0.25 250); /* Blue */
-  --chart-2: oklch(0.60 0.25 25);  /* Red */
-  --chart-3: oklch(0.70 0.15 200); /* Cyan */
-  --chart-4: oklch(0.65 0.20 340); /* Pink */
-  --chart-5: oklch(0.85 0.15 90);  /* Yellow */
+  /* Charts - Updated to Blue/Yellow/Gold Spectrum */
+  --chart-1: oklch(0.45 0.22 265); /* Royal Blue */
+  --chart-2: oklch(0.85 0.18 95);  /* Yellow */
+  --chart-3: oklch(0.70 0.15 265); /* Lighter Blue */
+  --chart-4: oklch(0.75 0.15 85);  /* Gold */
+  --chart-5: oklch(0.25 0.10 265); /* Navy */
 }
 
 .dark {
-  /* Base - Dark Mode (The "Electric" Vibe) */
-  --background: oklch(0.10 0.03 260); /* Deep Void Navy */
-  --foreground: oklch(0.985 0 0);
+  /* Base - Dark Mode (The "Premium Midnight" Vibe) */
+  --background: oklch(0.10 0.08 265); /* Deep Midnight Blue */
+  --foreground: oklch(0.98 0 0);
   
-  --card: oklch(0.14 0.04 260); /* Slightly lighter navy */
+  --card: oklch(0.14 0.09 265); /* Slightly lighter midnight */
   --card-foreground: oklch(0.985 0 0);
   
-  --popover: oklch(0.12 0.04 260);
+  --popover: oklch(0.12 0.09 265);
   --popover-foreground: oklch(0.985 0 0);
   
   /* Brand Colors - Neon Mode */
-  --primary: oklch(0.65 0.22 250); /* Neon Blue */
-  --primary-foreground: oklch(0.10 0.03 260);
+  --primary: oklch(0.60 0.20 260); /* Brighter Royal Blue for Dark Mode */
+  --primary-foreground: oklch(1 1 1);
   
-  --secondary: oklch(0.63 0.24 25); /* Neon Red */
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.88 0.18 95); /* Bright Neon Yellow */
+  --secondary-foreground: oklch(0.10 0.08 265);
   
-  --muted: oklch(0.20 0.04 260);
-  --muted-foreground: oklch(0.70 0.02 260);
+  --muted: oklch(0.20 0.06 265);
+  --muted-foreground: oklch(0.70 0.05 265);
   
-  --accent: oklch(0.20 0.08 250); /* Dark Blue Glow */
+  --accent: oklch(0.20 0.08 265); /* Deep Blue Glow */
   --accent-foreground: oklch(0.985 0 0);
   
   --destructive: oklch(0.63 0.24 25);
   --destructive-foreground: oklch(0.985 0 0);
   
-  --border: oklch(0.30 0.05 260 / 0.4);
-  --input: oklch(0.30 0.05 260 / 0.4);
-  --ring: oklch(0.65 0.22 250);
+  --border: oklch(0.30 0.10 265 / 0.4);
+  --input: oklch(0.30 0.10 265 / 0.4);
+  --ring: oklch(0.60 0.20 260);
 }
 
 @theme inline {
@@ -113,9 +113,10 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Custom Animations for Playfulness */
+  /* Custom Animations */
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -123,8 +124,13 @@
   }
   
   @keyframes pulse-glow {
-    0%, 100% { opacity: 1; filter: brightness(100%); }
-    50% { opacity: 0.8; filter: brightness(120%); }
+    0%, 100% { opacity: 1; box-shadow: 0 0 15px -5px var(--color-primary); }
+    50% { opacity: 0.9; box-shadow: 0 0 25px 0px var(--color-primary); }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
@@ -134,38 +140,45 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
-    /* Smooth font rendering for modern UI */
+    @apply bg-background text-foreground antialiased selection:bg-secondary/50 selection:text-secondary-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Custom Scrollbar for the Cyber/Electric Feel */
+  /* Custom Scrollbar styled to Blue/Yellow */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-transparent;
+    @apply bg-background;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/20 rounded-full hover:bg-primary/80 transition-colors;
+    @apply bg-primary/30 rounded-full hover:bg-secondary transition-colors duration-300;
   }
 }
 
-/* UTILITIES for "Electric Playfulness" 
-  Use these classes in your components for instant glass and glow effects.
+/* UTILITIES for "Royal Velocity" 
+   Use these classes for instant glass, gradients and glow effects.
 */
 @utility glass-panel {
   @apply bg-background/60 backdrop-blur-xl border border-white/10 shadow-xl;
 }
 
-@utility glow-blue {
-  box-shadow: 0 0 20px -5px var(--color-primary);
+@utility glass-blue {
+  @apply bg-primary/10 backdrop-blur-lg border border-primary/20 shadow-lg text-primary;
 }
 
-@utility glow-red {
+@utility glow-blue {
+  box-shadow: 0 0 25px -5px var(--color-primary);
+}
+
+@utility glow-yellow {
   box-shadow: 0 0 20px -5px var(--color-secondary);
 }
 
-@utility text-gradient-electric {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary;
+@utility text-gradient-royal {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-primary via-blue-500 to-secondary;
+}
+
+@utility hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
 }
