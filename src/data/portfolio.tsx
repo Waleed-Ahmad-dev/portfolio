@@ -1,14 +1,81 @@
-import { Layout, Database, Cpu, Code } from "lucide-react";
+import { Layout, Database, Cpu, Code, LucideIcon } from "lucide-react";
+
+// --- TYPES (Architectural Improvement for Type Safety) ---
+export interface Socials {
+  github: string;
+  linkedin: string;
+  instagram: string;
+}
+
+export interface PersonalInfo {
+  name: string;
+  alias: string;
+  role: string;
+  age: number;
+  location: string;
+  tagline: string;
+  bio: string;
+  email: string;
+  socials: Socials;
+}
+
+export interface HeroData {
+  status: string;
+  heading: {
+    start: string;
+    highlight: string;
+    end: string;
+  };
+  subHeading: {
+    text: string;
+  };
+  buttons: {
+    primary: string;
+    secondary: string;
+  };
+}
+
+export interface SkillGroup {
+  id: string;
+  title: string;
+  icon: LucideIcon;
+  color: "yellow" | "blue"; // STRICT: Blue/Yellow Theme Only
+  skills: string[];
+}
+
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  desc: string[];
+}
+
+export interface ProjectItem {
+  title: string;
+  category: string;
+  status: string;
+  tech: string[] | string;
+  desc: string;
+  link: string;
+  github: string | null;
+  name?: string; // For playground items
+  type?: string; // For playground items
+}
+
+export interface NavLink {
+  id: string;
+  label: string;
+  link: string;
+}
 
 // --- PERSONAL INFO ---
-export const personalInfo = {
+export const personalInfo: PersonalInfo = {
   name: "Waleed Ahmad",
   alias: "Shadow Scripter",
   role: "Full-Stack Architect",
   age: 16,
   location: "Pakistan",
   tagline: "Architecting scalable digital realms from the shadows.",
-  // Revised professional bio
   bio: "I’m a 16-year-old full-stack developer engineering production-scale applications. I manage end-to-end architecture, backend services, and modern front-end frameworks. O-Levels student during school hours — lead engineer on real enterprise projects after hours.",
   email: "itswaleedqureshi@gmail.com",
   socials: {
@@ -19,7 +86,7 @@ export const personalInfo = {
 };
 
 // --- HERO SECTION DATA ---
-export const heroData = {
+export const heroData: HeroData = {
   status: "System Online",
   heading: {
     start: "Code in the",
@@ -36,13 +103,13 @@ export const heroData = {
 };
 
 // --- SKILL GROUPS ---
-// Colors mapped to: cyan (Primary), blue (Deep), purple (Bridge), red (Secondary)
-export const skillGroups = [
+// UPDATED: Remapped strict color palette (Blue & Yellow)
+export const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     title: "Frontend & Mobile",
     icon: Layout,
-    color: "cyan",
+    color: "yellow", // Highlight/Vibrant
     skills: [
       "Next.js 16",
       "React",
@@ -57,7 +124,7 @@ export const skillGroups = [
     id: "backend",
     title: "Backend Architecture",
     icon: Database,
-    color: "blue",
+    color: "blue", // Deep/Structure
     skills: [
       "Node.js / Express",
       "NestJS",
@@ -72,7 +139,7 @@ export const skillGroups = [
     id: "devops",
     title: "DevOps & Cloud",
     icon: Cpu,
-    color: "purple",
+    color: "blue", // Deep/Structure
     skills: [
       "Docker",
       "Linux (Arch/Ubuntu)",
@@ -86,7 +153,7 @@ export const skillGroups = [
     id: "languages",
     title: "Core Languages",
     icon: Code,
-    color: "red", // Switched to Red to match Secondary theme
+    color: "yellow", // Accent/Core
     skills: [
       "JavaScript (ES6+)",
       "TypeScript",
@@ -99,7 +166,7 @@ export const skillGroups = [
 ];
 
 // --- EXPERIENCE TIMELINE ---
-export const experience = [
+export const experience: ExperienceItem[] = [
   {
     company: "Premier Choice International",
     role: "Full Stack Intern (Lead)",
@@ -143,7 +210,7 @@ export const experience = [
 ];
 
 // --- FEATURED PROJECTS ---
-export const featuredProjects = [
+export const featuredProjects: ProjectItem[] = [
   {
     title: "Premier Choice CMS",
     category: "Enterprise Architecture",
@@ -192,82 +259,102 @@ export const featuredProjects = [
 ];
 
 // --- PLAYGROUND / EXPERIMENTS ---
-export const playground = [
+export const playground: ProjectItem[] = [
   {
+    title: "Xora", // Normalized key to 'title' for consistency, or keep 'name' if UI splits logic
     name: "Xora",
-    type: "SaaS Landing",
+    category: "SaaS Landing",
+    status: "Demo",
     tech: "React / Tailwind",
     link: "https://xora-shadow-scripter.netlify.app/",
     github: "https://github.com/Waleed-Ahmad-dev/Xora",
     desc: "Modern SaaS UI with complex gradients.",
   },
   {
+    title: "Yoom",
     name: "Yoom",
-    type: "Video App",
+    category: "Video App",
+    status: "Demo",
     tech: "Next.js / Stream",
     link: "https://yoom-eight-eta.vercel.app",
     github: "https://github.com/Waleed-Ahmad-dev/Yoom",
     desc: "Zoom clone with real-time streaming.",
   },
   {
+    title: "Shadow Cart",
     name: "Shadow Cart",
-    type: "E-Commerce",
+    category: "E-Commerce",
+    status: "Demo",
     tech: "Redux / React",
     link: "https://shadow-store-ten.vercel.app",
     github: "https://github.com/Waleed-Ahmad-dev/Shadow_Cart",
     desc: "State-managed shopping cart logic.",
   },
   {
+    title: "Memory Game",
     name: "Memory Game",
-    type: "Game Logic",
+    category: "Game Logic",
+    status: "Demo",
     tech: "React Hooks",
     link: "https://memory-game-react-fawn.vercel.app/",
     github: "https://github.com/Waleed-Ahmad-dev/MemoryGame_React",
     desc: "Card flipping memory mechanics.",
   },
   {
+    title: "React To-Do",
     name: "React To-Do",
-    type: "Productivity",
+    category: "Productivity",
+    status: "Demo",
     tech: "React",
     link: "https://to-do-list-react-sandy.vercel.app",
     github: "https://github.com/Waleed-Ahmad-dev/to-do-list-react",
     desc: "Task management with persistence.",
   },
   {
+    title: "The Library",
     name: "The Library",
-    type: "Data Structures",
+    category: "Data Structures",
+    status: "Demo",
     tech: "Vanilla JS",
     link: "https://waleed-ahmad-dev.github.io/Library/",
     github: "https://github.com/Waleed-Ahmad-dev/Library",
     desc: "Object Constructor patterns.",
   },
   {
+    title: "Drawing App",
     name: "Drawing App",
-    type: "Canvas API",
+    category: "Canvas API",
+    status: "Demo",
     tech: "HTML5 Canvas",
     link: "https://waleed-ahmad-dev.github.io/drawing-app/",
     github: "https://github.com/Waleed-Ahmad-dev/drawing-app",
     desc: "Digital sketchpad with controls.",
   },
   {
+    title: "Whack-a-Mole",
     name: "Whack-a-Mole",
-    type: "Browser Game",
+    category: "Browser Game",
+    status: "Demo",
     tech: "DOM Ops",
     link: "https://waleed-ahmad-dev.github.io/Whack-a-Mole/",
     github: "https://github.com/Waleed-Ahmad-dev/Whack-a-Mole",
     desc: "Event-driven arcade logic.",
   },
   {
+    title: "Tic-Tac-Toe",
     name: "Tic-Tac-Toe",
-    type: "Game AI",
+    category: "Game AI",
+    status: "Demo",
     tech: "Minimax Algo",
     link: "https://waleed-ahmad-dev.github.io/Tic-Tac-Toe/",
     github: "https://github.com/Waleed-Ahmad-dev/Tic-Tac-Toe",
     desc: "Unbeatable algorithmic opponent.",
   },
   {
+    title: "Weather App",
     name: "Weather App",
-    type: "API Integration",
+    category: "API Integration",
+    status: "Demo",
     tech: "Fetch API",
     link: "https://waleed-ahmad-dev.github.io/Weather-App/",
     github: "https://github.com/Waleed-Ahmad-dev/Weather-App",
@@ -297,12 +384,13 @@ export const aboutText = {
 };
 
 // --- NAVIGATION ---
-export const navbarData = {
+export const navbarData: { logoText: string; links: NavLink[] } = {
   logoText: "Shadow_Scripter",
   links: [
     { id: "about", label: "_about", link: "#about" },
     { id: "work", label: "_work", link: "#work" },
     { id: "skills", label: "_stack", link: "#skills" },
     { id: "projects", label: "_deployments", link: "#projects" },
+    { id: "contact", label: "_contact", link: "#contact" }, // ADDED: New Contact Field
   ],
 };
