@@ -1,15 +1,15 @@
 "use client";
 
+import About from "@/components/About";
+import ContactForm from "@/components/ContactForm";
+import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 import { motion, useScroll, useSpring } from "framer-motion";
 
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import About from "../components/About";
-import Experience from "../components/Experience";
-import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import Footer from "../components/Footer";
-import ContactForm from "@/components/ContactForm";
 
 export default function Portfolio() {
   // Hook to track vertical scroll progress (0 to 1)
@@ -23,32 +23,32 @@ export default function Portfolio() {
   });
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full min-h-screen">
       {/* === HIGH-ENERGY SCROLL BAR === 
-        A visual indicator of progress that embodies the 'Electric' theme.
-        It transitions from Primary (Blue) to Secondary (Red).
+          A visual indicator of progress that embodies the 'Royal Velocity' theme.
+          It transitions from Royal Blue (Start) to Electric Yellow (Finish).
       */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 z-50 origin-left bg-linear-to-r from-primary via-purple-500 to-secondary shadow-[0_0_15px_rgba(var(--primary),0.8)]"
+        className="fixed top-0 left-0 right-0 h-1.5 z-100 origin-left bg-linear-to-r from-primary via-blue-500 to-secondary shadow-[0_0_20px_var(--color-secondary)]"
         style={{ scaleX }}
       />
 
       <Navbar />
 
       {/* Main Page Flow 
-        Added consistent gap rhythm between sections for better UX 
+          Maintained large vertical rhythm to allow the deep blue background 
+          to act as negative space, drawing focus to the content.
       */}
       <div className="flex flex-col gap-24 md:gap-32 lg:gap-40 pb-20">
         <Hero />
 
-        {/* Wrapper to constrain width on large screens if needed, 
-            though individual components usually handle their own constraints. */}
-        <div className="w-full flex flex-col gap-24 md:gap-32 lg:gap-40">
+        {/* Content Wrapper */}
+        <div className="w-full flex flex-col gap-24 md:gap-32 lg:gap-40 relative z-10">
           <About />
           <Experience />
           <Skills />
           <Projects />
-          <ContactForm /> {/* <--- Added Component here */}
+          <ContactForm />
         </div>
 
         <Footer />
