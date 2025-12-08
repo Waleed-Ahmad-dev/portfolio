@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* THEME SYSTEM: ROYAL VELOCITY 
-   Primary: Deep Royal Blue | Secondary: Electric Yellow
-   Tech: Tailwind v4 + OKLCH Colors for High Gamut Vibrancy
+  Primary: Deep Royal Blue | Secondary: Electric Yellow
+  Tech: Tailwind v4 + OKLCH Colors for High Gamut Vibrancy
 */
 
 @plugin "tailwindcss-animate";
@@ -157,7 +157,7 @@
 }
 
 /* UTILITIES for "Royal Velocity" 
-   Use these classes for instant glass, gradients and glow effects.
+  Use these classes for instant glass, gradients and glow effects.
 */
 @utility glass-panel {
   @apply bg-background/60 backdrop-blur-xl border border-white/10 shadow-xl;
