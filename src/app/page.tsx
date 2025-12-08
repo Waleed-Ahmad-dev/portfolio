@@ -9,6 +9,7 @@ import Experience from "../components/Experience";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Footer from "../components/Footer";
+import ContactForm from "@/components/ContactForm";
 
 export default function Portfolio() {
   // Hook to track vertical scroll progress (0 to 1)
@@ -47,6 +48,7 @@ export default function Portfolio() {
           <Experience />
           <Skills />
           <Projects />
+          <ContactForm /> {/* <--- Added Component here */}
         </div>
 
         <Footer />
