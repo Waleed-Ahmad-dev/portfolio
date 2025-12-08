@@ -26,7 +26,8 @@ export default function Portfolio() {
           without messing up your Hero section's visual design. 
       */}
       <h1 className="sr-only">
-        Waleed Ahmad (Shadow Scripter) - Hire Full Stack Architect & Next.js Developer
+        Waleed Ahmad (Shadow Scripter) - Hire Full Stack Architect & Next.js
+        Developer
       </h1>
 
       {/* === SCROLL PROGRESS BAR === */}
@@ -48,8 +49,8 @@ export default function Portfolio() {
           <ContactForm />
         </div>
 
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }
