@@ -13,6 +13,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 export default function Portfolio() {
   const { scrollYProgress } = useScroll();
 
+  // Smoother spring physics for a "silky" feel
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -22,26 +23,34 @@ export default function Portfolio() {
   return (
     <div className="relative w-full min-h-screen">
       {/* === SEO: HIDDEN PRIMARY HEADING === 
-          This is crucial. It tells Google exactly what this page is about 
-          without messing up your Hero section's visual design. 
+          Crucial for business logic/SEO. Preserved. 
       */}
       <h1 className="sr-only">
         Waleed Ahmad (Shadow Scripter) - Hire Full Stack Architect & Next.js
         Developer
       </h1>
 
-      {/* === SCROLL PROGRESS BAR === */}
+      {/* === SCROLL PROGRESS BAR === 
+          Refactored: Strict Monochrome.
+          Removed gradients and glows. Now a razor-thin, matte indicator.
+      */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 z-100 origin-left bg-linear-to-r from-primary via-blue-500 to-secondary shadow-[0_0_20px_var(--color-secondary)]"
+        className="fixed top-0 left-0 right-0 h-[2px] z-100 origin-left bg-black dark:bg-white"
         style={{ scaleX }}
       />
 
       <Navbar />
 
-      <div className="flex flex-col gap-24 md:gap-32 lg:gap-40 pb-20">
+      {/* Main Content Layout 
+          Increased whitespace (gap) to maximize breathing room.
+      */}
+      <div className="flex flex-col w-full pb-20">
         <Hero />
 
-        <div className="w-full flex flex-col gap-24 md:gap-32 lg:gap-40 relative z-10">
+        {/* Content Flow Container 
+            Centered with strict max-width for readability.
+        */}
+        <div className="flex flex-col gap-32 md:gap-48 relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 mt-24 md:mt-32">
           <About />
           <Experience />
           <Skills />
@@ -49,7 +58,9 @@ export default function Portfolio() {
           <ContactForm />
         </div>
 
-        <Footer />
+        <div className="mt-32 md:mt-48">
+          <Footer />
+        </div>
       </div>
     </div>
   );
