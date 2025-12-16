@@ -4,20 +4,19 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Send,
   Mail,
   MessageSquare,
-  CheckCircle2,
+  Check,
   AlertCircle,
-  Sparkles,
+  ArrowRight,
 } from "lucide-react";
 
 export default function ContactForm() {
   if (!process.env.NEXT_PUBLIC_FORM) {
     return (
-      <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-center font-mono text-sm">
-        <AlertCircle className="inline-block w-4 h-4 mr-2" />
-        Error: NEXT_PUBLIC_FORM ID not found in environment variables.
+      <div className="p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-mono text-xs text-center">
+        <AlertCircle className="inline-block w-4 h-4 mr-2 mb-0.5" />
+        System Error: NEXT_PUBLIC_FORM ID missing.
       </div>
     );
   }
@@ -26,38 +25,31 @@ export default function ContactForm() {
   const [state, handleSubmit] = useForm(formCode);
 
   return (
-    <section className="relative w-full py-10" id="contact">
-      <div className="max-w-md mx-auto relative z-10">
-        {/* Decorative ambient glow behind the form */}
-        <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
-
+    <section
+      className="relative w-full py-24 bg-white dark:bg-black"
+      id="contact"
+    >
+      <div className="max-w-xl mx-auto px-6 relative z-10">
         <AnimatePresence mode="wait">
           {state.succeeded ? (
             <motion.div
               key="success"
-              initial={{ opacity: 0, scale: 0.9, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="glass-panel p-8 rounded-3xl text-center border border-secondary/20 shadow-[0_0_40px_-10px_var(--color-secondary)] flex flex-col items-center justify-center gap-4 bg-background/60 backdrop-blur-xl"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="w-full py-16 flex flex-col items-center justify-center text-center border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-zinc-50 dark:bg-zinc-900/50"
             >
-              <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-2 ring-1 ring-secondary/30">
-                <CheckCircle2 className="w-8 h-8 text-secondary" />
+              <div className="w-12 h-12 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center mb-6">
+                <Check className="w-6 h-6" strokeWidth={2} />
               </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Transmission Received!
-                </h3>
-                <p className="text-blue-200/80 text-sm leading-relaxed">
-                  Your message has been successfully logged in the system.{" "}
-                  <br />I will establish a connection shortly.
-                </p>
-              </div>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-1 bg-linear-to-r from-primary via-secondary to-primary rounded-full mt-4 w-full opacity-50"
-              />
+              <h3 className="text-2xl font-bold text-black dark:text-white mb-2 tracking-tight">
+                Message Sent
+              </h3>
+              <p className="text-zinc-500 max-w-xs mx-auto leading-relaxed">
+                Thank you for reaching out. I will review your inquiry and
+                respond shortly.
+              </p>
             </motion.div>
           ) : (
             <motion.form
@@ -66,101 +58,104 @@ export default function ContactForm() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="glass-panel p-8 rounded-3xl border border-white/10 bg-background/40 backdrop-blur-md shadow-2xl relative overflow-hidden group"
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
+              className="w-full"
             >
               {/* Header */}
-              <div className="mb-8 text-center relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono mb-3">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                  </span>
-                  OPEN FOR WORK
+              <div className="mb-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-mono tracking-widest uppercase mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                  Status: Available
                 </div>
-                <h2 className="text-3xl font-bold text-white tracking-tight">
-                  Initialize <span className="text-secondary">Uplink</span>
+                <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-tighter mb-4">
+                  Let&apos;s Talk.
                 </h2>
-                <p className="text-blue-200/60 text-sm mt-2">
-                  Send a secure message to my terminal.
+                <p className="text-zinc-500 dark:text-zinc-400 text-lg">
+                  Have a project in mind? Send a direct message.
                 </p>
               </div>
 
-              <div className="space-y-6 relative z-10">
+              <div className="space-y-8">
                 {/* Email Field */}
-                <div className="group/input relative">
-                  <label htmlFor="email" className="sr-only">
+                <div className="group relative">
+                  <label
+                    htmlFor="email"
+                    className="block text-xs font-semibold uppercase tracking-wider text-black dark:text-white mb-2 ml-1"
+                  >
                     Email Address
                   </label>
-                  <div className="absolute left-4 top-3.5 text-blue-300/50 group-focus-within/input:text-primary transition-colors">
-                    <Mail size={18} />
+                  <div className="relative">
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      placeholder="name@example.com"
+                      required
+                      className="w-full pl-4 pr-4 py-4 bg-transparent border-b border-zinc-200 dark:border-zinc-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 text-black dark:text-white placeholder:text-zinc-300 dark:placeholder:text-zinc-700 font-medium"
+                    />
+                    <div className="absolute right-0 top-4 text-zinc-300 dark:text-zinc-700 pointer-events-none">
+                      <Mail size={18} strokeWidth={1.5} />
+                    </div>
                   </div>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    placeholder="protocol@example.com"
-                    required
-                    className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:bg-white/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-blue-100 placeholder:text-blue-200/30"
-                  />
                   <ValidationError
                     prefix="Email"
                     field="email"
                     errors={state.errors}
-                    className="text-red-400 text-xs mt-1 ml-1 flex items-center gap-1"
+                    className="text-black dark:text-white text-xs mt-2 font-mono flex items-center gap-1 underline decoration-zinc-400"
                   />
                 </div>
 
                 {/* Message Field */}
-                <div className="group/input relative">
-                  <label htmlFor="message" className="sr-only">
+                <div className="group relative">
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-semibold uppercase tracking-wider text-black dark:text-white mb-2 ml-1"
+                  >
                     Message
                   </label>
-                  <div className="absolute left-4 top-3.5 text-blue-300/50 group-focus-within/input:text-primary transition-colors">
-                    <MessageSquare size={18} />
+                  <div className="relative">
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="Tell me about your project..."
+                      required
+                      className="w-full pl-4 pr-4 py-4 bg-transparent border-b border-zinc-200 dark:border-zinc-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 resize-none text-black dark:text-white placeholder:text-zinc-300 dark:placeholder:text-zinc-700 font-medium leading-relaxed"
+                    />
+                    <div className="absolute right-0 top-4 text-zinc-300 dark:text-zinc-700 pointer-events-none">
+                      <MessageSquare size={18} strokeWidth={1.5} />
+                    </div>
                   </div>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    placeholder="Enter mission details..."
-                    required
-                    className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:bg-white/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all resize-none text-blue-100 placeholder:text-blue-200/30"
-                  />
                   <ValidationError
                     prefix="Message"
                     field="message"
                     errors={state.errors}
-                    className="text-red-400 text-xs mt-1 ml-1 flex items-center gap-1"
+                    className="text-black dark:text-white text-xs mt-2 font-mono flex items-center gap-1 underline decoration-zinc-400"
                   />
                 </div>
 
                 {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={state.submitting}
-                  className="w-full relative overflow-hidden group/btn bg-secondary hover:bg-yellow-400 text-black font-bold py-3.5 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(var(--secondary),0.4)] disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={state.submitting}
+                    className="w-full group bg-black dark:bg-white text-white dark:text-black font-semibold text-lg py-5 rounded-lg transition-all duration-300 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                  >
                     {state.submitting ? (
-                      <>
-                        <Sparkles className="animate-spin w-4 h-4" />
-                        Transmitting...
-                      </>
+                      <span className="text-sm font-mono animate-pulse">
+                        PROCESSING...
+                      </span>
                     ) : (
                       <>
-                        Launch Message
-                        <Send
-                          size={16}
-                          className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
+                        Send Message
+                        <ArrowRight
+                          size={18}
+                          className="transition-transform duration-300 group-hover:translate-x-1"
                         />
                       </>
                     )}
-                  </span>
-
-                  {/* Button Glare Effect */}
-                  <div className="absolute inset-0 -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite] bg-linear-to-r from-transparent via-white/20 to-transparent z-0" />
-                </button>
+                  </button>
+                </div>
               </div>
             </motion.form>
           )}
