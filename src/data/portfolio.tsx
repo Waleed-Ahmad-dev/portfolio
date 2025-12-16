@@ -39,7 +39,6 @@ export interface SkillGroup {
   id: string;
   title: string;
   icon: LucideIcon;
-  color: "yellow" | "blue";
   skills: string[];
 }
 
@@ -59,7 +58,7 @@ export interface ProjectItem {
   link: string;
   github: string | null;
   name?: string;
-  type?: string; // STRICT: Required for existing getPlaygroundIcon logic
+  type?: string; // STRICT: Required for playground icon logic
 }
 
 export interface NavLink {
@@ -75,7 +74,7 @@ export const personalInfo: PersonalInfo = {
   role: "Full-Stack Architect",
   age: 16,
   location: "Pakistan",
-  tagline: "Architecting scalable digital realms from the shadows.",
+  tagline: "Engineering scalable digital architectures.",
   bio: "I’m a 16-year-old full-stack developer engineering production-scale applications. I manage end-to-end architecture, backend services, and modern front-end frameworks. O-Levels student during school hours — lead engineer on real enterprise projects after hours.",
   email: "itswaleedqureshi@gmail.com",
   socials: {
@@ -87,14 +86,14 @@ export const personalInfo: PersonalInfo = {
 
 // --- HERO SECTION DATA ---
 export const heroData: HeroData = {
-  status: "System Online",
+  status: "Available for Hire",
   heading: {
-    start: "Code in the",
-    highlight: "Shadows.",
-    end: "Brilliance on the Screen.",
+    start: "Building",
+    highlight: "Digital Reality",
+    end: "for the web.",
   },
   subHeading: {
-    text: "I manage end-to-end architecture, backend services, and modern front-end frameworks. Building enterprise-grade systems while balancing O-Levels.",
+    text: "focusing on performance, scalability, and electric user experiences.",
   },
   buttons: {
     primary: "View Projects",
@@ -108,57 +107,46 @@ export const skillGroups: SkillGroup[] = [
     id: "frontend",
     title: "Frontend & Mobile",
     icon: Layout,
-    color: "yellow",
     skills: [
       "Next.js 16",
       "React",
       "React Native (Expo)",
       "TypeScript",
       "Tailwind CSS",
-      "Three.js / Framer",
-      "Vite",
+      "Three.js",
+      "Framer Motion",
     ],
   },
   {
     id: "backend",
     title: "Backend Architecture",
     icon: Database,
-    color: "blue",
     skills: [
-      "Node.js / Express",
+      "Node.js",
       "NestJS",
-      "PostgreSQL / Prisma",
+      "PostgreSQL",
+      "Prisma",
       "MongoDB",
       "Redis",
-      "Python (FastAPI)",
-      "Socket.io",
+      "FastAPI",
     ],
   },
   {
     id: "devops",
     title: "DevOps & Cloud",
     icon: Cpu,
-    color: "blue",
-    skills: [
-      "Docker",
-      "Linux (Arch/Ubuntu)",
-      "AWS / Google Cloud",
-      "GitHub Actions",
-      "Nginx",
-      "Vercel",
-    ],
+    skills: ["Docker", "Linux", "AWS", "GitHub Actions", "Nginx", "Vercel"],
   },
   {
     id: "languages",
     title: "Core Languages",
     icon: Code,
-    color: "yellow",
     skills: [
       "JavaScript (ES6+)",
       "TypeScript",
       "Python",
       "SQL",
-      "Bash / PowerShell",
+      "Bash",
       "Go (Learning)",
     ],
   },
@@ -258,7 +246,6 @@ export const featuredProjects: ProjectItem[] = [
 ];
 
 // --- PLAYGROUND / EXPERIMENTS ---
-// FIX: Restored 'type' property to ensure backward compatibility with getPlaygroundIcon
 export const playground: ProjectItem[] = [
   {
     title: "Xora",
@@ -387,20 +374,19 @@ export const aboutText = {
     main: "I got serious about coding at",
     age: "14",
     highlight: "The Odin Project",
-    end: "while juggling school. Now at 16, I’m not just learning — I’m shipping real products that people actually use.",
+    end: "while juggling school. Now at 16, I’m not just learning — I’m shipping real products.",
   },
-  p2: "I’m an O-Levels student and a Lead Developer intern, with a soft spot for backend work: fast APIs, clean architecture, and databases that don’t fall apart. Still, I can jump to the frontend anytime and build something that feels smooth and modern.",
-  p3: "From a custom CMS for a big real-estate client to a full LMS, I love building software that solves real problems and makes life easier. The goal is simple: create things that work, ship them fast, and keep leveling up.",
+  p3: "From a custom CMS for a big real-estate client to a full LMS, I love building software that solves real problems. The goal is simple: create things that work, ship them fast, and keep leveling up.",
 };
 
 // --- NAVIGATION ---
 export const navbarData: { logoText: string; links: NavLink[] } = {
-  logoText: "Shadow_Scripter",
+  logoText: "Shadow Scripter",
   links: [
-    { id: "about", label: "_about", link: "#about" },
-    { id: "work", label: "_work", link: "#work" },
-    { id: "skills", label: "_stack", link: "#skills" },
-    { id: "projects", label: "_deployments", link: "#projects" },
-    { id: "contact", label: "_contact", link: "#contact" },
+    { id: "about", label: "About", link: "#about" },
+    { id: "work", label: "Work", link: "#work" },
+    { id: "skills", label: "Stack", link: "#skills" },
+    { id: "projects", label: "Projects", link: "#projects" },
+    { id: "contact", label: "Contact", link: "#contact" },
   ],
 };
