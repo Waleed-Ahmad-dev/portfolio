@@ -4,7 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
-// Optimize fonts
+// Optimize fonts - Retained as they fit the minimalist aesthetic perfectly
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -17,9 +17,9 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-// Viewport optimization for mobile responsiveness
+// Viewport optimization
 export const viewport: Viewport = {
-  themeColor: "#0B1121",
+  themeColor: "#000000", // Neutral Black for sophisticated browser integration
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -59,13 +59,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-
-  // Canonical URL to prevent duplicate content issues
   alternates: {
     canonical: DOMAIN,
   },
-
-  // Open Graph for Facebook/LinkedIn/Discord
   openGraph: {
     type: "profile",
     firstName: "Waleed",
@@ -79,7 +75,7 @@ export const metadata: Metadata = {
     siteName: "Shadow Scripter Portfolio",
     images: [
       {
-        url: "/og-image.png", // Ensure you have a 1200x630px image in your public folder
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Shadow Scripter - Full Stack Architect Portfolio",
@@ -87,18 +83,14 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
   },
-
-  // Twitter Card
   twitter: {
     card: "summary_large_image",
     title: `${NAME} (${ALIAS}) | Hire Top Tech Talent`,
     description:
       "16-year-old Lead Engineer. Specializing in Next.js, Node.js, and Cloud Architecture.",
     images: ["/og-image.png"],
-    creator: "@shadow_scripter", // Replace if you have a specific handle
+    creator: "@shadow_scripter",
   },
-
-  // Robots directives
   robots: {
     index: true,
     follow: true,
@@ -110,7 +102,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   icons: {
     icon: "/favicon.jpg",
     apple: "/apple-touch-icon.png",
@@ -123,7 +114,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // --- JSON-LD STRUCTURED DATA ---
-  // This is the "Secret Weapon" that connects your alias to your real identity for Google.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -157,9 +147,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth dark">
+    <html lang="en" className="scroll-smooth">
       <head>
-        {/* Inject Structured Data */}
         <Script
           id="json-ld-person"
           type="application/ld+json"
@@ -168,14 +157,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrains.variable} min-h-screen bg-background text-foreground antialiased selection:bg-secondary selection:text-secondary-foreground overflow-x-hidden`}
+        className={`${inter.variable} ${jetbrains.variable} min-h-screen bg-white dark:bg-black text-black dark:text-white antialiased selection:bg-zinc-200 selection:text-black dark:selection:bg-zinc-800 dark:selection:text-white overflow-x-hidden`}
       >
-        {/* === AMBIENT BACKGROUND SYSTEM === */}
-        <div className="fixed inset-0 z-[-1] opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-        <div className="fixed inset-0 -z-30 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="fixed -left-[10%] -top-[10%] -z-20 h-[500px] w-[500px] rounded-full bg-primary/30 blur-[120px] pointer-events-none mix-blend-screen animate-float"></div>
-        <div className="fixed -right-[5%] top-[20%] -z-20 h-[400px] w-[400px] rounded-full bg-secondary/20 blur-[100px] pointer-events-none mix-blend-screen animate-pulse-glow"></div>
-        <div className="fixed bottom-0 left-0 -z-20 h-[300px] w-[600px] rounded-full bg-primary/10 blur-[100px] pointer-events-none"></div>
+        {/* === ARCHITECTURAL BACKGROUND SYSTEM === */}
+        {/* Strictly monochromatic. No colors/blobs. Just a faint structural grid. */}
+        <div className="fixed inset-0 z-[-1] bg-white dark:bg-black pointer-events-none">
+          {/* Micro-grid for technical texture (Opacity 3% - Barely visible) */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[24px_24px]"></div>
+        </div>
 
         {/* === MAIN CONTENT === */}
         <main className="relative flex min-h-screen flex-col font-sans">
