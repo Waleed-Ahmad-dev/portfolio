@@ -11,8 +11,6 @@ import {
   ShoppingCart,
   Calculator,
   ArrowUpRight,
-  FlaskConical,
-  Zap,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import ProjectCard from "./ProjectCard";
@@ -72,7 +70,7 @@ const defaultPlayground = [
 const featuredProjects = importedProjects || defaultFeatured;
 const playground = importedPlayground || defaultPlayground;
 
-// --- Animation Variants ---
+// --- Minimalist Animation Variants ---
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -88,33 +86,31 @@ const itemVariants: Variants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.4, type: "spring", stiffness: 50 },
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
   },
 };
 
 // --- Helper to get icons for playground items ---
 const getPlaygroundIcon = (type: string) => {
   const t = type.toLowerCase();
-  if (t.includes("game")) return <Gamepad2 size={18} />;
+  const props = { size: 18, strokeWidth: 1.5 };
+
+  if (t.includes("game")) return <Gamepad2 {...props} />;
   if (t.includes("saas") || t.includes("ui") || t.includes("component"))
-    return <Layout size={18} />;
-  if (t.includes("commerce")) return <ShoppingCart size={18} />;
-  if (t.includes("tool") || t.includes("algo")) return <Calculator size={18} />;
-  return <Cpu size={18} />;
+    return <Layout {...props} />;
+  if (t.includes("commerce")) return <ShoppingCart {...props} />;
+  if (t.includes("tool") || t.includes("algo"))
+    return <Calculator {...props} />;
+  return <Cpu {...props} />;
 };
 
 const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-32 px-4 md:px-8 relative overflow-hidden"
+      className="py-32 px-6 md:px-12 bg-white dark:bg-black"
     >
-      {/* --- Ambient Background (Blue Vibe) --- */}
-      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="absolute right-0 top-1/4 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute left-0 bottom-1/4 w-[500px] h-[500px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         {/* --- Featured Projects Section --- */}
         <div className="mb-32">
           <SectionHeader
@@ -127,7 +123,7 @@ const Projects = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-2 gap-8 lg:gap-12 mt-20"
+            className="grid md:grid-cols-2 gap-8 lg:gap-12 mt-24"
           >
             {featuredProjects.map((project: any, index: number) => (
               <ProjectCard key={index} project={project} index={index} />
@@ -135,35 +131,20 @@ const Projects = () => {
           </motion.div>
         </div>
 
-        {/* --- The "Laser" Divider (Yellow Beam) --- */}
-        <div className="relative mb-24">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full h-px bg-linear-to-r from-transparent via-secondary/50 to-transparent shadow-[0_0_10px_var(--color-secondary)]" />
-          </div>
-          <div className="relative flex justify-center">
-            <span className="bg-[#0B1121] px-6 py-1.5 text-xs font-bold font-mono text-secondary flex items-center gap-3 border border-secondary/30 rounded-full shadow-[0_0_20px_rgba(var(--secondary),0.15)]">
-              <Zap size={14} className="fill-secondary animate-pulse" />
-              EXPERIMENTAL_ZONE
-              <FlaskConical size={14} className="text-blue-400" />
-            </span>
-          </div>
-        </div>
+        {/* --- Minimalist Divider --- */}
+        <div className="w-full h-px bg-zinc-200 dark:bg-zinc-800 mb-24" />
 
         {/* --- Playground Section --- */}
-        <div className="space-y-12">
-          {/* Terminal-style Header */}
-          <div className="flex items-center gap-4 pl-4 border-l-2 border-primary/50">
-            <div className="p-2.5 bg-primary/10 rounded-xl border border-primary/20">
-              <Terminal className="text-primary" size={24} />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-mono font-bold text-white tracking-tight flex items-center gap-3">
-              <span className="text-primary select-none">$</span>
-              ls ./playground
-              <span className="w-2.5 h-6 bg-secondary animate-pulse ml-1 shadow-[0_0_10px_var(--color-secondary)]" />
+        <div className="space-y-16">
+          {/* Minimal Terminal Header */}
+          <div className="flex flex-col md:flex-row md:items-baseline gap-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-black dark:text-white tracking-tight flex items-center gap-3">
+              <Terminal size={24} strokeWidth={1.5} />
+              <span className="font-mono">./playground</span>
             </h3>
+            <p className="text-zinc-500 dark:text-zinc-400 text-sm font-mono border-l border-zinc-200 dark:border-zinc-800 pl-4">
+              Experimental components and micro-interactions.
+            </p>
           </div>
 
           <motion.div
@@ -180,39 +161,33 @@ const Projects = () => {
                 href={item.link}
                 target="_blank"
                 rel="noreferrer"
-                className="group relative glass-panel p-6 rounded-3xl border-white/5 bg-[#0B1121]/60 hover:border-secondary/40 transition-all duration-300 flex flex-col h-full hover:-translate-y-2 hover:shadow-[0_0_30px_-10px_rgba(var(--secondary),0.15)]"
+                className="group relative flex flex-col h-full p-6 rounded-lg bg-zinc-50 dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition-all duration-300 hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-none hover:-translate-y-1"
               >
-                {/* Hover Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl" />
-
                 {/* Header: Icon & Name */}
-                <div className="relative z-10 flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-3 text-blue-200/70 group-hover:text-white transition-colors font-bold text-sm">
-                    <div className="p-2.5 bg-white/5 rounded-xl border border-white/5 group-hover:bg-secondary/10 group-hover:border-secondary/20 transition-colors">
-                      <span className="text-blue-300 group-hover:text-secondary transition-colors">
-                        {getPlaygroundIcon(item.type)}
-                      </span>
-                    </div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-2 bg-white dark:bg-black rounded-md border border-zinc-200 dark:border-zinc-800 text-black dark:text-white group-hover:scale-105 transition-transform">
+                    {getPlaygroundIcon(item.type)}
                   </div>
                   <ArrowUpRight
                     size={16}
-                    className="text-blue-200/30 -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 group-hover:text-secondary"
+                    strokeWidth={1.5}
+                    className="text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors"
                   />
                 </div>
 
                 {/* Name */}
-                <h4 className="relative z-10 text-lg font-bold text-white mb-2 group-hover:text-secondary transition-colors">
+                <h4 className="text-lg font-bold text-black dark:text-white mb-2 tracking-tight">
                   {item.name}
                 </h4>
 
                 {/* Description */}
-                <p className="relative z-10 text-xs text-blue-200/50 mb-6 line-clamp-2 grow font-medium leading-relaxed">
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-8 grow leading-relaxed">
                   {item.desc}
                 </p>
 
-                {/* Footer: Tech Badge */}
-                <div className="relative z-10 mt-auto pt-4 border-t border-white/5 flex justify-between items-center group-hover:border-white/10">
-                  <span className="text-[10px] font-mono font-bold text-secondary bg-secondary/5 px-2.5 py-1 rounded-md border border-secondary/10 group-hover:bg-secondary/10 transition-colors uppercase tracking-wider">
+                {/* Footer: Type Badge */}
+                <div className="mt-auto pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                  <span className="text-[10px] font-mono font-medium text-zinc-400 uppercase tracking-widest group-hover:text-black dark:group-hover:text-white transition-colors">
                     {item.type}
                   </span>
                 </div>
