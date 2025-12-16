@@ -3,7 +3,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Calendar, Briefcase, Zap } from "lucide-react";
+import { Calendar } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import { experience as importedExperience } from "@/data/portfolio";
 
@@ -42,7 +42,7 @@ const Experience = () => {
     offset: ["start center", "end center"],
   });
 
-  // Smooth out the progress for the "Power Rail" fill
+  // Smooth out the progress for the vertical line
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -52,35 +52,24 @@ const Experience = () => {
   return (
     <section
       id="work"
-      className="py-24 px-4 md:px-8 relative overflow-hidden"
+      className="py-32 px-6 md:px-12 relative bg-white dark:bg-black overflow-hidden"
       ref={containerRef}
     >
-      {/* Background Decor - Circuit Board Vibe (Blue/Yellow Theme) */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Left Circuit Line */}
-        <div className="absolute left-[8%] top-0 w-px h-full bg-linear-to-b from-transparent via-primary/10 to-transparent" />
-        {/* Right Circuit Line */}
-        <div className="absolute right-[8%] top-0 w-px h-full bg-linear-to-b from-transparent via-secondary/5 to-transparent" />
-
-        {/* Glowing Orb - Deep Blue */}
-        <div className="absolute top-1/3 left-0 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full" />
-      </div>
-
       <div className="max-w-5xl mx-auto relative z-10">
         <SectionHeader
           title="Career Log"
           subtitle="System upgrades and deployed experience."
         />
 
-        <div className="relative mt-24 space-y-16">
-          {/* === THE POWER RAIL (Timeline) === */}
+        <div className="relative mt-24 space-y-12">
+          {/* === THE MINIMALIST TIMELINE === */}
 
-          {/* 1. The Base Track (Dimmed Blue) */}
-          <div className="absolute left-4 md:left-9 top-0 bottom-0 w-0.5 bg-white/5 rounded-full" />
+          {/* 1. The Base Track (Subtle Zinc) */}
+          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-zinc-200 dark:bg-zinc-800" />
 
-          {/* 2. The Active Energy Beam (Blue -> Yellow Gradient) */}
+          {/* 2. The Active Progress Line (Solid Black/White) */}
           <motion.div
-            className="absolute left-4 md:left-9 top-0 w-0.5 bg-linear-to-b from-primary via-blue-400 to-secondary rounded-full origin-top shadow-[0_0_20px_var(--color-primary)]"
+            className="absolute left-[19px] top-0 w-px bg-black dark:bg-white origin-top"
             style={{ scaleY, height: "100%" }}
           />
 
@@ -98,70 +87,56 @@ const Experience = () => {
 const ExperienceCard = ({ exp, index }: { exp: any; index: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: index * 0.15, duration: 0.6, type: "spring" }}
-      className="relative pl-16 md:pl-28 group"
+      transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+      className="relative pl-16 md:pl-24 group"
     >
-      {/* === JUNCTION POINT (Timeline Dot) === */}
-      <div className="absolute left-0 md:left-5 top-0 w-8 h-8 md:w-9 md:h-9 flex items-center justify-center z-20">
-        {/* Outer Ring - Turns Yellow on Hover */}
-        <div className="absolute inset-0 bg-[#0B1121] rounded-full border-2 border-white/10 group-hover:border-secondary/80 transition-colors duration-500" />
-
-        {/* Inner Core - Pulses Yellow on hover */}
-        <div className="relative w-2.5 h-2.5 bg-blue-400/50 rounded-full group-hover:bg-secondary group-hover:shadow-[0_0_15px_var(--color-secondary)] transition-all duration-300 group-hover:scale-150">
-          <div className="absolute inset-0 bg-secondary rounded-full animate-ping opacity-0 group-hover:opacity-100" />
-        </div>
+      {/* === TIMELINE NODE === */}
+      <div className="absolute left-0 top-1.5 w-10 h-10 flex items-center justify-center z-20 bg-white dark:bg-black">
+        {/* Minimalist Dot */}
+        <div className="w-2.5 h-2.5 rounded-full border border-zinc-400 dark:border-zinc-600 bg-white dark:bg-black group-hover:scale-125 group-hover:bg-black dark:group-hover:bg-white group-hover:border-black dark:group-hover:border-white transition-all duration-300" />
       </div>
 
-      {/* === HOLOGRAPHIC CARD === */}
-      <div className="glass-panel p-6 md:p-8 rounded-3xl relative overflow-hidden transition-all duration-500 hover:scale-[1.01] border-white/5 hover:border-secondary/40 group-hover:shadow-[0_0_30px_-10px_rgba(var(--secondary),0.15)] bg-[#0B1121]/60">
-        {/* Decorative Corner Gradient (Blue -> Yellow) */}
-        <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-white/5 to-transparent -mr-10 -mt-10 rounded-bl-[40px] transition-colors group-hover:from-secondary/10" />
-
+      {/* === CONTENT CONTAINER === */}
+      {/* Subtle hover state: vertical strip appears on the left */}
+      <div className="p-6 rounded-lg transition-all duration-300 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 border border-transparent hover:border-zinc-200 dark:hover:border-zinc-800">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 relative z-10">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-6">
           <div>
-            <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-secondary transition-colors flex items-center gap-3">
+            <h3 className="text-xl md:text-2xl font-bold text-black dark:text-white tracking-tight">
               {exp.role}
-              <Zap
-                size={18}
-                className="text-secondary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 fill-secondary"
-              />
             </h3>
-            <div className="flex items-center gap-2 mt-2">
-              <Briefcase size={14} className="text-primary" />
-              <p className="text-lg text-blue-200 font-mono tracking-tight">
-                {exp.company}
-              </p>
+            <div className="text-base text-zinc-500 dark:text-zinc-400 font-medium mt-1">
+              {exp.company}
             </div>
           </div>
 
           {/* Date Badge */}
-          <div className="self-start md:self-center flex items-center gap-2 text-xs font-mono font-bold text-blue-200/70 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20 group-hover:border-secondary/30 group-hover:text-secondary transition-colors shadow-inner shadow-primary/5">
-            <Calendar size={12} />
+          <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 uppercase tracking-wider border border-zinc-200 dark:border-zinc-800 rounded px-2 py-1">
+            <Calendar size={12} strokeWidth={1.5} />
             {exp.period}
           </div>
         </div>
 
         {/* Description List */}
-        <ul className="space-y-4 relative z-10">
+        <ul className="space-y-3">
           {Array.isArray(exp.desc) ? (
             exp.desc.map((item: string, i: number) => (
               <li
                 key={i}
-                className="flex items-start gap-4 text-blue-100/70 text-sm md:text-base leading-relaxed group/item hover:text-white transition-colors"
+                className="flex items-start gap-3 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed"
               >
-                {/* Custom Bullet Point */}
-                <div className="mt-2 shrink-0">
-                  <div className="w-1.5 h-1.5 rounded-sm bg-primary/40 group-hover/item:bg-secondary group-hover/item:shadow-[0_0_8px_var(--color-secondary)] transition-all duration-300 rotate-45" />
-                </div>
+                {/* Square Bullet */}
+                <div className="mt-2 w-1 h-1 bg-zinc-300 dark:bg-zinc-700 shrink-0 rotate-45 group-hover:bg-black dark:group-hover:bg-white transition-colors duration-300" />
                 <span>{item}</span>
               </li>
             ))
           ) : (
-            <p className="text-blue-100/70 text-sm">{exp.desc}</p>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+              {exp.desc}
+            </p>
           )}
         </ul>
       </div>
