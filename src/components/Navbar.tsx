@@ -81,7 +81,9 @@ const Navbar = () => {
                 href={item.link}
                 onMouseEnter={() => setHoveredLink(item.id)}
                 onMouseLeave={() => setHoveredLink(null)}
-                className="relative px-5 py-2 text-xs font-medium transition-colors rounded-full"
+                onFocus={() => setHoveredLink(item.id)}
+                onBlur={() => setHoveredLink(null)}
+                className="relative px-5 py-2 text-xs font-medium transition-colors rounded-full focus:outline-none"
               >
                 {/* Text Content */}
                 <span
