@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import { useForm, ValidationError } from "@formspree/react";
@@ -12,6 +11,9 @@ import {
 } from "lucide-react";
 
 export default function ContactForm() {
+  const formCode: string = process.env.NEXT_PUBLIC_FORM || "";
+  const [state, handleSubmit] = useForm(formCode);
+
   if (!process.env.NEXT_PUBLIC_FORM) {
     return (
       <div className="p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-mono text-xs text-center">
@@ -20,9 +22,6 @@ export default function ContactForm() {
       </div>
     );
   }
-
-  const formCode: string = process.env.NEXT_PUBLIC_FORM;
-  const [state, handleSubmit] = useForm(formCode);
 
   return (
     <section
@@ -91,6 +90,7 @@ export default function ContactForm() {
                       name="email"
                       placeholder="name@example.com"
                       required
+                      maxLength={254}
                       className="w-full pl-4 pr-4 py-4 bg-transparent border-b border-zinc-200 dark:border-zinc-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 text-black dark:text-white placeholder:text-zinc-300 dark:placeholder:text-zinc-700 font-medium"
                     />
                     <div className="absolute right-0 top-4 text-zinc-300 dark:text-zinc-700 pointer-events-none">
@@ -120,6 +120,7 @@ export default function ContactForm() {
                       rows={4}
                       placeholder="Tell me about your project..."
                       required
+                      maxLength={5000}
                       className="w-full pl-4 pr-4 py-4 bg-transparent border-b border-zinc-200 dark:border-zinc-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 resize-none text-black dark:text-white placeholder:text-zinc-300 dark:placeholder:text-zinc-700 font-medium leading-relaxed"
                     />
                     <div className="absolute right-0 top-4 text-zinc-300 dark:text-zinc-700 pointer-events-none">
