@@ -48,7 +48,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       }}
       className="group h-full"
     >
-      <div className="flex flex-col h-full bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 md:p-8 transition-all duration-300 hover:border-black dark:hover:border-white hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-none">
+      <div className="flex flex-col h-full bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 md:p-8 transition-all duration-300 hover:border-black dark:hover:border-white hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-none focus-within:border-black dark:focus-within:border-white focus-within:shadow-lg focus-within:shadow-zinc-200/50 dark:focus-within:shadow-none">
         {/* --- Card Header --- */}
         <div className="flex justify-between items-start mb-8">
           {/* Category Badge */}
@@ -68,8 +68,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                aria-label="View Source Code"
+                className="text-zinc-400 hover:text-black dark:hover:text-white focus:text-black dark:focus:text-white transition-colors duration-200"
+                aria-label="View Source Code (opens in new tab)"
               >
                 <Github size={18} strokeWidth={1.5} />
               </a>
@@ -79,8 +79,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                aria-label="View Live Project"
+                className="text-zinc-400 hover:text-black dark:hover:text-white focus:text-black dark:focus:text-white transition-colors duration-200"
+                aria-label="View Live Project (opens in new tab)"
               >
                 <ExternalLink size={18} strokeWidth={1.5} />
               </a>

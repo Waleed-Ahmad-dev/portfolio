@@ -159,6 +159,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrains.variable} min-h-screen bg-white dark:bg-black text-black dark:text-white antialiased selection:bg-zinc-200 selection:text-black dark:selection:bg-zinc-800 dark:selection:text-white overflow-x-hidden`}
       >
+        {/* Skip to content link for accessibility */}
+        <a
+          href="#main-content"
+          className="absolute left-4 top-4 z-[9999] -translate-y-[150%] rounded-md bg-black px-4 py-2 text-white transition-transform focus:translate-y-0 dark:bg-white dark:text-black"
+        >
+          Skip to content
+        </a>
+
         {/* === ARCHITECTURAL BACKGROUND SYSTEM === */}
         {/* Strictly monochromatic. No colors/blobs. Just a faint structural grid. */}
         <div className="fixed inset-0 z-[-1] bg-white dark:bg-black pointer-events-none">
@@ -167,7 +175,10 @@ export default function RootLayout({
         </div>
 
         {/* === MAIN CONTENT === */}
-        <main className="relative flex min-h-screen flex-col font-sans">
+        <main
+          id="main-content"
+          className="relative flex min-h-screen flex-col font-sans"
+        >
           {children}
           <Analytics />
         </main>
