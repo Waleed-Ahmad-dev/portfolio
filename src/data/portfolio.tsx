@@ -80,7 +80,7 @@ export const personalInfo: PersonalInfo = {
   socials: {
     github: "https://github.com/Waleed-Ahmad-dev",
     linkedin: "https://linkedin.com/in/waleed-ahmed2009",
-    instagram: "https://instagram.com/shadow.scripter",
+    instagram: "https://instagram.com/shadow.scripter.8",
   },
 };
 
