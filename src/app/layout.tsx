@@ -162,7 +162,7 @@ export default function RootLayout({
         {/* Skip to content link for accessibility */}
         <a
           href="#main-content"
-          className="absolute left-4 top-4 z-[9999] -translate-y-[150%] rounded-md bg-black px-4 py-2 text-white transition-transform focus:translate-y-0 dark:bg-white dark:text-black"
+          className="absolute left-4 top-4 z-9999 -translate-y-[150%] rounded-md bg-black px-4 py-2 text-white transition-transform focus:translate-y-0 dark:bg-white dark:text-black"
         >
           Skip to content
         </a>
