@@ -8,12 +8,15 @@ import {
   aboutText as importedText,
   aboutStats as importedStats,
 } from "@/data/portfolio";
+import { calculateAge } from "@/lib/utils";
 
 // --- Data Logic Preserved ---
 const defaultText = {
   p1: {
     main: "I am",
-    age: "16 years old",
+    get age() {
+      return `${calculateAge("2009-08-21")} years old`;
+    },
     highlight: "Next.js Architecture",
     end: "enthusiast.",
   },
