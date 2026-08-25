@@ -11,11 +11,14 @@ import {
   personalInfo as importedInfo,
   heroData as importedHero,
 } from "@/data/portfolio";
+import { calculateAge } from "@/lib/utils";
 
 // --- Fallback Data ---
 const defaultInfo = {
   alias: "Shadow Scripter",
-  age: "16",
+  get age() {
+    return calculateAge("2009-08-21").toString();
+  },
   role: "Full Stack Architect",
   socials: { github: "#" },
 };
