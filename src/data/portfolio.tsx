@@ -118,13 +118,13 @@ export const skillGroups: SkillGroup[] = [
     id: "backend",
     title: "Backend Architecture",
     icon: Database,
-    skills: ["Node.js", "NestJS", "Go", "PostgreSQL", "Prisma", "Drizzle ORM", "MongoDB", "Redis", "FastAPI"],
+    skills: ["Node.js", "NestJS", "FastAPI", "LangGraph", "PostgreSQL", "Prisma", "Drizzle ORM", "RabbitMQ", "Redis", "MongoDB"],
   },
   {
     id: "devops",
     title: "DevOps & Cloud",
     icon: Cpu,
-    skills: ["Docker", "Linux (Arch)", "KDE Plasma", "AWS", "GitHub Actions", "Nginx", "Vercel"],
+    skills: ["Docker", "Dokploy", "Linux (Arch)", "KDE Plasma", "AWS", "GitHub Actions", "Nginx", "Vercel"],
   },
   {
     id: "languages",
@@ -141,8 +141,10 @@ export const experience: ExperienceItem[] = [
     role: "Junior Backend Developer",
     period: "Sept 2026 – Present",
     desc: [
-      "Engineering scalable backend services and microservice architecture.",
-      "Developing high-performance REST APIs and optimizing database models and queries.",
+      "Architecting & coding NestJS microservices across Core, Operations, Compliance, and Platform domains with Prisma, PostgreSQL, and RabbitMQ.",
+      "Owning Python/FastAPI AI agent backends orchestrated with LangGraph, custom CRM schemas, and LLM Routers.",
+      "Managing self-hosted Docker deployments via Dokploy across Dev, QA, UAT, and Production pipelines.",
+      "Mentoring backend developer interns through technical code reviews and engineering guidance.",
     ],
   },
   {
