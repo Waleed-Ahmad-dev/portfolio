@@ -15,17 +15,13 @@ interface ProjectCardProps {
   index: number;
 }
 
-const getCategoryIcon = (cat: string) => {
-  const lower = cat.toLowerCase();
-  if (lower.includes("full")) return Layers;
-  if (lower.includes("back")) return Database;
-  if (lower.includes("system")) return Terminal;
-  return Code;
+const renderCategoryIcon = (category: string) => {
+  const lower = category.toLowerCase();
+  const Icon = lower.includes("full") ? Layers : lower.includes("back") ? Database : lower.includes("system") ? Terminal : Code;
+  return <Icon size={16} strokeWidth={1.5} />;
 };
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const CategoryIcon = getCategoryIcon(project.category);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -44,7 +40,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {/* Category Badge */}
           <div className="flex items-center gap-3">
             <div className="p-2 bg-zinc-100 dark:bg-zinc-900 rounded-md text-black dark:text-white">
-              <CategoryIcon size={16} strokeWidth={1.5} />
+              {renderCategoryIcon(project.category)}
             </div>
             <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
               {project.category}

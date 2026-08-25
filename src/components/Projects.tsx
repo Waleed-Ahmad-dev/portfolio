@@ -91,7 +91,7 @@ const itemVariants: Variants = {
 };
 
 // --- Helper to get icons for playground items ---
-const getPlaygroundIcon = (type: string) => {
+const getPlaygroundIcon = (type: string = "") => {
   const t = type.toLowerCase();
   const props = { size: 18, strokeWidth: 1.5 };
 
@@ -154,13 +154,13 @@ const Projects = () => {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {playground.map((item: any, i: number) => (
+            {playground.map((item: ProjectItem) => (
               <motion.a
-                key={i}
+                key={item.name || item.title}
                 variants={itemVariants}
-                href={item.link}
+                href={item.link || "#"}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group relative flex flex-col h-full p-6 rounded-lg bg-zinc-50 dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition-all duration-300 hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-none hover:-translate-y-1"
               >
                 {/* Header: Icon & Name */}
