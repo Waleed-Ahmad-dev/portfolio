@@ -1,4 +1,5 @@
 import { Layout, Database, Cpu, Code, LucideIcon } from "lucide-react";
+import { calculateAge } from "@/lib/utils";
 
 // --- TYPES ---
 export interface Socials {
@@ -72,10 +73,14 @@ export const personalInfo: PersonalInfo = {
   name: "Waleed Ahmad",
   alias: "Shadow Scripter",
   role: "Full-Stack Architect",
-  age: 16,
+  get age() {
+    return calculateAge("2009-08-21");
+  },
   location: "Pakistan",
   tagline: "Engineering scalable digital architectures.",
-  bio: "I’m a 16-year-old full-stack developer engineering production-scale applications. I manage end-to-end architecture, backend services, and modern front-end frameworks. O-Levels student during school hours — lead engineer on real enterprise projects after hours.",
+  get bio() {
+    return `I’m a ${this.age}-year-old full-stack developer engineering production-scale applications. I manage end-to-end architecture, backend services, and modern front-end frameworks. O-Levels student during school hours — lead engineer on real enterprise projects after hours.`;
+  },
   email: "itswaleedqureshi@gmail.com",
   socials: {
     github: "https://github.com/Waleed-Ahmad-dev",
@@ -895,7 +900,9 @@ export const aboutText = {
     main: "I got serious about coding at",
     age: "14",
     highlight: "The Odin Project",
-    end: "while juggling school. Now at 16, I’m not just learning — I’m shipping real products.",
+    get end() {
+      return `while juggling school. Now at ${calculateAge("2009-08-21")}, I’m not just learning — I’m shipping real products.`;
+    },
   },
   p3: "From a custom CMS for a big real-estate client to a full LMS, I love building software that solves real problems. The goal is simple: create things that work, ship them fast, and keep leveling up.",
 };
