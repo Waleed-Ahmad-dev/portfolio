@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React from "react";
@@ -18,6 +17,7 @@ import ProjectCard from "./ProjectCard";
 import {
   featuredProjects as importedProjects,
   playground as importedPlayground,
+  ProjectItem,
 } from "@/data/portfolio";
 
 // --- Fallback Data ---
@@ -125,8 +125,8 @@ const Projects = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="grid md:grid-cols-2 gap-8 lg:gap-12 mt-24"
           >
-            {featuredProjects.map((project: any, index: number) => (
-              <ProjectCard key={index} project={project} index={index} />
+            {featuredProjects.map((project: ProjectItem, index: number) => (
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </motion.div>
         </div>
