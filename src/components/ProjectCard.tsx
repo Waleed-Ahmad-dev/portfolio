@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/static-components */
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -11,29 +8,22 @@ import {
   Database,
   Terminal,
 } from "lucide-react";
+import { ProjectItem } from "@/data/portfolio";
 
 interface ProjectCardProps {
-  project: {
-    title: string;
-    category: string;
-    tech: string[];
-    desc: string;
-    link: string | null;
-    github: string | null;
-  };
+  project: ProjectItem;
   index: number;
 }
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  // Determine icon based on category
-  const getCategoryIcon = (cat: string) => {
-    const lower = cat.toLowerCase();
-    if (lower.includes("full")) return Layers;
-    if (lower.includes("back")) return Database;
-    if (lower.includes("system")) return Terminal;
-    return Code;
-  };
+const getCategoryIcon = (cat: string) => {
+  const lower = cat.toLowerCase();
+  if (lower.includes("full")) return Layers;
+  if (lower.includes("back")) return Database;
+  if (lower.includes("system")) return Terminal;
+  return Code;
+};
 
+const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const CategoryIcon = getCategoryIcon(project.category);
 
   return (
@@ -67,7 +57,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               <a
                 href={project.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-black dark:hover:text-white focus:text-black dark:focus:text-white transition-colors duration-200"
                 aria-label="View Source Code (opens in new tab)"
               >
@@ -78,7 +68,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               <a
                 href={project.link}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-black dark:hover:text-white focus:text-black dark:focus:text-white transition-colors duration-200"
                 aria-label="View Live Project (opens in new tab)"
               >
@@ -101,7 +91,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {/* Tech Stack */}
           <div className="pt-6 border-t border-zinc-100 dark:border-zinc-900 mt-auto">
             <div className="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
+              {(Array.isArray(project.tech) ? project.tech : [project.tech]).map((t) => (
                 <span
                   key={t}
                   className="px-2 py-1 text-[10px] font-mono border border-zinc-200 dark:border-zinc-800 rounded text-zinc-500 dark:text-zinc-400 group-hover:border-zinc-400 dark:group-hover:border-zinc-600 transition-colors duration-300"
