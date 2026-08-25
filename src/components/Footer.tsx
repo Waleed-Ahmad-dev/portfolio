@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState } from "react";
@@ -13,6 +12,7 @@ import {
   Terminal,
   Globe,
   ArrowUpRight,
+  LucideIcon,
 } from "lucide-react";
 // Import your data object
 import { personalInfo as importedInfo } from "@/data/portfolio";
@@ -39,7 +39,7 @@ const Footer = () => {
   const { email, socials, name, location, role, tagline } = personalInfo;
 
   // 2. Map keys to Icons
-  const iconMap: any = {
+  const iconMap: Record<string, LucideIcon> = {
     github: Github,
     linkedin: Linkedin,
     instagram: Instagram,
