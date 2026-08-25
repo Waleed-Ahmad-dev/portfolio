@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Calendar } from "lucide-react";
 import SectionHeader from "./SectionHeader";
-import { experience as importedExperience } from "@/data/portfolio";
+import { experience as importedExperience, ExperienceItem } from "@/data/portfolio";
 
 // --- Fallback Data (Safety Net) ---
-const defaultExperience = [
+const defaultExperience: ExperienceItem[] = [
   {
     role: "Full Stack Intern",
     company: "Tech Innovators Inc.",
@@ -74,8 +73,8 @@ const Experience = () => {
           />
 
           {/* === EXPERIENCE NODES === */}
-          {experience.map((exp, index) => (
-            <ExperienceCard key={index} exp={exp} index={index} />
+          {experience.map((exp: ExperienceItem, index: number) => (
+            <ExperienceCard key={exp.company} exp={exp} index={index} />
           ))}
         </div>
       </div>
@@ -84,7 +83,7 @@ const Experience = () => {
 };
 
 // --- Sub-Component for Individual Cards ---
-const ExperienceCard = ({ exp, index }: { exp: any; index: number }) => {
+const ExperienceCard = ({ exp, index }: { exp: ExperienceItem; index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
