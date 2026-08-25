@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React from "react";
@@ -12,12 +11,13 @@ import {
   Globe,
   Server,
   Smartphone,
+  LucideIcon,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
-import { skillGroups as importedSkills } from "@/data/portfolio";
+import { skillGroups as importedSkills, SkillGroup } from "@/data/portfolio";
 
 // --- Fallback Data ---
-const defaultSkills = [
+const defaultSkills: SkillGroup[] = [
   {
     id: "frontend",
     title: "Frontend Architecture",
@@ -54,7 +54,7 @@ const defaultSkills = [
 const skillGroups = importedSkills || defaultSkills;
 
 // --- Icon Mapping ---
-const IconMap: any = {
+const IconMap: Record<string, LucideIcon> = {
   Layout,
   Code2,
   Database,
@@ -78,16 +78,16 @@ const Skills = () => {
         />
 
         <div className="grid md:grid-cols-2 gap-8 mt-24">
-          {skillGroups.map((group: any, index: number) => {
+          {skillGroups.map((group: SkillGroup, index: number) => {
             // Resolve Icon
-            const Icon =
+            const Icon: LucideIcon =
               group.icon && typeof group.icon !== "string"
                 ? group.icon
                 : IconMap[group.title.split(" ")[0]] || Code2;
 
             return (
               <motion.div
-                key={group.id || index}
+                key={group.id || group.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
