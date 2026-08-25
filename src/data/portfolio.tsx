@@ -118,7 +118,7 @@ export const skillGroups: SkillGroup[] = [
     id: "backend",
     title: "Backend Architecture",
     icon: Database,
-    skills: ["Node.js", "NestJS", "Go", "PostgreSQL", "Prisma", "MongoDB", "Redis", "FastAPI"],
+    skills: ["Node.js", "NestJS", "Go", "PostgreSQL", "Prisma", "Drizzle ORM", "MongoDB", "Redis", "FastAPI"],
   },
   {
     id: "devops",
@@ -137,9 +137,18 @@ export const skillGroups: SkillGroup[] = [
 // --- EXPERIENCE TIMELINE ---
 export const experience: ExperienceItem[] = [
   {
+    company: "CSG",
+    role: "Junior Backend Developer",
+    period: "Sept 2026 – Present",
+    desc: [
+      "Engineering scalable backend services and microservice architecture.",
+      "Developing high-performance REST APIs and optimizing database models and queries.",
+    ],
+  },
+  {
     company: "Premier Choice International",
     role: "Full Stack Intern (Lead)",
-    period: "Oct 2025 – Present",
+    period: "Oct 2025 – June 2026",
     desc: [
       "Spearheading the architecture of a proprietary Real Estate CMS using Node.js, React, and PostgreSQL.",
       "Developed 'Sign App', an internal microservice automating email signatures for the workforce.",
