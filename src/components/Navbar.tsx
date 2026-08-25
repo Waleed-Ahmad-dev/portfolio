@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -6,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal, ArrowRight, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 // Import data with fallback
-import { navbarData as importedData } from "@/data/portfolio";
+import { navbarData as importedData, NavLink } from "@/data/portfolio";
 
 // --- Fallback Data ---
 const defaultData = {
@@ -31,7 +30,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -42,6 +41,9 @@ const Navbar = () => {
     } else {
       document.body.style.overflow = "unset";
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [mobileMenuOpen]);
 
   return (
@@ -75,7 +77,7 @@ const Navbar = () => {
 
           {/* --- Desktop Navigation --- */}
           <div className="hidden md:flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900/50 p-1 rounded-full border border-zinc-200 dark:border-zinc-800">
-            {navbarData.links.map((item: any) => (
+            {navbarData.links.map((item: NavLink) => (
               <a
                 key={item.id}
                 href={item.link}
@@ -150,7 +152,7 @@ const Navbar = () => {
             className="fixed inset-0 z-40 bg-white dark:bg-black md:hidden flex flex-col pt-32 px-6"
           >
             <nav className="flex flex-col gap-6">
-              {navbarData.links.map((item: any, index: number) => (
+              {navbarData.links.map((item: NavLink, index: number) => (
                 <motion.a
                   key={item.id}
                   href={item.link}
