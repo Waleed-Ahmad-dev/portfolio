@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Github,
-  ExternalLink,
+  ArrowUpRight,
   Code,
   Layers,
   Database,
@@ -17,85 +17,97 @@ interface ProjectCardProps {
 
 const renderCategoryIcon = (category: string) => {
   const lower = category.toLowerCase();
-  const Icon = lower.includes("full") ? Layers : lower.includes("back") ? Database : lower.includes("system") ? Terminal : Code;
-  return <Icon size={16} strokeWidth={1.5} />;
+  const Icon = lower.includes("full")
+    ? Layers
+    : lower.includes("back")
+    ? Database
+    : lower.includes("system")
+    ? Terminal
+    : Code;
+  return <Icon size={14} strokeWidth={2} />;
 };
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
+  const techStack = Array.isArray(project.tech)
+    ? project.tech
+    : [project.tech];
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{
-        delay: index * 0.1,
-        duration: 0.5,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        delay: index * 0.05,
+        duration: 0.4,
       }}
       className="group h-full"
     >
-      <div className="flex flex-col h-full bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 md:p-8 transition-all duration-300 hover:border-black dark:hover:border-white hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-none focus-within:border-black dark:focus-within:border-white focus-within:shadow-lg focus-within:shadow-zinc-200/50 dark:focus-within:shadow-none">
-        {/* --- Card Header --- */}
-        <div className="flex justify-between items-start mb-8">
-          {/* Category Badge */}
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-zinc-100 dark:bg-zinc-900 rounded-md text-black dark:text-white">
-              {renderCategoryIcon(project.category)}
+      <div className="flex flex-col h-full bg-card border border-zinc-300 dark:border-zinc-800 rounded-sm p-6 md:p-8 hover-tactile justify-between">
+        {/* Card Header Bar */}
+        <div>
+          <div className="flex justify-between items-start pb-4 mb-6 border-b border-zinc-200 dark:border-zinc-800/80">
+            {/* Category & Status */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="p-2 bg-foreground text-background rounded-xs">
+                {renderCategoryIcon(project.category)}
+              </div>
+              <span className="badge-mono">{project.category}</span>
+              {project.status && (
+                <span className="badge-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
+                  {project.status.toUpperCase()}
+                </span>
+              )}
             </div>
-            <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-              {project.category}
-            </span>
+
+            {/* Links */}
+            <div className="flex items-center gap-2">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 text-zinc-500 hover:text-foreground border border-zinc-200 dark:border-zinc-800 rounded-xs transition-colors"
+                  aria-label="GitHub Repository"
+                >
+                  <Github size={15} />
+                </a>
+              )}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 text-zinc-500 hover:text-foreground border border-zinc-200 dark:border-zinc-800 rounded-xs transition-colors"
+                  aria-label="Live Demo"
+                >
+                  <ArrowUpRight size={15} />
+                </a>
+              )}
+            </div>
           </div>
 
-          {/* Action Links */}
-          <div className="flex items-center gap-3">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-black dark:hover:text-white focus:text-black dark:focus:text-white transition-colors duration-200"
-                aria-label="View Source Code (opens in new tab)"
-              >
-                <Github size={18} strokeWidth={1.5} />
-              </a>
-            )}
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-black dark:hover:text-white focus:text-black dark:focus:text-white transition-colors duration-200"
-                aria-label="View Live Project (opens in new tab)"
-              >
-                <ExternalLink size={18} strokeWidth={1.5} />
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* --- Card Body --- */}
-        <div className="flex-1 flex flex-col">
-          <h3 className="text-2xl font-bold text-black dark:text-white mb-3 tracking-tight">
+          {/* Project Title & Description */}
+          <h3 className="font-mono text-xl font-bold text-foreground mb-3 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
             {project.title}
           </h3>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 flex-1">
+          <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-6 font-sans">
             {project.desc}
           </p>
+        </div>
 
-          {/* Tech Stack */}
-          <div className="pt-6 border-t border-zinc-100 dark:border-zinc-900 mt-auto">
-            <div className="flex flex-wrap gap-2">
-              {(Array.isArray(project.tech) ? project.tech : [project.tech]).map((t) => (
-                <span
-                  key={t}
-                  className="px-2 py-1 text-[10px] font-mono border border-zinc-200 dark:border-zinc-800 rounded text-zinc-500 dark:text-zinc-400 group-hover:border-zinc-400 dark:group-hover:border-zinc-600 transition-colors duration-300"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+        {/* Tech Badges Footer */}
+        <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800/80 mt-auto">
+          <div className="flex flex-wrap gap-1.5">
+            {techStack.map((t) => (
+              <span
+                key={t}
+                className="px-2 py-0.5 text-[10px] font-mono text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xs"
+              >
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </div>

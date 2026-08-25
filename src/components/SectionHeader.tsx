@@ -9,70 +9,28 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-const SectionHeader = ({ title, subtitle, className }: SectionHeaderProps) => {
+const SectionHeader = ({ title, subtitle, className = "" }: SectionHeaderProps) => {
   return (
-    <div className={`mb-24 ${className}`}>
+    <div className={`mb-12 ${className}`}>
       <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1,
-            },
-          },
-        }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.3 }}
+        className="flex flex-col gap-3"
       >
-        <div className="flex flex-col gap-6">
-          {/* Minimalist Accent Line */}
-          <motion.div
-            variants={{
-              hidden: { width: 0, opacity: 0 },
-              visible: {
-                width: "60px",
-                opacity: 1,
-                transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] },
-              },
-            }}
-            className="h-1 bg-black dark:bg-white"
-          />
-
-          {/* Main Title */}
-          <motion.h2
-            variants={{
-              hidden: { opacity: 0, y: 15 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, ease: "easeOut" },
-              },
-            }}
-            className="text-5xl md:text-7xl font-bold text-black dark:text-white tracking-tighter"
-          >
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 rounded-xs bg-foreground" />
+          <h2 className="font-mono text-2xl md:text-4xl font-extrabold text-foreground tracking-tighter uppercase">
             {title}
-            <span className="text-zinc-300 dark:text-zinc-700 ml-1">.</span>
-          </motion.h2>
-
-          {/* Subtitle */}
-          {subtitle && (
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 15 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
-                },
-              }}
-              className="text-zinc-500 dark:text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed font-light border-l border-zinc-200 dark:border-zinc-800 pl-6"
-            >
-              {subtitle}
-            </motion.p>
-          )}
+          </h2>
         </div>
+
+        {subtitle && (
+          <p className="text-muted-foreground text-xs md:text-sm font-mono border-l-2 border-zinc-300 dark:border-zinc-800 pl-4 max-w-2xl leading-relaxed">
+            {subtitle}
+          </p>
+        )}
       </motion.div>
     </div>
   );

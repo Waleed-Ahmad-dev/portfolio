@@ -16,7 +16,6 @@ import {
 import SectionHeader from "./SectionHeader";
 import { skillGroups as importedSkills, SkillGroup } from "@/data/portfolio";
 
-// --- Fallback Data ---
 const defaultSkills: SkillGroup[] = [
   {
     id: "frontend",
@@ -39,21 +38,20 @@ const defaultSkills: SkillGroup[] = [
   },
   {
     id: "tools",
-    title: "DevOps & Tools",
-    icon: Wrench,
-    skills: ["Git", "GitHub Actions", "AWS", "Vercel", "Figma", "Linux"],
+    title: "DevOps & Cloud",
+    icon: Cpu,
+    skills: ["Git", "GitHub Actions", "AWS", "Vercel", "Dokploy", "Linux (Arch)"],
   },
   {
-    id: "mobile",
-    title: "Mobile & Native",
-    icon: Smartphone,
-    skills: ["React Native", "Expo", "PWA", "Swift (Basic)"],
+    id: "languages",
+    title: "Core Languages",
+    icon: Code2,
+    skills: ["TypeScript", "JavaScript (ES6+)", "Python", "Go", "SQL", "Bash"],
   },
 ];
 
 const skillGroups = importedSkills || defaultSkills;
 
-// --- Icon Mapping ---
 const IconMap: Record<string, LucideIcon> = {
   Layout,
   Code2,
@@ -69,17 +67,16 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative py-32 px-6 md:px-12 bg-white dark:bg-black"
+      className="relative py-24 px-6 md:px-12 bg-background border-b border-border"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          title="Technical Arsenal"
-          subtitle="The high-performance tools I use to architect digital reality."
+          title="ENGINEERING_STACK"
+          subtitle="Core technologies, frameworks, and architectural tools."
         />
 
-        <div className="grid md:grid-cols-2 gap-8 mt-24">
+        <div className="grid md:grid-cols-2 gap-6 mt-16">
           {skillGroups.map((group: SkillGroup, index: number) => {
-            // Resolve Icon
             const Icon: LucideIcon =
               group.icon && typeof group.icon !== "string"
                 ? group.icon
@@ -88,33 +85,34 @@ const Skills = () => {
             return (
               <motion.div
                 key={group.id || group.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{
-                  delay: index * 0.1,
-                  duration: 0.5,
-                  ease: [0.25, 0.1, 0.25, 1.0],
+                  delay: index * 0.05,
+                  duration: 0.4,
                 }}
-                className="group relative flex flex-col h-full p-8 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-black dark:hover:border-white transition-colors duration-300"
+                className="group relative flex flex-col h-full p-6 bg-card border border-zinc-300 dark:border-zinc-800 rounded-sm hover-tactile"
               >
-                {/* --- Card Header --- */}
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="p-3 bg-zinc-50 dark:bg-zinc-900 rounded-md text-black dark:text-white group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors duration-300">
-                    <Icon size={24} strokeWidth={1.5} />
+                <div className="flex items-center justify-between pb-4 mb-6 border-b border-zinc-200 dark:border-zinc-800/80">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 bg-foreground text-background rounded-xs">
+                      <Icon size={18} strokeWidth={2} />
+                    </div>
+
+                    <h3 className="font-mono text-base font-bold text-foreground uppercase tracking-wider">
+                      {group.title}
+                    </h3>
                   </div>
 
-                  <h3 className="text-xl font-bold text-black dark:text-white tracking-tight">
-                    {group.title}
-                  </h3>
+                  <span className="badge-mono">0{index + 1}</span>
                 </div>
 
-                {/* --- Skills Grid --- */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-auto">
                   {group.skills.map((skill: string) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400 bg-transparent border border-zinc-200 dark:border-zinc-800 rounded hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-default select-none"
+                      className="px-2.5 py-1 text-xs font-mono text-foreground bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xs hover:border-foreground transition-colors cursor-default select-none"
                     >
                       {skill}
                     </span>
