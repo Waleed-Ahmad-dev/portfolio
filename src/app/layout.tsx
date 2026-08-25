@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { calculateAge } from "@/lib/utils";
 
 // Optimize fonts - Retained as they fit the minimalist aesthetic perfectly
 const inter = Inter({
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     template: `%s | ${ALIAS}`,
   },
   description:
-    "Looking to hire a Full Stack Architect? Waleed Ahmad (Shadow Scripter) specializes in high-performance Next.js 16, Node.js, and Enterprise Cloud Architecture. 16-year-old Lead Engineer.",
+    `Looking to hire a Full Stack Architect? Waleed Ahmad (Shadow Scripter) specializes in high-performance Next.js 16, Node.js, and Enterprise Cloud Architecture. ${calculateAge("2009-08-21")}-year-old Lead Engineer.`,
   keywords: [
     "Hire Next.js Developer",
     "Full Stack Architect",
@@ -87,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${NAME} (${ALIAS}) | Hire Top Tech Talent`,
     description:
-      "16-year-old Lead Engineer. Specializing in Next.js, Node.js, and Cloud Architecture.",
+      `${calculateAge("2009-08-21")}-year-old Lead Engineer. Specializing in Next.js, Node.js, and Cloud Architecture.`,
     images: ["/og-image.png"],
     creator: "@shadow_scripter",
   },
@@ -123,9 +124,9 @@ export default function RootLayout({
     image: `${DOMAIN}/favicon.jpg`,
     jobTitle: "Full Stack Architect",
     description:
-      "A 16-year-old Full Stack Developer and Lead Intern engineering production-scale applications with Next.js and Node.js.",
+      `A ${calculateAge("2009-08-21")}-year-old Full Stack Developer and Lead Intern engineering production-scale applications with Next.js and Node.js.`,
     email: "itswaleedqureshi@gmail.com",
-    birthDate: "2009",
+    birthDate: "2009-08-21",
     address: {
       "@type": "PostalAddress",
       addressCountry: "Pakistan",
