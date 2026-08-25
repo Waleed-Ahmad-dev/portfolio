@@ -35,7 +35,7 @@ const defaultSkills = [
     id: "backend",
     title: "Backend Systems",
     icon: Server,
-    skills: ["Node.js", "PostgreSQL", "Redis", "GraphQL", "Docker", "Supabase"],
+    skills: ["Node.js", "NestJS", "Prisma", "Drizzle", "PostgreSQL", "Redis", "GraphQL", "Docker"],
   },
   {
     id: "tools",
