@@ -11,13 +11,13 @@ import {
   Layers,
   Cpu,
   ShieldCheck,
+  FileDown,
 } from "lucide-react";
 import {
   personalInfo as importedInfo,
   heroData as importedHero,
 } from "@/data/portfolio";
 import { calculateAge } from "@/lib/utils";
-import ResumeDownload from "./ResumeDownload";
 
 const defaultInfo = {
   alias: "Shadow Scripter",
@@ -139,7 +139,14 @@ const Hero = () => {
               <span>{heroData.buttons.secondary}</span>
             </a>
 
-            <ResumeDownload />
+            <a
+              href="/Waleed-Ahmad-Resume.pdf"
+              download
+              className="inline-flex h-12 items-center justify-center gap-2 border border-border bg-card px-6 font-mono text-xs font-semibold uppercase tracking-wider text-foreground rounded-sm hover-tactile"
+            >
+              <FileDown size={16} />
+              <span>Resume</span>
+            </a>
           </motion.div>
         </motion.div>
 
