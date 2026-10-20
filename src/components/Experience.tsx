@@ -8,16 +8,6 @@ import { experience as importedExperience, ExperienceItem } from "@/data/portfol
 
 const defaultExperience: ExperienceItem[] = [
   {
-    role: "Junior Backend Developer",
-    company: "CSG",
-    period: "Sept 2026 – Present",
-    desc: [
-      "Architecting NestJS microservices across Core, Operations, Compliance, & Platform domains with Prisma, PostgreSQL, and RabbitMQ.",
-      "Owning Python/FastAPI AI agent backends orchestrated with LangGraph and LLM routers.",
-      "Managing self-hosted Docker deployments via Dokploy across Dev, QA, UAT, and Production pipelines.",
-    ],
-  },
-  {
     role: "Full Stack Intern (Lead)",
     company: "Premier Choice International",
     period: "Oct 2025 – June 2026",

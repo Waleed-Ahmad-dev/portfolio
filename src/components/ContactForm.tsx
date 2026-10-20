@@ -23,6 +23,10 @@ export default function ContactForm() {
     );
   }
 
+  return <ContactFormBody formCode={formCode} />;
+}
+
+function ContactFormBody({ formCode }: { formCode: string }) {
   const [state, handleSubmit] = useForm(formCode);
 
   return (

@@ -137,17 +137,6 @@ export const skillGroups: SkillGroup[] = [
 // --- EXPERIENCE TIMELINE ---
 export const experience: ExperienceItem[] = [
   {
-    company: "CSG",
-    role: "Junior Backend Developer",
-    period: "Sept 2026 – Present",
-    desc: [
-      "Architecting & coding NestJS microservices across Core, Operations, Compliance, and Platform domains with Prisma, PostgreSQL, and RabbitMQ.",
-      "Owning Python/FastAPI AI agent backends orchestrated with LangGraph, custom CRM schemas, and LLM Routers.",
-      "Managing self-hosted Docker deployments via Dokploy across Dev, QA, UAT, and Production pipelines.",
-      "Mentoring backend developer interns through technical code reviews and engineering guidance.",
-    ],
-  },
-  {
     company: "Premier Choice International",
     role: "Full Stack Intern (Lead)",
     period: "Oct 2025 – June 2026",

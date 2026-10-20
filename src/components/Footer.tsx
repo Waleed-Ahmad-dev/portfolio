@@ -137,7 +137,7 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-2 text-zinc-500">
               <span>{location.toUpperCase()}</span>
-              <span>//</span>
+              <span>{"//"}</span>
               <span className="text-emerald-500">SYSTEM OPERATIONAL</span>
             </div>
           </div>

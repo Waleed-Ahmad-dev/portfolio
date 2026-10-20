@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 
-import { motion } from "framer-motion";
 import { Terminal, Database, Code2, Layers, Cpu, CheckCircle2 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import {
@@ -65,7 +63,7 @@ const About = () => {
                     <strong className="text-foreground font-mono">age 14</strong> through{" "}
                     <span className="text-foreground font-semibold">The Odin Project</span>. Now at{" "}
                     <strong className="text-foreground font-mono">{calculateAge("2009-08-21")} years old</strong>, I work as a{" "}
-                    <span className="text-foreground font-semibold">Junior Backend Developer</span> at CSG, lead engineering microservices across core domains while handling O-Levels in school hours.
+                    <span className="text-foreground font-semibold">Backend-focused Full Stack Architect</span>, engineering production microservices while handling O-Levels in school hours.
                   </p>
 
                   <p>

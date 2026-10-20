@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
+  // Bundle the resume with the captcha-gated download route (kept out of /public on purpose)
+  outputFileTracingIncludes: {
+    "/api/resume": ["./private/**/*"],
+  },
   async headers() {
     return [
       {

@@ -17,6 +17,7 @@ import {
   heroData as importedHero,
 } from "@/data/portfolio";
 import { calculateAge } from "@/lib/utils";
+import ResumeDownload from "./ResumeDownload";
 
 const defaultInfo = {
   alias: "Shadow Scripter",
@@ -34,7 +35,7 @@ const defaultHero = {
     end: "BACKEND & DIGITAL SYSTEMS.",
   },
   subHeading: {
-    text: "Lead Junior Backend Engineer owning production microservices, AI backend agents with LangGraph, and self-hosted infrastructure.",
+    text: "Backend-focused Full Stack Architect building production microservices, AI backend agents with LangGraph, and self-hosted infrastructure.",
   },
   buttons: { primary: "EXPLORE_SYSTEMS", secondary: "GITHUB_REPOS" },
 };
@@ -114,7 +115,7 @@ const Hero = () => {
           {/* Subheading Narrative */}
           <motion.div variants={itemVariants} className="mb-10 max-w-xl">
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-sans border-l-2 border-foreground pl-4">
-              I’m <strong className="text-foreground">{personalInfo.name}</strong> ({personalInfo.alias}). Junior Backend Developer at CSG architecting NestJS microservices with Prisma, RabbitMQ, PostgreSQL, &amp; LangGraph AI agents. Shipping real production backends at age {personalInfo.age}.
+              I’m <strong className="text-foreground">{personalInfo.name}</strong> ({personalInfo.alias}). Backend-focused Full Stack Architect building NestJS microservices with Prisma, RabbitMQ, PostgreSQL, &amp; LangGraph AI agents. Shipping real production backends at age {personalInfo.age}.
             </p>
           </motion.div>
 
@@ -137,6 +138,8 @@ const Hero = () => {
               <Github size={16} />
               <span>{heroData.buttons.secondary}</span>
             </a>
+
+            <ResumeDownload />
           </motion.div>
         </motion.div>
 
@@ -231,7 +234,7 @@ const Hero = () => {
               {activeTab === "stack" && (
                 <div className="space-y-2">
                   <div className="text-[11px] text-zinc-500 uppercase tracking-widest mb-2">
-                    // CORE ENGINES
+                    {"// CORE ENGINES"}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {[
